@@ -1,0 +1,26 @@
+[
+    {
+        "menuCode": 1,
+        "name": "멕시칸비프",
+        "price": 7200,
+        "description": "살사 베이스에 매콤한 김밥",
+        "imgURL" : "/public/images/menu/gimbab/01_mexican.jpg",
+        "quantity": 0,
+        "soldout": true,
+        "state": true,
+        "__comment__": "state는 메뉴 삭제 시 false"
+    },
+    {
+        "menuCode": 2,
+        "name": "베지김밥",
+        "price": 4900,
+        "description": "부드러운 지단에 신선한 6가지 야채로 가볍고 깔끔한 한 끼",
+        "imgURL" : "/public/images/menu/gimbab/01_begi.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    }
+
+   
+]
+

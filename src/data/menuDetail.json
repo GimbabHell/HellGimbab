@@ -1,0 +1,20 @@
+[
+    {
+        "detailCode": 1001,
+        "name": "백미",
+        "price": 0,
+        "imgURL" : "/public/images/menudetail/01_rice.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1002,
+        "name": "흑미",
+        "price": 0,
+        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    }
+]
