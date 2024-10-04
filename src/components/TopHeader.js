@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 const TopHeader = () => {
     return(
         <header>
-            <Link to="/admin">Home</Link>
+            <Link to="/">Home</Link>
+            <Link to="/admin"><img src="" alt="logo" /></Link>
+            <div className="lang">
+                <Link to="/">KR</Link>
+                <span> / </span>
+                <Link to="">EN</Link>
+            </div>
         </header>
     )
 }
