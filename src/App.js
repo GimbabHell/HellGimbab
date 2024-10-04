@@ -5,14 +5,17 @@ import MenuPage from "./pages/MenuPage";
 import MenuDetailPage from "./pages/MenuDetailPage";
 import PayCheckPage from "./pages/PayCheckPage";
 import LastPage from "./pages/LastPage";
-import Error from "./pages/Error";
 import Layout from "./layout/Layout";
+import Error from "./pages/Error";
+
+
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+
           <Route index element={<HomePage />} />
 
           <Route path="/" element={<Layout />}>
@@ -24,6 +27,7 @@ function App() {
           <Route path="/last" element={<LastPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<Error />} />
+
         </Routes>
       </BrowserRouter>
     </>
