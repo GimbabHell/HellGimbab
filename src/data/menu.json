@@ -11,7 +11,7 @@
         "__comment__": "state는 메뉴 삭제 시 false"
     },
     {
-        "menuCode": 2,
+        "menuCode": [],
         "name": "베지김밥",
         "price": 4900,
         "description": "부드러운 지단에 신선한 6가지 야채로 가볍고 깔끔한 한 끼",

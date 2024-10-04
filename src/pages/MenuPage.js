@@ -1,3 +1,6 @@
+import { Outlet } from "react-router-dom";
+import MenuNavBar from "../components/Menu/MenuNavBar";
+
 
 const MenuPage = () => {
 
@@ -5,7 +8,7 @@ const MenuPage = () => {
     return(
         <>
             <MenuNavBar/>
-            <MenuOutlet/>
+            <Outlet/>
         </>
                 
     )

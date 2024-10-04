@@ -7,7 +7,7 @@ import PayCheckPage from "./pages/PayCheckPage";
 import LastPage from "./pages/LastPage";
 import Layout from "./layout/Layout";
 import Error from "./pages/Error";
-import Layout from "./layout/Layout";
+
 
 
 function App() {
