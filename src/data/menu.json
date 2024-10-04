@@ -1,6 +1,7 @@
 [
     {
         "menuCode": 1,
+        "categoryCode" : 1,
         "name": "데리야끼치킨김밥",
         "price": 7100,
         "description": "담백한 치킨과 달콤한 데리야끼소스의 조합",
@@ -12,6 +13,7 @@
     },
     {
         "menuCode": 2,
+        "categoryCode" : 1,
         "name": "참치마요김밥",
         "price": 6800,
         "description": "부드러운 지단에 신선한 6가지 야채로 가볍고 깔끔한 한 끼",
@@ -22,6 +24,7 @@
     },
     {
         "menuCode": 3,
+        "categoryCode" : 1,
         "name": "불어묵김밥",
         "price": 5900,
         "description": "화끈한 불양념에 어묵을 볶아 매콤 감칠맛이 가득",
@@ -31,6 +34,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 4,
         "name": "베지김밥",
         "price": 4900,
@@ -41,6 +45,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 5,
         "name": "제육김밥",
         "price": 6800,
@@ -51,6 +56,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 6,
         "name": "닭가슴살김밥",
         "price": 6800,
@@ -61,6 +67,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 7,
         "name": "토마토포크김밥",
         "price": 7200,
@@ -71,6 +78,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 8,
         "name": "소불고기김밥",
         "price": 7500,
@@ -81,6 +89,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 9,
         "name": "소시지김밥",
         "price": 6500,
@@ -91,6 +100,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 10,
         "name": "유부김밥",
         "price": 5600,
@@ -101,6 +111,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 11,
         "name": "훈제오리김밥",
         "price": 7300,
@@ -111,6 +122,7 @@
         "state": true
     },
     {
+        "categoryCode" : 1,
         "menuCode": 12,
         "name": "비건단백질김밥",
         "price": 6900,
@@ -121,6 +133,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 13,
         "name": "제육비빔밥",
         "price": 6500,
@@ -131,6 +144,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 14,
         "name": "베지비빔밥",
         "price": 4600,
@@ -141,6 +155,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 15,
         "name": "불어묵비빔밥",
         "price": 5600,
@@ -151,6 +166,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 16,
         "name": "유부비빔밥",
         "price": 5300,
@@ -161,6 +177,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 17,
         "name": "훈제오리비빔밥",
         "price": 7000,
@@ -171,6 +188,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 18,
         "name": "토마토포크비빔밥",
         "price": 6900,
@@ -181,6 +199,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 19,
         "name": "소불고기비빔밥",
         "price": 7200,
@@ -191,6 +210,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 20,
         "name": "데리야끼치킨비빔밥",
         "price": 6800,
@@ -201,6 +221,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 21,
         "name": "비건단백질비빔밥",
         "price": 6600,
@@ -211,6 +232,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 22,
         "name": "소시지비빔밥",
         "price": 6200,
@@ -221,6 +243,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 23,
         "name": "참치마요비빔밥",
         "price": 6500,
@@ -231,6 +254,7 @@
         "state": true
     },
     {
+        "categoryCode" : 2,
         "menuCode": 24,
         "name": "닭가슴살비빔밥",
         "price": 6500,
@@ -241,6 +265,7 @@
         "state": true
     },
     {
+        "categoryCode" : 4,
         "menuCode": 25,
         "name": "컵누들",
         "price": 2500,
@@ -251,6 +276,7 @@
         "state": true
     },
     {
+        "categoryCode" : 4,
         "menuCode": 26,
         "name": "떡볶이(S)",
         "price": 2500,
@@ -261,6 +287,7 @@
         "state": true
     },
     {
+        "categoryCode" : 4,
         "menuCode": 27,
         "name": "샐러드누들(S)",
         "price": 2900,
