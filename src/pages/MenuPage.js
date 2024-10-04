@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 const MenuPage = () => {
 
 
@@ -13,4 +12,3 @@ const MenuPage = () => {
 }
 
 export default MenuPage;
->>>>>>> Stashed changes
