@@ -15,12 +15,12 @@ const HomePage = () => {
     const bringAPI =async()=>{
         
         return(
-            fetch('https://evilinsult.com/generate_insult.php?lang=en&type=json')
-        ).then(response=>response.json)
-        .then(data=>setHello(data.insult))
-        // const response = await fetch('https://evilinsult.com/generate_insult.php?lang=en&type=json');
+            fetch('https://api.quotable.io/random')
+        ).then(response=>response.json())
+        .then(data=>setHello(data.content))
+        // const response = await fetch('https://api.quotable.io/random');
         // const data = await response.json();
-        // setHello(data.insult);
+        // setHello(data.content);
     }
 
     useEffect(()=>{
