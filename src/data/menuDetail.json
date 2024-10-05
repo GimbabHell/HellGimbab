@@ -1,256 +1,373 @@
 [
     {
         "detailCode": 1001,
+        "subCategoryCode": 1001,
         "name": "백미",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/01_rice.jpg",
+        "imgURL": "/public/images/menudetail/01_rice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1002,
+        "subCategoryCode": 1001,
         "name": "흑미",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/02_rice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1003,
-        "name": "현미",
+        "subCategoryCode": 1001,
+        "name": "현미귀리",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/03_rice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1004,
+        "subCategoryCode": 1001,
         "name": "건두부",
-        "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "price": 300,
+        "imgURL": "/public/images/menudetail/04_rice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
 
+
+
+
+
+
+
+
+
+
+
+
     {
         "detailCode": 1005,
-        "name": "전체추가",
+        "subCategoryCode": 1002,
+        "name": "전체 야채 추가",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/no-img.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1006,
-        "name": "지단",
+        "subCategoryCode": 1002,
+        "name": "지단 빼기(건두부변경)",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/01_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1007,
-        "name": "적채",
+        "subCategoryCode": 1002,
+        "name": "지단 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/02_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1008,
-        "name": "당근",
+        "subCategoryCode": 1002,
+        "name": "당근 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/03_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1009,
-        "name": "오이",
+        "subCategoryCode": 1002,
+        "name": "오이 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/04_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1010,
-        "name": "우엉",
+        "subCategoryCode": 1002,
+        "name": "적채 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/05_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1011,
-        "name": "단무지",
+        "subCategoryCode": 1002,
+        "name": "단무지 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/06_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1012,
-        "name": "청상추",
+        "subCategoryCode": 1002,
+        "name": "우엉 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/07_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
-
     {
         "detailCode": 1013,
-        "name": "바질페스토",
+        "subCategoryCode": 1002,
+        "name": "청상추 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/08_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1014,
-        "name": "아이올리",
+        "subCategoryCode": 1002,
+        "name": "콩나물 빼기",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/09_vegi.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
+
+
+
+
+
+
+
+
+
+
     {
         "detailCode": 1015,
-        "name": "빨간맛",
+        "subCategoryCode": 1003,
+        "name": "바질페스토",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/01_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1016,
-        "name": "허니유자",
+        "subCategoryCode": 1003,
+        "name": "아이올리",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/02_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1017,
-        "name": "스리라차마요",
+        "subCategoryCode": 1003,
+        "name": "허니유자",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/03_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1018,
-        "name": "토마토고추장",
+        "subCategoryCode": 1003,
+        "name": "스리라차마요",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/04_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1019,
-        "name": "비건치폴레",
+        "subCategoryCode": 1003,
+        "name": "토마토고추장",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/05_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1020,
-        "name": "소스없음",
-        "price": -300,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "subCategoryCode": 1003,
+        "name": "빨간맛",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/06_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
-
     {
         "detailCode": 1021,
-        "name": "고추장",
+        "subCategoryCode": 1003,
+        "name": "비건치폴레",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/07_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1022,
-        "name": "된장",
-        "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
-        "quantity": 10,
-        "soldout": false,
-        "state": true
-    },
-    {
-        "detailCode": 1023,
-        "name": "간장",
-        "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "subCategoryCode": 1003,
+        "name": "소스없음",
+        "price": -300,
+        "imgURL": "/public/images/menudetail/07_dipping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
 
+
+
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1023,
+        "subCategoryCode": 1004,
+        "name": "고추장",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/01_sauce.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
     {
         "detailCode": 1024,
-        "name": "추가없음",
-        "price": 500,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "subCategoryCode": 1004,
+        "name": "된장",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/02_sauce.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1025,
-        "name": "아보카도",
-        "price": 1200,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "subCategoryCode": 1004,
+        "name": "간장",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/03_sauce.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1026,
-        "name": "청양고추",
-        "price": 1200,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "subCategoryCode": 1004,
+        "name": "비빔장",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/04_sauce.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1027,
-        "name": "올리브",
-        "price": 500,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "subCategoryCode": 1004,
+        "name": "참깨겨자",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/04_sauce.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1028,
+        "subCategoryCode": 1005,
+        "name": "아보카도",
+        "price": 1200,
+        "imgURL": "/public/images/menudetail/01_topping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
-        "detailCode": 1028,
+        "detailCode": 1029,
+        "subCategoryCode": 1005,
+        "name": "청양고추",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/02_topping.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1030,
+        "subCategoryCode": 1005,
+        "name": "올리브",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/03_topping.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1031,
+        "subCategoryCode": 1005,
         "name": "갈릭칩",
         "price": 500,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/04_topping.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1032,
+        "subCategoryCode": 1005,
+        "name": "치즈",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/05_topping.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1033,
+        "subCategoryCode": 1005,
+        "name": "메추리알",
+        "price": 200,
+        "imgURL": "/public/images/menudetail/06_topping.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
