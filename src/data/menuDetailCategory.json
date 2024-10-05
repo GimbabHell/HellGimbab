@@ -1,39 +1,27 @@
 [
     {
+        "subCateogoryCode": 1001,
         "name": "밥",
-        "details" : [
-            1001,1002,1003,1004
-        ]
-        
+        "group": "rice"
     },
     {
+        "subCateogoryCode": 1002,
         "name": "야채",
-        "details" : [
-            1005,1006,1007,1008,1009,1010,1011,1012
-        ]
-        
+        "group": "vegi"
     },
     {
+        "subCateogoryCode": 1003,
         "name": "디핑소스",
-        "details" : [
-            1013,1014,1015,1016,1017,1018
-        ]
-        
+        "group": "dipping"
     },
     {
+        "subCateogoryCode": 1004,
         "name": "소스",
-        "details" : [
-            1019,1020,1021
-        ]
-        
+        "group": "sauce"
     },
     {
+        "subCateogoryCode": 1005,
         "name": "토핑",
-        "details" : [
-            1022,1023,1024,1025,1026
-        ]
-        
+        "group": "topping"
     }
-    
-   
 ]
