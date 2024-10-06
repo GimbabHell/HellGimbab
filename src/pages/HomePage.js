@@ -4,8 +4,18 @@ import { useEffect, useState } from "react";
 
 
 const HomePage = () => {
-    const [hello,setHello] = useState("");
 
+    // 상단에 띄울 현재 시간 state
+    const [currentAtTime,setCurrentAtTime] = useState("");
+
+    // 날씨 API 호출을 위한 state
+    const [position, setPosition] = useState({});
+    const [cityName, setCityName] = useState("");
+    const [weather, setWeather] = useState({});
+
+    // 인용구 AIP 호출을 위한 state - 근데 안 됨.. ㅠ
+    const [hello, setHello] = useState("");
+    
     const navigate = useNavigate();
 
     const onClickHandler= ()=>{
