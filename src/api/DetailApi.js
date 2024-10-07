@@ -13,15 +13,16 @@ export function getSubCategoryCode(id) {
 }
 
 export function getSubCategoryName(id) {
-    const codes = menuDetailCate.filter((item) => item.subCateogoryCode === parseInt(id))[0];
+    const codes = menuDetailCate.filter((item) => item.subCategoryCode === parseInt(id))[0];
     return codes.name;
 }
 
-export function getDetailOption(cate) {
-    return menuDetail.filter((item) => item.subCategoryCode === parseInt(cate));
+export function getDetailOption(id) {
+    return menuDetail.filter((item) => item.detailCode === parseInt(id))[0];
 }
 
+
 export function getDetailGroup(cate) {
-    const codes = menuDetailCate.filter((item) => item.subCateogoryCode === parseInt(cate))[0];
+    const codes = menuDetailCate.filter((item) => item.subCategoryCode === parseInt(cate))[0];
     return codes.group;
 }

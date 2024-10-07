@@ -1,26 +1,26 @@
 [
     {
-        "subCateogoryCode": 1001,
+        "subCategoryCode": 1001,
         "name": "밥",
         "group": "rice"
     },
     {
-        "subCateogoryCode": 1002,
+        "subCategoryCode": 1002,
         "name": "야채",
         "group": "vegi"
     },
     {
-        "subCateogoryCode": 1003,
+        "subCategoryCode": 1003,
         "name": "디핑소스",
         "group": "dipping"
     },
     {
-        "subCateogoryCode": 1004,
+        "subCategoryCode": 1004,
         "name": "소스",
         "group": "sauce"
     },
     {
-        "subCateogoryCode": 1005,
+        "subCategoryCode": 1005,
         "name": "토핑",
         "group": "topping"
     }
