@@ -52,20 +52,20 @@ const HomePage = () => {
         )
     }
 
-    // 
-    // const bringAPI =async()=>{
+    
+    const bringAPI =async()=>{
         
-    //     return(
-    //         fetch('https://api.quotable.io/random')
-    //     ).then(response=>response.json())
-    //     .then(data=>setHello(data.content))
-    //     // const response = await fetch('https://api.quotable.io/random');
-    //     // const data = await response.json();
-    //     // setHello(data.content);
-    // }
+        return(
+            fetch('https://api.quotable.io/random')
+        .then(response=>response.json())
+        .then(data=>setHello(data.content))
+        )
+        // const response = await fetch('https://api.quotable.io/random');
+        // const data = await response.json();
+        // setHello(data.content);
+    }
 
     useEffect(()=>{
-        // bringAPI();
 
         async function weatherAtLocation(){
             const currentPosition = await getPosition();
@@ -74,11 +74,18 @@ const HomePage = () => {
             console.log(weatherInfo);
             setCityName(weatherInfo.name);
             setWeather(weatherInfo.weather[0].description);
-            setTemp(weatherInfo.main.temp)
+            setTemp(weatherInfo.main.temp);
             setIconImege(weatherInfo.weather[0].icon);
-            setIconURL(`http://openweathermap.org/img/wn/${iconImege}@2x.png`);
+            setIconURL(`https://openweathermap.org/img/wn/${iconImege}@2x.png`);
         }
         weatherAtLocation();
+
+        async function wiseSaying(){
+            const saying = await bringAPI();
+
+            console.log(saying);
+        }
+        wiseSaying();
     },[])
        
 
