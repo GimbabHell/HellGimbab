@@ -1,6 +1,6 @@
 // MenuNavBar 에서 카테고리 선택시 해당하는 메뉴가 나오는 outlet
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMenuFromCate } from "../../api/MenuApi";
 import MenuState from "./MenuState";
