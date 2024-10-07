@@ -58,9 +58,6 @@ const MemberCheckPoint = ({phoneNumber}) => {
         </>
     )
     // 그냥 여기서 바로 결제 페이지로 넘어갈 수 있나.. 
-
-  
-
 }
 
 export default MemberCheckPoint;

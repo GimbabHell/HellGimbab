@@ -16,19 +16,19 @@ const MemberCheckNumber = () => {
         setPhoneNumber("");
     };
 
-    // const handleConfirm = () => {
+    const handleConfirm = () => {
 
-    //     const mem = member.find(member => member.phoneNumber === phoneNumber )
+        const mem = member.find(member => member.phoneNumber === phoneNumber )
 
-    //     if (mem) {
-    //         // 지금 사용자의 입력받은 전화번호를 그냥 넘겨주고 가서 찾아야 할까 ..
-    //         <MemberCheckPoint phoneNumber ={phoneNumber}/>
+        if (mem) {
+            // 지금 사용자의 입력받은 전화번호를 그냥 넘겨주고 가서 찾아야 할까 ..
+            <MemberCheckPoint phoneNumber ={phoneNumber}/>
 
-    //     } else {
-    //         // 회원 등록을 자동으로 시켜줘야 한다..
-    //     }
+        } else {
+            // 회원 등록을 자동으로 시켜줘야 한다..
+        }
        
-    // };
+    };
         
 
     return (
