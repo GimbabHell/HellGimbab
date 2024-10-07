@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import member from "../data/member";
 
 // orderSingleMenu(메뉴 한개 담기) --> singleOrder(장바구니) --> ordersPerDay(하루에 발생한 주문들) --> stat(모든 주문들)
 // orderSingleMenu로 메뉴 주문 한개에 대한 객체 생성  (페이지 간의 정보 넘겨주는데 활용)
@@ -16,7 +15,7 @@ export const orderStore = create((set, get)=>({
     takeOut : false,     //false: 매장식사, true: 포장주문
     menuName : '',
     price : '',         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
-    quantity : '',
+    quantity : 1,
     details : '',
     order : [],
 
@@ -26,12 +25,15 @@ export const orderStore = create((set, get)=>({
 
     singleOrder : ()=>{
         const { menuName, price, quantity, details, order } = get();   // 현재 값 접근        
-        if (Array.isArray(order)){
-            const newOrder = [...order, { menuName, price, quantity, details }];
-            set({ order: newOrder});
-        } else{
-            console.error("Order is not an array!!!!!!!!!!!!");
-        }        
+        const newOrder = [...order, { menuName, price, quantity, details }];    
+        set({ order: newOrder});
+              
+    },
+
+    deleteSingleOrder : (index)=>{
+        const {order} = get();
+        const deletedOrder = order.filter((ord)=> ord.index !== parseInt(index));
+        set({order: deletedOrder});
     },
     
     reset : () => set({takeOut : false, menuName : '', price : '', quantity : '', details : ''})
@@ -46,7 +48,6 @@ export const orderHistory = create((set)=>({
 
 }))
 
-
 export const memberNumber = create((set) => ({
     // 회원 추가
 
@@ -55,14 +56,6 @@ export const memberNumber = create((set) => ({
 
     add : (phoneNumber, point) => set({phoneNumber,point})
 }))
-
-
-
-
-
-
-
-
 
 
 
