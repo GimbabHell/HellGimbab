@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import member from "../data/member";
 
 // orderSingleMenu(메뉴 한개 담기) --> singleOrder(장바구니) --> ordersPerDay(하루에 발생한 주문들) --> stat(모든 주문들)
 // orderSingleMenu로 메뉴 주문 한개에 대한 객체 생성  (페이지 간의 정보 넘겨주는데 활용)
@@ -44,6 +45,22 @@ export const orderHistory = create((set)=>({
     storeOrder : ()=>[{}]
 
 }))
+
+
+export const memberNumber = create((set) => ({
+    // 회원 추가
+
+    phoneNumber : '', // 회원 전화번호
+    point : '', // 회원 포인트
+
+    add : (phoneNumber, point) => set({phoneNumber,point})
+}))
+
+
+
+
+
+
 
 
 
