@@ -30,6 +30,24 @@ export const orderHistory = create((set)=>({
 
 }))
 
+export const checkDetail = create((set)=> ({
+    details: [],
+    setDetails: (menu) => set((state) => ({
+        details: [...state.details, menu]
+    })),
+    setDetailFilter: (menu)=> set(()=>({
+        details: menu
+    })),
+    setDetailsRadio:  (name, isChecked) => set((state) => {
+        if (isChecked) {
+            return { details: [...state.details, name] };
+        } else {
+            return { details: state.details.filter((item) => item !== name) };
+        }
+    })
+}));
+
+
 
 
 
