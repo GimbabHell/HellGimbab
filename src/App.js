@@ -3,10 +3,10 @@ import AdminPage from "./pages/AdminPage";
 import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 import MenuDetailPage from "./pages/MenuDetailPage";
-import PayCheckPage from "./pages/PayCheckPage";
 import LastPage from "./pages/LastPage";
 import Layout from "./layout/Layout";
 import Error from "./pages/Error";
+import PayCheckPage from "./pages/Pay/PayCheckPage";
 
 
 
