@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import member from "../data/member";
 
 // singleOrderStore로 주문 한개에 대한 객체 생성  (페이지 간의 정보 넘겨주는데 활용)
 // 결제시점에 singleOrderStore에 있는 전역 상태들을 orderHistory에 하나의 객체로 저장
@@ -29,6 +30,22 @@ export const orderHistory = create((set)=>({
     storeOrder : ()=>[{}]
 
 }))
+
+
+export const memberNumber = create((set) => ({
+    // 회원 추가
+
+    phoneNumber : '', // 회원 전화번호
+    point : '', // 회원 포인트
+
+    add : (phoneNumber, point) => set({phoneNumber,point})
+}))
+
+
+
+
+
+
 
 
 
