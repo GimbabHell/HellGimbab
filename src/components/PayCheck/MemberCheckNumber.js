@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
+import member from "../../data/Member.json"
 
 
 const MemberCheckNumber = () => {
@@ -18,11 +19,10 @@ const MemberCheckNumber = () => {
 
     const handleConfirm = () => {
 
-        const mem = member.find(member => member.phoneNumber === phoneNumber )
+        const mem = member.filter(meme => meme.phoneNumber === phoneNumber )
 
         if (mem) {
-            // 지금 사용자의 입력받은 전화번호를 그냥 넘겨주고 가서 찾아야 할까 ..
-            <MemberCheckPoint phoneNumber ={phoneNumber}/>
+            <MemberCheckPoint mem = {mem}/>
 
         } else {
             // 회원 등록을 자동으로 시켜줘야 한다..
@@ -30,7 +30,6 @@ const MemberCheckNumber = () => {
        
     };
         
-
     return (
         <>
             <h2>핸드폰 번호 입력</h2>
@@ -45,7 +44,7 @@ const MemberCheckNumber = () => {
                     </button>
                 ))}
                 <button onClick={handleClear}>지우기</button>
-                {/* <button onClick={handleConfirm}>확인</button> */}
+                <button onClick={handleConfirm}>확인</button>
             </div>
         </>
     );

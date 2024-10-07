@@ -32,7 +32,6 @@ const MemberCheckPoint = ({phoneNumber}) => {
         // 다시 PayCheckPage로 이동 !
     }
 
-
     return(
         <>
         
