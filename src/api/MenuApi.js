@@ -11,3 +11,7 @@ export function getWholeMenuCate(){
 export function getMenuFromCate(catecode){
     return menus.filter((menu) => menu.categoryCode === parseInt(catecode));
 }
+
+export function getSingleMenu(menuCode){
+    return menus.filter((menu)=> menu.menuCode === parseInt(menuCode))[0];
+}
