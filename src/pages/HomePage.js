@@ -14,11 +14,8 @@ const HomePage = () => {
     const [cityName, setCityName] = useState("");
     const [weather, setWeather] = useState({});
     const [temp, setTemp] = useState({});
-    const [iconImege, setIconImege] = useState("");
     const [iconURL, setIconURL] = useState(``);
-
-    // 인용구 AIP 호출을 위한 state - 근데 안 됨.. ㅠ
-    const [hello, setHello] = useState("");
+    const [aboutDeath, setAboutDeath] = useState("");
     
     const navigate = useNavigate();
 
@@ -58,7 +55,7 @@ const HomePage = () => {
         return(
             fetch('https://api.quotable.io/random')
         .then(response=>response.json())
-        .then(data=>setHello(data.content))
+        .then(data=>setAboutDeath(data.content))
         )
         // const response = await fetch('https://api.quotable.io/random');
         // const data = await response.json();
@@ -70,13 +67,12 @@ const HomePage = () => {
         async function weatherAtLocation(){
             const currentPosition = await getPosition();
             const weatherInfo = await getWeather(currentPosition);
-
+            const icon =await weatherInfo.weather[0].icon;
             console.log(weatherInfo);
             setCityName(weatherInfo.name);
             setWeather(weatherInfo.weather[0].description);
             setTemp(weatherInfo.main.temp);
-            setIconImege(weatherInfo.weather[0].icon);
-            setIconURL(`https://openweathermap.org/img/wn/${iconImege}@2x.png`);
+            setIconURL(`https://openweathermap.org/img/wn/${icon}@2x.png`);
         }
         weatherAtLocation();
 
@@ -93,9 +89,10 @@ const HomePage = () => {
         <>
             <p>home</p>
             <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
-            {iconURL && <img src={iconURL} alt={weather} />}
+            <img src={iconURL}/>
+            <img src={"https://loremflickr.com/320/240/satan"}/>
             <div>
-            <h1>{hello}</h1>
+            <h1>{aboutDeath}</h1>
             <button onClick={onClickHandler}>매장식사</button>
             <button onClick={onClickHandler}>포장</button>
             </div>
