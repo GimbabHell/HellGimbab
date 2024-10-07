@@ -76,7 +76,7 @@ const HomePage = () => {
             setWeather(weatherInfo.weather[0].description);
             setTemp(weatherInfo.main.temp)
             setIconImege(weatherInfo.weather[0].icon);
-            setIconURL(`http://openweathermap.org/img/wn/${iconImege}@2x.png`)
+            setIconURL(`http://openweathermap.org/img/wn/${iconImege}@2x.png`);
         }
         weatherAtLocation();
     },[])
