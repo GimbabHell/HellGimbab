@@ -1,7 +1,6 @@
 import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
-import member from "../../data/Member.json"
-
+import member from "../../data/Member.json";
 
 const MemberCheckNumber = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
