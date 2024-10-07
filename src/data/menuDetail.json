@@ -1,18 +1,457 @@
 [
     {
         "detailCode": 1001,
+        "subCategoryCode": 1001,
         "name": "백미",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/01_rice.jpg",
+        "imgURL": "/public/images/menudetail/rice/01_rice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     },
     {
         "detailCode": 1002,
+        "subCategoryCode": 1001,
         "name": "흑미",
         "price": 0,
-        "imgURL" : "/public/images/menudetail/02_rice.jpg",
+        "imgURL": "/public/images/menudetail/rice/02_blackRice.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1003,
+        "subCategoryCode": 1001,
+        "name": "현미귀리",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/rice/03_brownRice.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1004,
+        "subCategoryCode": 1001,
+        "name": "건두부",
+        "price": 300,
+        "imgURL": "/public/images/menudetail/rice/04_driedtofu.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1005,
+        "subCategoryCode": 1002,
+        "name": "전체 야채 추가",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/05_everything.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1006,
+        "subCategoryCode": 1002,
+        "name": "지단 빼기(건두부변경)",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/06_egg.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1007,
+        "subCategoryCode": 1002,
+        "name": "지단 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/06_egg.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1008,
+        "subCategoryCode": 1002,
+        "name": "당근 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/08_carrot.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1009,
+        "subCategoryCode": 1002,
+        "name": "오이 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/09_cucumber.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1010,
+        "subCategoryCode": 1002,
+        "name": "적채 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/10_redCabbage.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1011,
+        "subCategoryCode": 1002,
+        "name": "단무지 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/11_pickledRadish.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1012,
+        "subCategoryCode": 1002,
+        "name": "우엉 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/12_burdock.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1013,
+        "subCategoryCode": 1002,
+        "name": "청상추 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/13_greenLettuce.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1014,
+        "subCategoryCode": 1002,
+        "name": "콩나물 빼기",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/vegi/14_beanSprout.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1015,
+        "subCategoryCode": 1003,
+        "name": "바질페스토",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/46_basilPesto.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1016,
+        "subCategoryCode": 1003,
+        "name": "아이올리",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/49_aioli.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1017,
+        "subCategoryCode": 1003,
+        "name": "허니유자",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/47_honeyYuzu.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1018,
+        "subCategoryCode": 1003,
+        "name": "스리라차마요",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/50_srirachaMayo.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1019,
+        "subCategoryCode": 1003,
+        "name": "토마토고추장",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/48_tomatoRedPepperPaste.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1020,
+        "subCategoryCode": 1003,
+        "name": "빨간맛",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/51_hotHotVeryHot.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1021,
+        "subCategoryCode": 1003,
+        "name": "비건치폴레",
+        "price": 0,
+        "imgURL" : "/public/images/menu/dippingSauce/52_veganChipotle.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1022,
+        "subCategoryCode": 1003,
+        "name": "소스없음",
+        "price": -300,
+        "imgURL": "/public/images/menudetail/sauce/22_nope.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1023,
+        "subCategoryCode": 1004,
+        "name": "고추장",
+        "price": 0,
+        "imgURL" : "/public/images/menu/sauce/53_redPepperPaste.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1024,
+        "subCategoryCode": 1004,
+        "name": "된장",
+        "price": 0,
+        "imgURL" : "/public/images/menu/sauce/55_soybeanPaste.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1025,
+        "subCategoryCode": 1004,
+        "name": "간장",
+        "price": 0,
+        "imgURL" : "/public/images/menu/sauce/54_soySauce.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1026,
+        "subCategoryCode": 1004,
+        "name": "비빔장",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/sauce/26_bibimjang.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1027,
+        "subCategoryCode": 1004,
+        "name": "참깨겨자",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/sauce/27_sesameMustard.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1028,
+        "subCategoryCode": 1005,
+        "name": "아보카도",
+        "price": 1200,
+        "imgURL": "/public/images/menudetail/topping/28_avocado.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1029,
+        "subCategoryCode": 1005,
+        "name": "청양고추",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/topping/29_cheongyangPepper.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1030,
+        "subCategoryCode": 1005,
+        "name": "올리브",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/topping/30_olive.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1031,
+        "subCategoryCode": 1005,
+        "name": "갈릭칩",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/topping/31_garlicChips.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1032,
+        "subCategoryCode": 1005,
+        "name": "치즈",
+        "price": 500,
+        "imgURL": "/public/images/menudetail/topping/32_cheese.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1033,
+        "subCategoryCode": 1005,
+        "name": "메추리알",
+        "price": 200,
+        "imgURL": "/public/images/menudetail/topping/33_quailEgg.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+    {
+        "detailCode": 1034,
+        "subCategoryCode": 1006,
+        "name": "매콤한맛",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/cupoodle/34_spicy.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1035,
+        "subCategoryCode": 1006,
+        "name": "마라탕",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/cupoodle/35_malatang.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+    {
+        "detailCode": 1036,
+        "subCategoryCode": 1007,
+        "name": "신라면",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/ramen/36_sinramen.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1037,
+        "subCategoryCode": 1007,
+        "name": "진라면",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/ramen/37_jinramen.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1038,
+        "subCategoryCode": 1007,
+        "name": "너구리",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/ramen/38_raccoon.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1039,
+        "subCategoryCode": 1007,
+        "name": "새우탕",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/ramen/39_shrimpSoup.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "detailCode": 1040,
+        "subCategoryCode": 1007,
+        "name": "튀김우동",
+        "price": 0,
+        "imgURL": "/public/images/menudetail/ramen/40_friedUdon.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true

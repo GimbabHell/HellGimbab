@@ -7,6 +7,7 @@ import PayCheckPage from "./pages/PayCheckPage";
 import LastPage from "./pages/LastPage";
 import Layout from "./layout/Layout";
 import Error from "./pages/Error";
+import MenuOutlet from "./components/Menu/MenuOutlet";
 
 
 
@@ -19,7 +20,10 @@ function App() {
           <Route index element={<HomePage />} />
 
           <Route path="/" element={<Layout />}>
-            <Route path="menu" element={<MenuPage />}/>
+            <Route path="menu" element={<MenuPage />}>
+              <Route path=":cateCode" element={<MenuOutlet />}/>
+              
+            </Route>
             <Route path="detail" element={<MenuDetailPage />} />
             <Route path="paycheck" element={<PayCheckPage />} />
           </Route>
