@@ -22,19 +22,23 @@ const HomePage = () => {
         navigate("/menu");
     }
 
-    const bringAPI =async()=>{
+    async function bringAPI(){
+        const promise = fetch('https://api.quotable.io/random');
+        const response = await promise;
+        const json = await response.json();
+        console.log(json);
+        return json;
         
-        return(
-            fetch('https://api.quotable.io/random')
-        ).then(response=>response.json())
-        .then(data=>setHello(data.content))
+            
+        // .then(data=>setHello(data.content))
         // const response = await fetch('https://api.quotable.io/random');
         // const data = await response.json();
         // setHello(data.content);
     }
 
     useEffect(()=>{
-        bringAPI(); 
+        bringAPI()
+        .then(data=>setHello(data.content))
     },[])
        
 

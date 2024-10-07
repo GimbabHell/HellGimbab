@@ -9,5 +9,5 @@ export function getWholeMenuCate(){
 
 // 특정 categoryCode를 가지는 메뉴 배열 반환
 export function getMenuFromCate(catecode){
-    return menus.filter((menu) => menu.categoryCode === catecode);
+    return menus.filter((menu) => menu.categoryCode === parseInt(catecode));
 }
