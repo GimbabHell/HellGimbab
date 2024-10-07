@@ -47,7 +47,7 @@ export const orderHistory = create((set)=>({
 }))
 
 
-export const memberNumber = create((set) => ({
+export const memberNumber = create((set, get) => ({
     // 회원 추가
 
     phoneNumber : '', // 회원 전화번호
