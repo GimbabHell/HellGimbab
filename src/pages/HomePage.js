@@ -79,7 +79,6 @@ const HomePage = () => {
         async function wiseSaying(){
             const saying = await bringAPI();
 
-            console.log(saying);
         }
         wiseSaying();
     },[])
