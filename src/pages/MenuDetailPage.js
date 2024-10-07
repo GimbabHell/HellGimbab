@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSubCategoryName } from "../api/DetailApi";
+import { getDetailClassy, getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSubCategoryName } from "../api/DetailApi";
 import { OptionList } from "../components/MenuDetail/OptionList";
 
 const MenuDetailPage = () => {
@@ -21,16 +21,46 @@ const MenuDetailPage = () => {
         const subCategoryNames = subCategoriesArr.map((item) => getSubCategoryName(item));
 
         // 5. 서브 카테고리로 디테일 옵션들 가져오기
-        const detailsOptions = subCategoriesArr.map((cate) => getDetailOption(cate));
+        const detailsOptions = detailCodes.map((id) => getDetailOption(id));
+        
+        const totalArr = [];
+        const arr = [];
+        const arr2 = [];
+        const arr3 = [];
+        const arr4 = [];
+        const arr5 = [];
+        const arr6 = [];
+        detailsOptions.map((item)=>{
+            if(item.subCategoryCode === 1001){
+                arr.push(item);
+            }else if(item.subCategoryCode === 1002) {
+                arr2.push(item);
+            }else if (item.subCategoryCode === 1003){
+                arr3.push(item);
+            }else if (item.subCategoryCode === 1004){
+                arr4.push(item);
+            }else if (item.subCategoryCode === 1005){
+                arr5.push(item);
+            }else if (item.subCategoryCode === 1006){
+                arr6.push(item);
+            }
+        });
+
+        const detailsArr = totalArr.concat([arr], [arr2], [arr3], [arr4], [arr5], [arr6]);
+        const filterDetails = detailsArr.filter(item=> Array.isArray(item) && item.length !== 0);
+        
 
         // 6. 서브 카테고리로 디테일 그룹가져오기
         const detailsGroups = subCategoriesArr.map((cate) => getDetailGroup(cate));
 
+        
         // 상태값 설정
         setSubCategoryName(subCategoryNames);
-        setDetails(detailsOptions);
+        setDetails(filterDetails);       
         setGroup(detailsGroups);
     }, []);
+
+    
 
     return (
         <>
