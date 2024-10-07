@@ -9,12 +9,13 @@ const HomePage = () => {
     const [currentAtTime,setCurrentAtTime] = useState("");
 
     // 날씨 API 호출을 위한 state
+    const API_KEY = '207a52923e0d2e1ca4acea1ce48628fc';
     const [position, setPosition] = useState({});
     const [cityName, setCityName] = useState("");
     const [weather, setWeather] = useState({});
-
-    // 인용구 AIP 호출을 위한 state - 근데 안 됨.. ㅠ
-    const [hello, setHello] = useState("");
+    const [temp, setTemp] = useState({});
+    const [iconURL, setIconURL] = useState(``);
+    const [aboutDeath, setAboutDeath] = useState("");
     
     const navigate = useNavigate();
 
@@ -22,31 +23,76 @@ const HomePage = () => {
         navigate("/menu");
     }
 
-    async function bringAPI(){
-        const promise = fetch('https://api.quotable.io/random');
-        const response = await promise;
-        const json = await response.json();
-        console.log(json);
-        return json;
+    // 위치 가져오기
+    const getPosition =()=>{
+
+        return(
+            new Promise((resolve, reject)=>{
+                navigator.geolocation.getCurrentPosition((currentPosition)=>{
+                    setPosition({
+                        latitude: currentPosition.coords.latitude,
+                        longitude: currentPosition.coords.longitude
+                    });
+                    return(
+                        resolve(currentPosition.coords)
+                    );
+                })
+            })
+        )
+    }
+
+    const getWeather =(coords)=>{
         
-            
-        // .then(data=>setHello(data.content))
+        return(
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=${API_KEY}&units=metric`)
+                .then(response => response.json())
+        )
+    }
+
+    
+    const bringAPI =async()=>{
+        
+        return(
+            fetch('https://api.quotable.io/random')
+        .then(response=>response.json())
+        .then(data=>setAboutDeath(data.content))
+        )
         // const response = await fetch('https://api.quotable.io/random');
         // const data = await response.json();
         // setHello(data.content);
     }
 
     useEffect(()=>{
-        bringAPI()
-        .then(data=>setHello(data.content))
+
+        async function weatherAtLocation(){
+            const currentPosition = await getPosition();
+            const weatherInfo = await getWeather(currentPosition);
+            const icon =await weatherInfo.weather[0].icon;
+            console.log(weatherInfo);
+            setCityName(weatherInfo.name);
+            setWeather(weatherInfo.weather[0].description);
+            setTemp(weatherInfo.main.temp);
+            setIconURL(`https://openweathermap.org/img/wn/${icon}@2x.png`);
+        }
+        weatherAtLocation();
+
+        async function wiseSaying(){
+            const saying = await bringAPI();
+
+            console.log(saying);
+        }
+        wiseSaying();
     },[])
        
 
     return(
         <>
             <p>home</p>
+            <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
+            <img src={iconURL}/>
+            <img src={"https://loremflickr.com/320/240/satan"}/>
             <div>
-            <h1>{hello}</h1>
+            <h1>{aboutDeath}</h1>
             <button onClick={onClickHandler}>매장식사</button>
             <button onClick={onClickHandler}>포장</button>
             </div>
