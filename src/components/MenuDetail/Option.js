@@ -1,32 +1,16 @@
+// checkbox
+
 import { checkDetail } from "../../store";
 
+export const Option = ({ item, index, group }) => {
+    const { toggleCheckbox } = checkDetail();
 
-// checkbox
-export const Option = ({ item, index, group, test, setTest }) => {
-    const {setDetails, details, setDetailFilter} = checkDetail();
-    
-    // useEffect(()=>{
-    //     console.log("현재 .....test : " + test)
-    // },[test])
-
-    const onChangeHandler = (e) => {
-        if (e.target.checked) {
-            const name = e.target.value;
-            /* setTest(prev => [...prev, name]); */
-            setDetails(name);
-            
-        } else {
-            // setTest(test.filter(item=> item !== e.target.value));
-            setDetailFilter(details.filter(item => item !== e.target.value))
-            /* console.log(details.filter(item => item !== e.target.value)) */
-        }
-    };
-
+    const onChangeHandler = (e, group) => toggleCheckbox(group, e.target.value);
 
     return (
         <>
             <li>
-                <input type="checkbox" name={group} id={`${group}-${index}`} onChange={onChangeHandler} value={item.name}/>
+                <input type="checkbox" name={group} id={`${group}-${index}`} onChange={(e) => onChangeHandler(e, group)} value={item.name} />
                 <label htmlFor={`${group}-${index}`}>
                     <img src={item.imgURL} alt={group} />
                     <span className="name">{item.name}</span>
@@ -34,6 +18,5 @@ export const Option = ({ item, index, group, test, setTest }) => {
                 </label>
             </li>
         </>
-        
     );
 };
