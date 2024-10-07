@@ -11,8 +11,7 @@ const MenuOrder = ()=>{
     const menuCode = 1;
     const menuCode2 = 2;
     const menu = getSingleMenu(menuCode);
-    
-    console.log(menu);
+    const menu2 = getSingleMenu(menuCode2);
 
     useEffect(()=>{
         orderSingleMenu(menu.name, menu.price, menu.quantity, menu.details);
@@ -23,14 +22,22 @@ const MenuOrder = ()=>{
     useEffect(()=>{
         console.log(order);
     },[order])
-    
-
 
 
 
     return(
         <>
-            
+            {order.map((singleOrder,index)=> {
+                return <ul>
+                    <button>X</button>
+                    <li key={index}>{singleOrder.menuName}
+                        <button>-</button>
+                        {singleOrder.quantity}
+                        <button>+</button>
+                        {singleOrder.price}
+                        </li></ul>
+            })}
+            <button>전체삭제</button>
         </>
     )
 }
