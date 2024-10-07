@@ -1,0 +1,21 @@
+[
+    {
+        "gimbab": [{"detailCode": 1001,
+                    "submenuCategory": 1,
+                    "name": "백미",
+                    "price": 0,
+                    "imgURL" : "/public/images/menudetail/01_rice.jpg",
+                    "quantity": 10,
+                    "soldout": false,
+                    "state": true},{},{}],
+        "bibimbab": [{"detailCode": 1002,
+                    "submenuCategory": 1,
+                    "name": "흑미",
+                    "price": 0,
+                    "imgURL" : "/public/images/menudetail/02_rice.jpg",
+                    "quantity": 10,
+                    "soldout": false,
+                    "state": true},{},{}]                
+        
+    }    
+]
