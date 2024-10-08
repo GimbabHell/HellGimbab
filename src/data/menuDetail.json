@@ -469,8 +469,8 @@
     
 
     {
-        "categoryCode": 1041,
-        "menuCode": 1008,
+        "detailCode": 1041,
+        "subCategoryCode": 1008,
         "name": "제주말차식혜",
         "price": 0,
         "imgURL" : "../images/menu/drink/38_matchaSikhye.jpg",
@@ -479,8 +479,8 @@
         "state": true
     },
     {
-        "categoryCode": 1042,
-        "menuCode": 1008,
+        "detailCode": 1042,
+        "subCategoryCode": 1008,
         "name": "얼그레이식혜",
         "price": 0,
         "imgURL" : "../images/menu/drink/39_earlGraySikhye.jpg",
@@ -489,8 +489,8 @@
         "state": true
     },
     {
-        "categoryCode": 1043,
-        "menuCode": 1008,
+        "detailCode": 1043,
+        "subCategoryCode": 1008,
         "name": "베지포유",
         "price": 0,
         "imgURL" : "../images/menu/drink/40_veggieForU.jpg",
@@ -499,8 +499,8 @@
         "state": true
     },
     {
-        "categoryCode": 1044,
-        "menuCode": 1008,
+        "detailCode": 1044,
+        "subCategoryCode": 1008,
         "name": "제로콜라",
         "price": 0,
         "imgURL" : "../images/menu/drink/41_zeroCoke.jpg",
@@ -509,8 +509,8 @@
         "state": true
     },
     {
-        "categoryCode": 1045,
-        "menuCode": 1008,
+        "detailCode": 1045,
+        "subCategoryCode": 1008,
         "name": "코카콜라",
         "price": 0,
         "imgURL" : "../images/menu/drink/42_coke.jpg",
@@ -519,8 +519,8 @@
         "state": true
     },
     {
-        "categoryCode": 1046,
-        "menuCode": 1008,
+        "detailCode": 1046,
+        "subCategoryCode": 1008,
         "name": "스프라이트",
         "price": 0,
         "imgURL" : "../images/menu/drink/43_sprite.jpg",
@@ -529,8 +529,8 @@
         "state": true
     },
     {
-        "categoryCode": 1047,
-        "menuCode": 1008,
+        "detailCode": 1047,
+        "subCategoryCode": 1008,
         "name": "탄산수",
         "price": 0,
         "imgURL" : "../images/menu/drink/44_sparklingWater.jpg",
@@ -539,8 +539,8 @@
         "state": true
     },
     {
-        "categoryCode": 1048,
-        "menuCode": 1008,
+        "detailCode": 1048,
+        "subCategoryCode": 1008,
         "name": "립톤",
         "price": 0,
         "imgURL" : "../images/menu/drink/45_lipton.jpg",
