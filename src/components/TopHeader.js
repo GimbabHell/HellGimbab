@@ -6,7 +6,7 @@ const TopHeader = () => {
     return(
         <header>
             <Link to="/">Home</Link>
-            <Link to="/"><img src="../images/logo/hellKimbab.jpg" alt="logo" /></Link>
+            <Link to="/"><img src="../images/logo/hellKimbab.png" alt="logo" /></Link>
             <div className="lang">
                 <Link to="/">KR</Link>
                 <span> / </span>
