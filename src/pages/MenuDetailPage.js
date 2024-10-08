@@ -2,7 +2,7 @@ import { cloneElement, useEffect, useState } from "react";
 import { getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSubCategoryName } from "../api/DetailApi";
 import { OptionList } from "../components/MenuDetail/OptionList";
 import { checkDetail } from "../store";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MenuDetailPage = () => {
     const [details, setDetails] = useState([]);
@@ -10,9 +10,12 @@ const MenuDetailPage = () => {
     const [group, setGroup] = useState([]);
 
     const { selectedValues, resetValues } = checkDetail();
-    const [detail] = useSearchParams();
-    const menuCode = detail.get("menuCode");
+   
+    const location = useLocation();
+    const menu = location.state;
+    const menuCode = menu.menuCode;
     
+
 
     const navi = useNavigate();
 
@@ -78,7 +81,7 @@ const MenuDetailPage = () => {
     };
 
     const onClickOrderHandler = () => {
-
+        navi(`/menu/${menu.categoryCode}`, {state: menu})
     }
     
     
@@ -109,14 +112,14 @@ const MenuDetailPage = () => {
                 </p>
                 <button onClick={onClickHandler}>초기화</button>
             </div>
-            <form action={`/menu/${menuCode}`} >
+            <form>
                 {details.map((cate, index) => {
                     return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
                 })}
                 <div className="button-wrap">
                     <button onClick={() => navi(-1)}>취소</button>
                     {/* 취소 navi 확인하기! */}
-                    <button type="submit" onClick={onClickOrderHandler}>주문담기</button>
+                    <button type="submit" onClick={(onClickOrderHandler)}>주문담기</button>
                     {/* 주문담기 창으로 이동 */}
                 </div>
             </form>
