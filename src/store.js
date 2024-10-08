@@ -12,14 +12,19 @@ export const orderStore = create((set, get) => ({
     
     takeOut : false,     //false: 매장식사, true: 포장주문
     menuName : '',
-    price : '',         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
+    price : 0,         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
     quantity : 1,
     details : '',
     order : [],
 
     eatPlace : (takeOut) => set({takeOut}),
 
-    orderSingleMenu : (menuName, price, quantity, details) => set({menuName, price, quantity, details}),
+    setPrice : (detailPrice) => {
+        const {price} = get(); // 현재 price 접근
+        set({price: price + detailPrice });
+    },
+
+    orderSingleMenu : (menuName, price, details) => set({menuName, price, details}),
 
     singleOrder : ()=>{
         const { menuName, price, quantity, details, order } = get();   // 현재 값 접근        
