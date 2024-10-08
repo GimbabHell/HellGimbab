@@ -9,7 +9,7 @@ const MenuState = ({menus})=>{
 
     const menuList = menus.map((menu)=>{
         return(
-            <li onClick={()=>{navigate(`/detail?menuCode=${menu}`)}}>
+            <li onClick={()=>{navigate('/detail', {state: menu})}}>
             {menu.menuCode}  {menu.categoryCode}  {menu.name}  {menu.price}  {menu.description} <img src={menu.imgURL}/> </li>
         )
     })
