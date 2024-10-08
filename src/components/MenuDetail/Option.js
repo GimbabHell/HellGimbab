@@ -7,7 +7,6 @@ export const Option = ({ item, index, group }) => {
     const { toggleCheckbox } = checkDetail();
     const [isRequired, setIsRequired] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
     useEffect(()=>{
         if(item.subCategoryCode === 1005){

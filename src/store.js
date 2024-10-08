@@ -9,11 +9,6 @@ import { create } from "zustand";
 // orderHistory 는 singleOrder들로 이루어진 배열???
 
 export const orderStore = create((set, get) => ({
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> cb105b8b24ae7643ffcf38d7682302269e4a65a7
     takeOut : false,     //false: 매장식사, true: 포장주문
     menuName : '',
     price : '',         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
