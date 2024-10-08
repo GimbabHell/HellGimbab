@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import "./HomePage.css";
 
 
 const HomePage = () => {
@@ -87,7 +87,7 @@ const HomePage = () => {
 
     return(
         <>
-            <p>home</p>
+            <h1>김밥지옥</h1>
             <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
             <img src={iconURL}/>
             <img src={"https://loremflickr.com/320/240/satan"}/>
