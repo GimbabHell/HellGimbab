@@ -1,16 +1,16 @@
-// checkbox
+// radio
 
 import { checkDetail } from "../../store";
 
-export const Option = ({ item, index, group }) => {
-    const { toggleCheckbox } = checkDetail();
+export const Option2 = ({ item, index, group }) => {
+    const { setSelectedValues } = checkDetail();
 
-    const onChangeHandler = (e, group) => toggleCheckbox(group, e.target.value);
+    const onChangeHandler = (e, group) => setSelectedValues(group, e.target.value);
 
     return (
         <>
             <li>
-                <input type="checkbox" name={group} id={`${group}-${index}`} onChange={(e) => onChangeHandler(e, group)} value={item.name} />
+                <input type="radio" name={group} id={`${group}-${index}`} onChange={(e) => onChangeHandler(e, group)} value={item.name} />
                 <label htmlFor={`${group}-${index}`}>
                     <img src={item.imgURL} alt={group} />
                     <span className="name">{item.name}</span>
