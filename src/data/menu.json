@@ -5,7 +5,7 @@
         "name": "데리야끼치킨김밥",
         "price": 7100,
         "description": "담백한 치킨과 달콤한 데리야끼소스의 조합",
-        "imgURL": "/public/images/menu/gimbab/01_teriyakiChicken.jpg",
+        "imgURL": "../images/menu/gimbab/01_teriyakiChicken.jpg",
         "quantity": 0,
         "soldout": true,
         "state": true,
