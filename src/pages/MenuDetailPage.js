@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { cloneElement, useEffect, useState } from "react";
 import { getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSubCategoryName } from "../api/DetailApi";
 import { OptionList } from "../components/MenuDetail/OptionList";
 import { checkDetail } from "../store";
@@ -14,7 +14,7 @@ const MenuDetailPage = () => {
     const navi = useNavigate();
 
     // 넘어온 메뉴코드 test로 넣어둠
-    const id = 31;
+    const id = 1;
 
     useEffect(() => {
         // 1. 메뉴코드로 디테일코드들 가져옴
@@ -74,6 +74,12 @@ const MenuDetailPage = () => {
         document.querySelectorAll("input").forEach((item) => (item.checked = false));
     };
 
+    const onClickOrderHandler = () => {
+
+    }
+    
+    
+
     return (
         <>
             <h3>선택하신 상품의 옵션 상품을 모두 선택해주세요.</h3>
@@ -86,7 +92,8 @@ const MenuDetailPage = () => {
                 </p>
             </div>
             <div className="optionBox">
-                <span>선택된 옵션 | </span>
+                <p>선택된 옵션 | </p>
+                
                 <p>
                     <span>{selectedValues.rice} </span>
                     <span className="check">{selectedValues.vegi} </span>
@@ -99,15 +106,18 @@ const MenuDetailPage = () => {
                 </p>
                 <button onClick={onClickHandler}>초기화</button>
             </div>
-            {details.map((cate, index) => {
-                return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
-            })}
-            <div className="button-wrap">
-                <button onClick={() => navi(-1)}>취소</button>
-                {/* 취소 navi 확인하기! */}
-                <button>주문담기</button>
-                {/* 주문담기 창으로 이동 */}
-            </div>
+            <form action="">
+                {details.map((cate, index) => {
+                    return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
+                })}
+                <div className="button-wrap">
+                    <button onClick={() => navi(-1)}>취소</button>
+                    {/* 취소 navi 확인하기! */}
+                    <button type="submit" onClick={onClickOrderHandler}>주문담기</button>
+                    {/* 주문담기 창으로 이동 */}
+                </div>
+            </form>
+            
         </>
     );
 };
