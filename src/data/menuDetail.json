@@ -385,7 +385,7 @@
         "subCategoryCode": 1006,
         "name": "매콤한맛",
         "price": 0,
-        "imgURL": "/public/images/menudetail/cupoodle/34_spicy.jpg",
+        "imgURL": "/public/images/menudetail/noodle/34_spicy.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -395,7 +395,7 @@
         "subCategoryCode": 1006,
         "name": "마라탕",
         "price": 0,
-        "imgURL": "/public/images/menudetail/cupoodle/35_malatang.jpg",
+        "imgURL": "/public/images/menudetail/noodle/35_malatang.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
