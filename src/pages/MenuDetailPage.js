@@ -2,7 +2,7 @@ import { cloneElement, useEffect, useState } from "react";
 import { getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSubCategoryName } from "../api/DetailApi";
 import { OptionList } from "../components/MenuDetail/OptionList";
 import { checkDetail } from "../store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const MenuDetailPage = () => {
     const [details, setDetails] = useState([]);
@@ -10,11 +10,14 @@ const MenuDetailPage = () => {
     const [group, setGroup] = useState([]);
 
     const { selectedValues, resetValues } = checkDetail();
+    const [detail] = useSearchParams();
+    const menuCode = detail.get("menuCode");
+    
 
     const navi = useNavigate();
 
-    // 넘어온 메뉴코드 test로 넣어둠
-    const id = 1;
+    // 넘어온 메뉴코드
+    const id = menuCode;
 
     useEffect(() => {
         // 1. 메뉴코드로 디테일코드들 가져옴
@@ -106,7 +109,7 @@ const MenuDetailPage = () => {
                 </p>
                 <button onClick={onClickHandler}>초기화</button>
             </div>
-            <form action="">
+            <form action={`/menu/${menuCode}`} >
                 {details.map((cate, index) => {
                     return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
                 })}

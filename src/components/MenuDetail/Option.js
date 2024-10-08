@@ -9,38 +9,34 @@ export const Option = ({ item, index, group }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
-    const onChangeHandler = (e, group) => {
-        toggleCheckbox(group, e.target.value)
-        if(e.target.checked){
-            setIsChecked(true)
-            // setSelectedCheckboxes([...selectedCheckboxes, e.target.name]);
-        }else {
-            setIsChecked(false)   
-            // setSelectedCheckboxes(selectedCheckboxes.filter(item => item !== e.target.name));
-        }
-        const checkboxes = document.querySelectorAll(`input[name=${group}]`);
-        const isAnyChecked = Array.from(checkboxes).some((checkbox) => checkbox.checked);
-    
-        // 체크된 것이 하나라도 있으면 required 해제
-        setIsRequired(!isAnyChecked);
-    };
-
-   
-
     useEffect(()=>{
         if(item.subCategoryCode === 1005){
             setIsRequired(false);
         }
     }, [])
 
-    // 선택된 체크박스 수에 따라 required 속성 관리
-    useEffect(() => {
-        if (selectedCheckboxes.length > 0) {
-            setIsRequired(false);
-        } else {
-            setIsRequired(true);
+
+    const onChangeHandler = (e, group) => {
+        toggleCheckbox(group, e.target.value)
+        if(e.target.checked){
+            setIsChecked(true)
+        }else {
+            setIsChecked(false)   
         }
-    }, [selectedCheckboxes]);
+
+        const checkboxes = document.querySelectorAll('input[name="vegi"]');
+        const isAnyChecked = Array.from(checkboxes).some((checkbox) => checkbox.checked);
+    
+        // 체크된 것이 하나라도 있으면 required 해제
+        if(isAnyChecked){
+            checkboxes.forEach(el=>el.required = false);
+        }else {
+            checkboxes.forEach(el=>el.required = true);
+        }
+        
+    };
+
+   
 
     
 
