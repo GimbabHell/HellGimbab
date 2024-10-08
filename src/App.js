@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AdminPage from "./pages/AdminPage";
 import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 import MenuDetailPage from "./pages/MenuDetailPage";
@@ -29,7 +28,6 @@ function App() {
           </Route>
 
           <Route path="/last" element={<LastPage />} />
-          <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<Error />} />
 
         </Routes>

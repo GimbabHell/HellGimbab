@@ -1,16 +1,26 @@
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import DiscountPoint from "./components/PayCheck/DiscountPoint";
+import { useMemberStore } from "../../store";
+
 
 
 // 번호를 입력한 후에 넘어오는 포인트 창
-const MemberCheckPoint = ({phoneNumber}) => {
+const MemberCheckPoint = ({getphoneNumber}) => {
 
-    const [plusPointNumber, setPlusPointNumber] = useState(""); // 입력받은 point
-    const [pointNumber, setPointNumber] = useState(""); // 기존에 있던 point // 입력받은 point보다 큰지 비교
-    const [count, setCount] = useState(""); // 결제해야할 금액
-    const [totalCount, setTotalCount] = useState(""); // point 까지 계산한 총 결제 금액
+    // const {phoneNumber, point} = memberNumber(); //store에 저장, 받아올 객체
+    // const {totalCount} = orderStore();
+
+
+    const {getPoint, setgetPoint} = useState({}); // 회원의 기존 포인트
+    const [plusPointNumber, setPlusPointNumber] = useState(0); // 입력받은 사용할 point
+    const [totalCount, setTotalCount] = useState(""); // point 까지 계산한 총 결제 금액(최종 결제 금액)
+    const [member, setMember] = useState(""); // 존재하는 member 인지 신규인지 판별에 쓰임
+    const findMember = useMemberStore(state => state.findMember);
+    const getPoints = useMemberStore(state => state.getPoint);
+    const subtractPoints = useMemberStore(state => state.subtractPoints);
+    const add = useMemberStore(state => state.add);
+
     const nevigate = useNavigate();
 
 
@@ -19,30 +29,56 @@ const MemberCheckPoint = ({phoneNumber}) => {
     }
 
 
+   
+
     const handleClear = () => {
         setPlusPointNumber("");
     }
 
 
     const onClickHandler2 = () => {
-        // 적용 -> 기존 가격에서 사용 할 포인트 만큼 연산된 후 보여줘야 함
-        // 결제금액 - 사용포인트 
-        // <DiscountPoint pointNumber={pointNumber}/>
-        nevigate("/PayCheckPage");
-        // 다시 PayCheckPage로 이동 !
+
+        // 기존 회원인지 검사
+        setMember(findMember(getphoneNumber));
+
+        if(member){
+
+            // 기존 회원이면, 포인트 조회
+            const pp = getPoints(getphoneNumber)
+            setgetPoint(pp);
+
+        }else{
+
+            // 기존 회원이 아니면 추가
+            add(getphoneNumber);
+        }
+
+        
+        if(getPoint >= plusPointNumber){ // 기존 포인트 - 입력한 포인트
+            const total = subtractPoints(getphoneNumber, plusPointNumber);
+            setTotalCount(total);
+            
+        }else {
+
+            alert(`기존포인트보다 작은 액수를 입력해주세요`);
+            setPlusPointNumber(0);
+
+        }
     }
 
     return(
         <>
         
         <h2>포인트 사용</h2>
-        <h4 onClick={handleClear}>x</h4>
+        <h4 onClick={nevigate("/paycheckPage")}>x</h4>
 
-        <h3>고객명 : {phoneNumber} </h3>
-        <h3>결제 금액 : {count}</h3>
-        <h3>사용 가능 포인트 : {pointNumber}</h3>
+        <h3>고객명 : {getphoneNumber} </h3>
+        {/* <h3>결제 금액 : {}</h3>  -----> 결제금액 zustand 로 받아와야함 */}
+        <h3>사용 가능 포인트 : {getPoint}</h3>
         <h3>사용 포인트 : {plusPointNumber}</h3>
         <h2>총 결제금액 : {totalCount}</h2>
+
+        <button onClick={onClickHandler2}>적용</button>
 
         <div>
                 {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num) => (
@@ -51,12 +87,13 @@ const MemberCheckPoint = ({phoneNumber}) => {
                     </button>
                 ))}
                 <button onClick={handleClear}>지우기</button>
-                <button onClick={onClickHandler2}>적용</button>
+                <botton onClick={<Link to={`/payCheckPage/${totalCount}`}/>}>결제하기</botton>
+                
+               
         </div>
         
         </>
     )
-    // 그냥 여기서 바로 결제 페이지로 넘어갈 수 있나.. 
 }
 
 export default MemberCheckPoint;
