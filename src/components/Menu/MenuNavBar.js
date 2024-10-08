@@ -15,15 +15,17 @@ const MenuNavBar =()=>{
         setCategories(cate);
     },[]);
 
+    const categoryList = categories.map((cate)=>{
+        return(
+            <li>
+            <NavLink to={`/Menu/${cate.categoryCode}`}>{cate.name}</NavLink>
+            </li>
+    )});
+
 
     return(
         <>
-            {categories.map((cate)=> {
-                return(
-                <li>
-                <NavLink to={`/Menu/${cate.categoryCode}`}>{cate.name}</NavLink>
-                </li>
-            )})}
+            {categoryList}
         </>
         
     )
