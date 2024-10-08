@@ -1,7 +1,10 @@
 import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
 import member from "../../data/Member.json";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b63467f821fdf47a839d43c22ccd7218b6dad36
 
 const MemberCheckNumber = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
