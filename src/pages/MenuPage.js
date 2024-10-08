@@ -5,7 +5,6 @@ import MenuNavBar from "../components/Menu/MenuNavBar";
 const MenuPage = () => {
     const location = useLocation();
     const orderData = location.state;
-    console.log(orderData.menu);
 
     
 
