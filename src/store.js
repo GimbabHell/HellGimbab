@@ -45,6 +45,7 @@ export const orderHistory = create((set) => ({
 
 export const checkDetail = create((set) => ({
     selectedValues: {},
+    
     setSelectedValues: (group, value) =>
         set((state) => ({
             selectedValues: {
@@ -61,6 +62,7 @@ export const checkDetail = create((set) => ({
                         ...state.selectedValues,
                         [group]: selectedCheckboxes.filter((v) => v !== value),
                     },
+                    
                 };
             } else {
                 return {
@@ -68,6 +70,7 @@ export const checkDetail = create((set) => ({
                         ...state.selectedValues,
                         [group]: [...selectedCheckboxes, value],
                     },
+                    
                 };
             }
         }),

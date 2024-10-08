@@ -18,7 +18,7 @@ const MenuNavBar =()=>{
     const categoryList = categories.map((cate)=>{
         return(
             <li>
-            <NavLink to={`/Menu/${cate.categoryCode}`}>{cate.name}</NavLink>
+            <NavLink to={`/menu/${cate.categoryCode}`}>{cate.name}</NavLink>
             </li>
     )});
 

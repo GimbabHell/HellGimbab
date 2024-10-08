@@ -8,8 +8,10 @@ const MenuState = ({menus})=>{
     const navigate = useNavigate();
 
     const menuList = menus.map((menu)=>{
+        
         return(
-            <li onClick={()=>{navigate('/detail', {state: menu})}}>
+            
+            <li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu})}}>
             {menu.menuCode}  {menu.categoryCode}  {menu.name}  {menu.price}  {menu.description} <img src={menu.imgURL}/> </li>
         )
     })
