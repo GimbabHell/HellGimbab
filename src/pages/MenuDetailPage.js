@@ -1,4 +1,4 @@
-import { cloneElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSubCategoryName } from "../api/DetailApi";
 import { OptionList } from "../components/MenuDetail/OptionList";
 import { checkDetail } from "../store";
@@ -80,9 +80,18 @@ const MenuDetailPage = () => {
         document.querySelectorAll("input").forEach((item) => (item.checked = false));
     };
 
-    const onClickOrderHandler = () => {
-        navi(`/menu/${menu.categoryCode}`, {state: menu})
-    }
+    const onClickOrderHandler = (e) => {
+        e.preventDefault(); // 페이지 리로드 방지
+
+        // 필요한 데이터를 객체로 구성
+        const orderData = {
+            selectedValues,
+            menu,
+        };
+
+        // 다른 페이지로 이동하며 상태 전달
+        navi(`/menu/${menu.categoryCode}`, { state: orderData });
+    };
     
     
 
@@ -112,14 +121,14 @@ const MenuDetailPage = () => {
                 </p>
                 <button onClick={onClickHandler}>초기화</button>
             </div>
-            <form>
+            <form onSubmit={onClickOrderHandler}>
                 {details.map((cate, index) => {
                     return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
                 })}
                 <div className="button-wrap">
                     <button onClick={() => navi(-1)}>취소</button>
                     {/* 취소 navi 확인하기! */}
-                    <button type="submit" onClick={(onClickOrderHandler)}>주문담기</button>
+                    <button type="submit">주문담기</button>
                     {/* 주문담기 창으로 이동 */}
                 </div>
             </form>
