@@ -10,7 +10,10 @@ const MenuPage = () => {
     // menuOrder 에서 zustand 접근해서 장바구니 넣기
     const location = useLocation();
     const orderData = location.state;
+<<<<<<< HEAD
     console.log(orderData)
+=======
+>>>>>>> 6fcbfb19c6f3f77e149d09e123f7427b18cfb5ea
 
     // zustand orderStore
     const {orderSingleMenu} = orderStore();
