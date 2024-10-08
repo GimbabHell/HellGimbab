@@ -139,7 +139,7 @@ export const useMemberStore = create((set, get) => ({
     // 원래는 return member : null; 이였음.... 
     findMember: (phoneNumber) => {
         const member = get().members.find(member => member.phoneNumber === phoneNumber);
-        return member? 0:1; // 회원이 없으면 null 반환
+        return member || null; // 회원이 없으면 null 반환
     },
 
     // 포인트 조회
