@@ -37,11 +37,14 @@ const MemberCheckNumber = () => {
         const memb = findMember(num);
         if (memb == 0) { // 이미 회원이라면 바로 포인트 적립 진행
             setShow(true);
+
+            
         } else if(memb == 1) {
 
-            add(num,0);
-           
             setShow(true);
+
+            add(num,0);
+            
         }
         
         const p = getPoints(num);
