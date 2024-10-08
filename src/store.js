@@ -49,11 +49,11 @@ export const orderHistory = create((set)=>({
 
 export const memberNumber = create((set, get) => ({
     // 회원 추가
-
     phoneNumber : '', // 회원 전화번호
     point : '', // 회원 포인트
 
     add : (phoneNumber, point) => set({phoneNumber,point})
+    
 }))
 
 
