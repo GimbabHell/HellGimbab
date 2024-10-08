@@ -9,7 +9,6 @@ import { create } from "zustand";
 // orderHistory 는 singleOrder들로 이루어진 배열???
 
 export const orderStore = create((set, get) => ({
-
     takeOut : false,     //false: 매장식사, true: 포장주문
     menuName : '',
     price : '',         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
@@ -45,6 +44,7 @@ export const orderHistory = create((set) => ({
 
 export const checkDetail = create((set) => ({
     selectedValues: {},
+    
     setSelectedValues: (group, value) =>
         set((state) => ({
             selectedValues: {
@@ -61,6 +61,7 @@ export const checkDetail = create((set) => ({
                         ...state.selectedValues,
                         [group]: selectedCheckboxes.filter((v) => v !== value),
                     },
+                    
                 };
             } else {
                 return {
@@ -68,6 +69,7 @@ export const checkDetail = create((set) => ({
                         ...state.selectedValues,
                         [group]: [...selectedCheckboxes, value],
                     },
+                    
                 };
             }
         }),
