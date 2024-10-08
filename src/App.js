@@ -20,7 +20,7 @@ function App() {
           <Route index element={<HomePage />} />
 
           <Route path="/" element={<Layout />}>
-            <Route path="menu" element={<MenuPage />}>
+            <Route path="/menu" element={<MenuPage />}>
               <Route path=":cateCode" element={<MenuOutlet />}/>
 
             </Route>

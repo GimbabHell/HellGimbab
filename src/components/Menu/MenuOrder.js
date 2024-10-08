@@ -1,38 +1,17 @@
 // 장바구니
 // menu 선택 --> detail 선택후 추가 --> menu 창으로 돌아와서 장바구니에 자동추가
 
-import { useEffect, useState } from "react";
-import { getSingleMenu } from "../../api/MenuApi";
+import { useEffect, useMemo, useState } from "react";
+import { getSingleMenu, getToppingDetails } from "../../api/MenuApi";
 import { orderStore } from "../../store";
 
 const MenuOrder = ()=>{
 
-    const {orderSingleMenu, singleOrder, order, deleteSingleOrder} = orderStore();
-    const menuCode = 1;
-    const menuCode2 = 2;
-    const menu = getSingleMenu(menuCode);
-    const menu2 = getSingleMenu(menuCode2);
+    const {price, details, singleOrder, order, deleteSingleOrder, setPrice} = orderStore();
     const menuDetails = {rice : "백미",
                         vegi : ["지단 빼기", "당근 빼기", "오이 빼기", "적채 빼기"],
                         dipping : "소스없음",
                         topping : ["올리브", "청양고추", "갈릭칩"]};
-
-    const [detailPrice, setDetailPrice] = useState(0);
-
-    useEffect(()=>{
-        orderSingleMenu(menu.name, menu.price, menu.quantity, menu.details);
-        singleOrder();
-    },[])
-
-
-    useEffect(()=>{ 
-        console.log(order);
-    },[order])
-
-    const onClickDelete = index =>{
-        deleteSingleOrder(index);
-    }
-
 
     // 가격 계산
     // 넘어온 details 배열에서 key 값들만 추출
@@ -42,17 +21,60 @@ const MenuOrder = ()=>{
     // 토핑 key 가 있으면...
     // topping 배열 전체를 for문 돌려서 menuDetail의 subCategoryCode 1005 만으로 이루어진 배열과 비교후 필터??(이중 for문??)
 
-    const detailKeys = Object.keys(menuDetails);
-    const detailValues = Object.values(menuDetails.topping);
-    console.log(`menuDetails : ${menuDetails}`);
-    console.log(`detailKeys : ${detailKeys}`);
-    console.log(`detailValues : ${detailValues}`);
-    console.log(Array.isArray(detailKeys));
-    for(let i =0; i < detailKeys.length; i++){
+    //details 로 인한 추가 가격 계산
+    useEffect(()=>{
+        
+        let detailPrice= 0;
+        const detailKeys = Object.keys(details);
 
+        for(let k=0; k < detailKeys.length; k++){
+            if(detailKeys[k] === "밥"){
+                const riceValues = Object.values(details.rice);
+                for(let l=0; l < riceValues.length; l++){
+                    if(riceValues[l] === "건두부"){
+                        detailPrice += 300;
+                        break;
+                    }
+                }
+            }else if(detailKeys[k] === "디핑소스"){
+                const dippingValues = Object.values(details.dipping);
+                for(let m=0; m < dippingValues.length; m++){
+                    if(dippingValues[m] === "소스없음"){
+                        detailPrice -= 300;
+                        break;
+                    }
+                }
+            }
+            else if(detailKeys[k] === "토핑"){
+                const toppingValues = Object.values(details.topping);
+                const toppingDetails = getToppingDetails();
+                for(let i=0; i < toppingValues.length; i++){
+                    for(let j=0; j < toppingDetails.length; j++){
+                        if(toppingValues[i] === toppingDetails[j].name){
+                            detailPrice += toppingDetails[j].price;
+                        }
+                    }
+                }
+            }
+        }
+
+        // zustand 통해서 가격 계산 후 저장
+        setPrice(detailPrice);
+        console.log(detailPrice);
+        console.log(price);
+        // 장바구니 추가
+        singleOrder();
+
+    },[details]);
+
+    
+
+    const onClickDelete = index =>{
+        deleteSingleOrder(index);
     }
 
 
+    
     return(
         <>
             {order.map((singleOrder,index)=> {
@@ -62,7 +84,7 @@ const MenuOrder = ()=>{
                         <button>-</button>
                         {singleOrder.quantity}
                         <button>+</button>
-                        {singleOrder.price}
+                        <h4>{singleOrder.price}</h4>                    
                         </li></ul>
             })}
             <button>전체삭제</button>
@@ -71,3 +93,4 @@ const MenuOrder = ()=>{
 }
 
 export default MenuOrder;
+

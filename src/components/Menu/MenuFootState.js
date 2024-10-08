@@ -10,7 +10,7 @@ const MenuFootState = ()=>{
 
     return(
         <>
-            <MenuOrder/>
+            <MenuOrder />
             <button>주문하기</button>
         </>
     )
