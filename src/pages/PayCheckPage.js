@@ -14,34 +14,60 @@ const PayCheckPage = () => {
     
     const {totalCount} = useParams();// 포인트 까지 계산된 최종 금액
 
-    const {pay, setPay} = useState("");
+    const [pay, setPay] = useState(0);
     // 카드결제-> 0, 카카오페이-> 1, 네이버페이->2
 
-    const onClickHandler= () => {
-        if(pay ==  0){
-            <CardPay totalCount={totalCount}/>
+    const [show, setShow] = useState(false);
+
+
+    const onClickHandler = () => {
+       setShow(true);
+    }
+
+
+    const onClickHandler1 = () => {
+        return setPay(0);
+
+    }
+
+    const onClickHandler2 = () => {
+ 
+         return setPay(1);
+    }
+
+    const onClickHandler3 = () => {
+        return setPay(2);
+
+    }
+
+    const onClickHandler5 = () => {
+        if(pay == 0){
+            <CardPay />
         }else if(pay == 1){
-            <KakaoPay totalCount={totalCount}/>
-
-        } else{<NaverPay totalCount={totalCount}/>
-    }}
-
-
+            <KakaoPay/>
+        }else if(pay == 2){
+            <NaverPay/>
+        }
+    }
     return(
 
         <>
         <p>포인트 사용 여부 확인</p>
-        <button onClick = {<MemberCheckNumber/>}>사용</button>
+        
+        <button onClick = {onClickHandler}>사용</button>
+    
+        {show ? <MemberCheckNumber/> : null}
+        
         <button>사용안함</button>
 
         <p>결제 수단 선택</p>
-        <button onClick = {setPay(0)}>카드결제</button>
-        <button onClick = {setPay(1)}>카카오Pay</button>
-        <button onClick = {setPay(2)}>네이버Pay</button> 
+        <button onClick = {onClickHandler1}>카드결제</button>
+        <button onClick = {onClickHandler2}>카카오Pay</button>
+        <button onClick = {onClickHandler3}>네이버Pay</button> 
 
 
         <h2>최종 결제 금액  {totalCount}</h2> 
-        <button onClick={onClickHandler}>결제</button>
+        <button onClick={onClickHandler5}>결제</button>
         </>
     )
 }

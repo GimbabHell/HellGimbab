@@ -3,10 +3,14 @@ import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 
 const MemberCheckNumber = () => {
+
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [poiint, setPoiint] = useState(""); // 입력받은 회원의 point 저장
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
+    const getPoints = useMemberStore(state => state.getPoints);
+    const [show, setShow] = useState(false);
     
 
     const handleButtonClick = (digit) => {
@@ -14,7 +18,7 @@ const MemberCheckNumber = () => {
             setNum((prev) => prev + digit);
             setErrorMessage(""); 
         }
-    };
+    };getPoints(num)
 
     const handleClear = () => {
         setNum("");
@@ -22,6 +26,7 @@ const MemberCheckNumber = () => {
     };
 
     const handleConfirm = () => {
+
         const formattedNum = formatPhoneNumber(num);
 
         if (!isValidPhoneNumber(formattedNum)) {
@@ -30,12 +35,18 @@ const MemberCheckNumber = () => {
         }
 
         const memb = findMember(num);
-        
-        if (memb) { // 이미 회원이라면 바로 포인트 적립 진행
-            <MemberCheckPoint getphoneNumber={formattedNum} />;
-        } else {
-            add(formattedNum, 0); // 회원이 아니라면 회원 등록
+        if (memb == 0) { // 이미 회원이라면 바로 포인트 적립 진행
+            setShow(true);
+        } else if(memb == 1) {
+
+            add(num,0);
+           
+            setShow(true);
         }
+        
+        const p = getPoints(num);
+        setPoiint(p);
+        console.log(poiint);
     };
 
     const formatPhoneNumber = (number) => {
@@ -66,6 +77,8 @@ const MemberCheckNumber = () => {
                 ))}
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
+                
+                {show? <MemberCheckPoint getphoneNumber={num} poiint={poiint}/>:null}
             </div>
         </>
     );

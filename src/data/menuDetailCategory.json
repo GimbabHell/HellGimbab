@@ -25,13 +25,18 @@
         "group": "topping"
     },
     {
-        "subCateogoryCode": 1006,
+        "subCategoryCode": 1006,
         "name": "컵누들",
         "group": "noodle"
     },
     {
-        "subCateogoryCode": 1007,
+        "subCategoryCode": 1007,
         "name": "컵라면",
         "group": "ramen"
+    },
+    {
+        "subCateogoryCode": 1008,
+        "name": "음료",
+        "group": "drink"
     }
 ]
