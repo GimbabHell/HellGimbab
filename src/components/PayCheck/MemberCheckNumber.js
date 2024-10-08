@@ -1,6 +1,10 @@
 import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
 import member from "../../data/Member.json";
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1b63467f821fdf47a839d43c22ccd7218b6dad36
 
 const MemberCheckNumber = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -18,7 +22,7 @@ const MemberCheckNumber = () => {
 
     const handleConfirm = () => {
 
-        const mem = member.find(member => member.phoneNumber === phoneNumber )
+        const mem = member.filter(meme => meme.phoneNumber === phoneNumber )
 
         if (mem) {
             // 지금 사용자의 입력받은 전화번호를 그냥 넘겨주고 가서 찾아야 할까 ..
@@ -45,7 +49,7 @@ const MemberCheckNumber = () => {
                     </button>
                 ))}
                 <button onClick={handleClear}>지우기</button>
-                {/* <button onClick={handleConfirm}>확인</button> */}
+                <button onClick={handleConfirm}>확인</button>
             </div>
         </>
     );
