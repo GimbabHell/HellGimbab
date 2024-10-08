@@ -8,7 +8,7 @@ const LastPage = () => {
     return(
         <>
         <img src={satanUrl}/>
-        <h1>우리 지옥 김밥 먹어줘서 고맙다!</h1>
+        <h3>우리 지옥 김밥 먹어줘서 고맙다!</h3>
         </>
     )
 }
