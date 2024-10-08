@@ -18,6 +18,30 @@ export const orderStore = create((set, get) => ({
 
     eatPlace: (takeOut) => set({ takeOut }),
 
+<<<<<<< HEAD
+    takeOut : false,     //false: 매장식사, true: 포장주문
+    menuName : '',
+    price : '',         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
+    quantity : 1,
+    details : '',
+    order : [],
+
+    eatPlace : (takeOut) => set({takeOut}),
+
+    orderSingleMenu : (menuName, price, quantity, details) => set({menuName, price, quantity, details}),
+
+    singleOrder : ()=>{
+        const { menuName, price, quantity, details, order } = get();   // 현재 값 접근        
+        const newOrder = [...order, { menuName, price, quantity, details }];    
+        set({ order: newOrder});
+              
+    },
+
+    deleteSingleOrder : (index)=>{
+        const {order} = get();
+        const deletedOrder = order.filter((ord)=> ord.index !== parseInt(index));
+        set({order: deletedOrder});
+=======
     orderSingleMenu: (menuName, price, quantity, details) => set({ menuName, price, quantity, details }),
 
     singleOrder: () => {
@@ -28,6 +52,7 @@ export const orderStore = create((set, get) => ({
         } else {
             console.error("Order is not an array!!!!!!!!!!!!");
         }
+>>>>>>> 1b63467f821fdf47a839d43c22ccd7218b6dad36
     },
 
     reset: () => set({ takeOut: false, menuName: "", price: "", quantity: "", details: "" }),
@@ -39,6 +64,19 @@ export const orderHistory = create((set) => ({
     storeOrder: () => [{}],
 }));
 
+<<<<<<< HEAD
+export const memberNumber = create((set) => ({
+    // 회원 추가
+
+    phoneNumber : '', // 회원 전화번호
+    point : '', // 회원 포인트
+
+    add : (phoneNumber, point) => set({phoneNumber,point})
+}))
+
+
+
+=======
 export const checkDetail = create((set) => ({
     selectedValues: {},
     setSelectedValues: (group, value) =>
@@ -81,3 +119,4 @@ export const memberNumber = create((set) => ({
 
     add: (phoneNumber, point) => set({ phoneNumber, point }),
 }));
+>>>>>>> 1b63467f821fdf47a839d43c22ccd7218b6dad36
