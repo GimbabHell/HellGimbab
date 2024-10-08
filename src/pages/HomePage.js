@@ -15,7 +15,7 @@ const HomePage = () => {
     const [weather, setWeather] = useState({});
     const [temp, setTemp] = useState({});
     const [iconURL, setIconURL] = useState(``);
-    const [aboutDeath, setAboutDeath] = useState("");
+    // const [aboutDeath, setAboutDeath] = useState("");
     
     const navigate = useNavigate();
 
@@ -49,18 +49,18 @@ const HomePage = () => {
         )
     }
 
-    
-    const bringAPI =async()=>{
+    // https 보안 이슈로 주석처리합니다.
+    // const bringAPI =async()=>{
         
-        return(
-            fetch('https://api.quotable.io/random')
-        .then(response=>response.json())
-        .then(data=>setAboutDeath(data.content))
-        )
-        // const response = await fetch('https://api.quotable.io/random');
-        // const data = await response.json();
-        // setHello(data.content);
-    }
+    //     return(
+    //         fetch('https://api.quotable.io/random')
+    //     .then(response=>response.json())
+    //     .then(data=>setAboutDeath(data.content))
+    //     )
+    //     // const response = await fetch('https://api.quotable.io/random');
+    //     // const data = await response.json();
+    //     // setHello(data.content);
+    // }
 
     useEffect(()=>{
 
@@ -76,23 +76,23 @@ const HomePage = () => {
         }
         weatherAtLocation();
 
-        async function wiseSaying(){
-            const saying = await bringAPI();
+        // https 보안 이슈로 주석처리합니다.
+        // async function wiseSaying(){
+        //     const saying = await bringAPI();
 
-            console.log(saying);
-        }
-        wiseSaying();
+        // }
+        // wiseSaying();
     },[])
        
 
     return(
         <>
-            <p>home</p>
+            <h1>김밥지옥</h1>
             <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
             <img src={iconURL}/>
             <img src={"https://loremflickr.com/320/240/satan"}/>
             <div>
-            <h1>{aboutDeath}</h1>
+            {/* <h3>{aboutDeath}</h3> */}
             <button onClick={onClickHandler}>매장식사</button>
             <button onClick={onClickHandler}>포장</button>
             </div>

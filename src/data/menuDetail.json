@@ -4,7 +4,7 @@
         "subCategoryCode": 1001,
         "name": "백미",
         "price": 0,
-        "imgURL": "/public/images/menudetail/rice/01_rice.jpg",
+        "imgURL": "../images/menudetail/rice/01_rice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -14,7 +14,7 @@
         "subCategoryCode": 1001,
         "name": "흑미",
         "price": 0,
-        "imgURL": "/public/images/menudetail/rice/02_blackRice.jpg",
+        "imgURL": "../images/menudetail/rice/02_blackRice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -24,7 +24,7 @@
         "subCategoryCode": 1001,
         "name": "현미귀리",
         "price": 0,
-        "imgURL": "/public/images/menudetail/rice/03_brownRice.jpg",
+        "imgURL": "../images/menudetail/rice/03_brownRice.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -34,7 +34,7 @@
         "subCategoryCode": 1001,
         "name": "건두부",
         "price": 300,
-        "imgURL": "/public/images/menudetail/rice/04_driedtofu.jpg",
+        "imgURL": "../images/menudetail/rice/04_driedtofu.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -56,7 +56,7 @@
         "subCategoryCode": 1002,
         "name": "전체 야채 추가",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/05_everything.jpg",
+        "imgURL": "../images/menudetail/vegi/05_everything.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -66,7 +66,7 @@
         "subCategoryCode": 1002,
         "name": "지단 빼기(건두부변경)",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/06_egg.jpg",
+        "imgURL": "../images/menudetail/vegi/06_egg.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -76,7 +76,7 @@
         "subCategoryCode": 1002,
         "name": "지단 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/06_egg.jpg",
+        "imgURL": "../images/menudetail/vegi/06_egg.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -86,7 +86,7 @@
         "subCategoryCode": 1002,
         "name": "당근 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/08_carrot.jpg",
+        "imgURL": "../images/menudetail/vegi/08_carrot.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -96,7 +96,7 @@
         "subCategoryCode": 1002,
         "name": "오이 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/09_cucumber.jpg",
+        "imgURL": "../images/menudetail/vegi/09_cucumber.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -106,7 +106,7 @@
         "subCategoryCode": 1002,
         "name": "적채 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/10_redCabbage.jpg",
+        "imgURL": "../images/menudetail/vegi/10_redCabbage.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -116,7 +116,7 @@
         "subCategoryCode": 1002,
         "name": "단무지 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/11_pickledRadish.jpg",
+        "imgURL": "../images/menudetail/vegi/11_pickledRadish.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -126,7 +126,7 @@
         "subCategoryCode": 1002,
         "name": "우엉 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/12_burdock.jpg",
+        "imgURL": "../images/menudetail/vegi/12_burdock.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -136,7 +136,7 @@
         "subCategoryCode": 1002,
         "name": "청상추 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/13_greenLettuce.jpg",
+        "imgURL": "../images/menudetail/vegi/13_greenLettuce.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -146,7 +146,7 @@
         "subCategoryCode": 1002,
         "name": "콩나물 빼기",
         "price": 0,
-        "imgURL": "/public/images/menudetail/vegi/14_beanSprout.jpg",
+        "imgURL": "../images/menudetail/vegi/14_beanSprout.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -166,7 +166,7 @@
         "subCategoryCode": 1003,
         "name": "바질페스토",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/46_basilPesto.jpg",
+        "imgURL" : "../images/menu/dippingSauce/46_basilPesto.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -176,7 +176,7 @@
         "subCategoryCode": 1003,
         "name": "아이올리",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/49_aioli.jpg",
+        "imgURL" : "../images/menu/dippingSauce/49_aioli.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -186,7 +186,7 @@
         "subCategoryCode": 1003,
         "name": "허니유자",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/47_honeyYuzu.jpg",
+        "imgURL" : "../images/menu/dippingSauce/47_honeyYuzu.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -196,7 +196,7 @@
         "subCategoryCode": 1003,
         "name": "스리라차마요",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/50_srirachaMayo.jpg",
+        "imgURL" : "../images/menu/dippingSauce/50_srirachaMayo.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -206,7 +206,7 @@
         "subCategoryCode": 1003,
         "name": "토마토고추장",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/48_tomatoRedPepperPaste.jpg",
+        "imgURL" : "../images/menu/dippingSauce/48_tomatoRedPepperPaste.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -216,7 +216,7 @@
         "subCategoryCode": 1003,
         "name": "빨간맛",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/51_hotHotVeryHot.jpg",
+        "imgURL" : "../images/menu/dippingSauce/51_hotHotVeryHot.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -226,7 +226,7 @@
         "subCategoryCode": 1003,
         "name": "비건치폴레",
         "price": 0,
-        "imgURL" : "/public/images/menu/dippingSauce/52_veganChipotle.jpg",
+        "imgURL" : "../images/menu/dippingSauce/52_veganChipotle.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -236,7 +236,7 @@
         "subCategoryCode": 1003,
         "name": "소스없음",
         "price": -300,
-        "imgURL": "/public/images/menudetail/sauce/22_nope.jpg",
+        "imgURL": "../images/menudetail/sauce/22_nope.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -257,7 +257,7 @@
         "subCategoryCode": 1004,
         "name": "고추장",
         "price": 0,
-        "imgURL" : "/public/images/menu/sauce/53_redPepperPaste.jpg",
+        "imgURL" : "../images/menu/sauce/53_redPepperPaste.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -267,7 +267,7 @@
         "subCategoryCode": 1004,
         "name": "된장",
         "price": 0,
-        "imgURL" : "/public/images/menu/sauce/55_soybeanPaste.jpg",
+        "imgURL" : "../images/menu/sauce/55_soybeanPaste.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -277,7 +277,7 @@
         "subCategoryCode": 1004,
         "name": "간장",
         "price": 0,
-        "imgURL" : "/public/images/menu/sauce/54_soySauce.jpg",
+        "imgURL" : "../images/menu/sauce/54_soySauce.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -287,7 +287,7 @@
         "subCategoryCode": 1004,
         "name": "비빔장",
         "price": 0,
-        "imgURL": "/public/images/menudetail/sauce/26_bibimjang.jpg",
+        "imgURL": "../images/menudetail/sauce/26_bibimjang.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -297,7 +297,7 @@
         "subCategoryCode": 1004,
         "name": "참깨겨자",
         "price": 0,
-        "imgURL": "/public/images/menudetail/sauce/27_sesameMustard.jpg",
+        "imgURL": "../images/menudetail/sauce/27_sesameMustard.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -317,7 +317,7 @@
         "subCategoryCode": 1005,
         "name": "아보카도",
         "price": 1200,
-        "imgURL": "/public/images/menudetail/topping/28_avocado.jpg",
+        "imgURL": "../images/menudetail/topping/28_avocado.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -327,7 +327,7 @@
         "subCategoryCode": 1005,
         "name": "청양고추",
         "price": 500,
-        "imgURL": "/public/images/menudetail/topping/29_cheongyangPepper.jpg",
+        "imgURL": "../images/menudetail/topping/29_cheongyangPepper.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -337,7 +337,7 @@
         "subCategoryCode": 1005,
         "name": "올리브",
         "price": 500,
-        "imgURL": "/public/images/menudetail/topping/30_olive.jpg",
+        "imgURL": "../images/menudetail/topping/30_olive.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -347,7 +347,7 @@
         "subCategoryCode": 1005,
         "name": "갈릭칩",
         "price": 500,
-        "imgURL": "/public/images/menudetail/topping/31_garlicChips.jpg",
+        "imgURL": "../images/menudetail/topping/31_garlicChips.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -357,7 +357,7 @@
         "subCategoryCode": 1005,
         "name": "치즈",
         "price": 500,
-        "imgURL": "/public/images/menudetail/topping/32_cheese.jpg",
+        "imgURL": "../images/menudetail/topping/32_cheese.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -367,7 +367,7 @@
         "subCategoryCode": 1005,
         "name": "메추리알",
         "price": 200,
-        "imgURL": "/public/images/menudetail/topping/33_quailEgg.jpg",
+        "imgURL": "../images/menudetail/topping/33_quailEgg.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -385,7 +385,7 @@
         "subCategoryCode": 1006,
         "name": "매콤한맛",
         "price": 0,
-        "imgURL": "/public/images/menudetail/cupoodle/34_spicy.jpg",
+        "imgURL": "../images/menudetail/cupoodle/34_spicy.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -395,7 +395,7 @@
         "subCategoryCode": 1006,
         "name": "마라탕",
         "price": 0,
-        "imgURL": "/public/images/menudetail/cupoodle/35_malatang.jpg",
+        "imgURL": "../images/menudetail/cupoodle/35_malatang.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -411,7 +411,7 @@
         "subCategoryCode": 1007,
         "name": "신라면",
         "price": 0,
-        "imgURL": "/public/images/menudetail/ramen/36_sinramen.jpg",
+        "imgURL": "../images/menudetail/ramen/36_sinramen.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -421,7 +421,7 @@
         "subCategoryCode": 1007,
         "name": "진라면",
         "price": 0,
-        "imgURL": "/public/images/menudetail/ramen/37_jinramen.jpg",
+        "imgURL": "../images/menudetail/ramen/37_jinramen.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -431,7 +431,7 @@
         "subCategoryCode": 1007,
         "name": "너구리",
         "price": 0,
-        "imgURL": "/public/images/menudetail/ramen/38_raccoon.jpg",
+        "imgURL": "../images/menudetail/ramen/38_raccoon.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -441,7 +441,7 @@
         "subCategoryCode": 1007,
         "name": "새우탕",
         "price": 0,
-        "imgURL": "/public/images/menudetail/ramen/39_shrimpSoup.jpg",
+        "imgURL": "../images/menudetail/ramen/39_shrimpSoup.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
@@ -451,9 +451,103 @@
         "subCategoryCode": 1007,
         "name": "튀김우동",
         "price": 0,
-        "imgURL": "/public/images/menudetail/ramen/40_friedUdon.jpg",
+        "imgURL": "../images/menudetail/ramen/40_friedUdon.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+
+
+
+
+
+
+
+
+
+
+    
+
+    {
+        "categoryCode": 1041,
+        "menuCode": 1008,
+        "name": "제주말차식혜",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/38_matchaSikhye.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1042,
+        "menuCode": 1008,
+        "name": "얼그레이식혜",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/39_earlGraySikhye.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1043,
+        "menuCode": 1008,
+        "name": "베지포유",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/40_veggieForU.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1044,
+        "menuCode": 1008,
+        "name": "제로콜라",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/41_zeroCoke.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1045,
+        "menuCode": 1008,
+        "name": "코카콜라",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/42_coke.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1046,
+        "menuCode": 1008,
+        "name": "스프라이트",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/43_sprite.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1047,
+        "menuCode": 1008,
+        "name": "탄산수",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/44_sparklingWater.jpg",
+        "quantity": 10,
+        "soldout": false,
+        "state": true
+    },
+    {
+        "categoryCode": 1048,
+        "menuCode": 1008,
+        "name": "립톤",
+        "price": 0,
+        "imgURL" : "../images/menu/drink/45_lipton.jpg",
         "quantity": 10,
         "soldout": false,
         "state": true
     }
+
+
 ]
