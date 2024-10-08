@@ -36,11 +36,13 @@ export const orderStore = create((set, get) => ({
     reset: () => set({ takeOut: false, menuName: "", price: "", quantity: "", details: "" }),
 }));
 
+
 export const orderHistory = create((set) => ({
     ordersPerDay: [{}],
 
     storeOrder: () => [{}],
 }));
+
 
 export const checkDetail = create((set) => ({
     selectedValues: {},
@@ -79,11 +81,89 @@ export const checkDetail = create((set) => ({
         }),
 }));
 
-export const memberNumber = create((set) => ({
+
+export const useMemberStore = create((set, get) => ({
     // 회원 추가
 
-    phoneNumber: "", // 회원 전화번호
-    point: "", // 회원 포인트
+    phoneNumber : '', // 회원 전화번호
+    point : '', // 회원 포인트
+    members : [],
 
-    add: (phoneNumber, point) => set({ phoneNumber, point }),
-}));
+
+    // 회원 추가
+    add: (phoneNumber, point) => {
+        set(state => {
+            const exists = state.members.some(member => member.phoneNumber === phoneNumber);
+            if (!exists) {
+                return {
+                    members: [...state.members, { phoneNumber, point }],
+                    phoneNumber: '',
+                    point: 0
+                };
+            }
+            return state; // 중복되는 전화번호일 경우 상태를 변경하지 않음
+        });
+    },
+
+
+    // 포인트 추가
+    addPoints: (phoneNumber, pointsToAdd) => {
+        set(state => {
+            const members = state.members.map(member => {
+                if (member.phoneNumber === phoneNumber) {
+                    return { ...member, point: member.point + pointsToAdd };
+                }
+                return member;
+            });
+            return { members };
+        });
+    },
+
+
+    // 포인트 차감
+    subtractPoints: (phoneNumber, pointsToSubtract) => {
+        set(state => {
+            const members = state.members.map(member => {
+                if (member.phoneNumber === phoneNumber) {
+                    return { ...member, point: Math.max(0, member.point - pointsToSubtract) };
+                     // 포인트가 0 이하로 떨어지지 않도록
+                }
+                return member;
+            });
+            return { members };
+        });
+    },
+
+
+    // 회원 조회
+    findMember: (phoneNumber) => {
+        const member = get().members.find(member => member.phoneNumber === phoneNumber);
+        return member? 0:1; // 회원이 없으면 null 반환
+    },
+
+    // 포인트 조회
+    getPoints: (phoneNumber) => {
+        set(state => {
+            console.log(state.members)
+         const member = get().members.find(member => member.phoneNumber === phoneNumber);
+        // console.log(member);
+        // console.log(member.point);
+        return member ? member.point : null; // 포인트 반환, 없으면 null
+
+        })
+        
+    }
+
+
+}))
+
+
+
+
+
+
+
+
+
+
+

@@ -1,48 +1,73 @@
 
 import MemberCheckNumber from "../components/PayCheck/MemberCheckNumber"
-
 import { useState } from "react";
 import NaverPay from "../components/PayCheck/NaverPay";
 import KakaoPay from "../components/PayCheck/KakaoPay";
 import CardPay from "../components/PayCheck/CardPay";
+import { useParams } from "react-router-dom";
+// import { orderStore } from "../../store";
+
 
 
 const PayCheckPage = () => {
-    const {totalCount, setTotalCount} = useState("");
-    // 불러와야 하는 총 금액 !
+
     
-    const {pay, setPay} = useState("");
+    const {totalCount} = useParams();// 포인트 까지 계산된 최종 금액
+
+    const [pay, setPay] = useState(0);
     // 카드결제-> 0, 카카오페이-> 1, 네이버페이->2
 
-    const onClickHandler= () => {
-        if(pay ==  0){
-            <CardPay totalCount={totalCount}/>
+    const [show, setShow] = useState(false);
+
+
+    const onClickHandler = () => {
+       setShow(true);
+    }
+
+
+    const onClickHandler1 = () => {
+        return setPay(0);
+
+    }
+
+    const onClickHandler2 = () => {
+ 
+         return setPay(1);
+    }
+
+    const onClickHandler3 = () => {
+        return setPay(2);
+
+    }
+
+    const onClickHandler5 = () => {
+        if(pay == 0){
+            <CardPay />
         }else if(pay == 1){
-            <KakaoPay totalCount={totalCount}/>
-
-        } else{<NaverPay totalCount={totalCount}/>
-    }}
-
-
+            <KakaoPay/>
+        }else if(pay == 2){
+            <NaverPay/>
+        }
+    }
     return(
 
         <>
         <p>포인트 사용 여부 확인</p>
-        <button onClick = {<MemberCheckNumber/>}>사용</button>
+        
+        <button onClick = {onClickHandler}>사용</button>
+    
+        {show ? <MemberCheckNumber/> : null}
+        
         <button>사용안함</button>
 
         <p>결제 수단 선택</p>
-        <button onClick = {setPay(0)}>카드결제</button>
-        <button onClick = {setPay(1)}>카카오Pay</button>
-        <button onClick = {setPay(2)}>네이버Pay</button> 
-        {/* 결제수단이 alert 느낌으로 띄우고 싶으면 component 로 만들어놔야 한다..*/}
+        <button onClick = {onClickHandler1}>카드결제</button>
+        <button onClick = {onClickHandler2}>카카오Pay</button>
+        <button onClick = {onClickHandler3}>네이버Pay</button> 
 
-        {/* <h4>결제 금액 :  {}</h4>
-        <h4>포인드 사용   {}</h4> */}
-        <h2>최종 결제 금액  {}</h2> 
-        {/* 최종 결제 금액 -> 가지고와야댐 zustand로 */}
-        <button onClick={onClickHandler}>결제</button>
 
+        <h2>최종 결제 금액  {totalCount}</h2> 
+        <button onClick={onClickHandler5}>결제</button>
         </>
     )
 }
