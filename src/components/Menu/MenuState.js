@@ -6,20 +6,19 @@ import { useNavigate } from "react-router-dom"
 const MenuState = ({menus})=>{
 
     const navigate = useNavigate();
-    
-    // const onClickHandler = ()=>{
-    //     navigate()
-    // }
 
+    const menuList = menus.map((menu)=>{
+        return(
+            <li onClick={()=>{navigate(`/detail?menuCode=${menu}`)}}>
+            {menu.menuCode}  {menu.categoryCode}  {menu.name}  {menu.price}  {menu.description} <img src={menu.imgURL}/> </li>
+        )
+    })
+    
 
     return(
-        <>
-            {menus.map((menu)=> {
-                return <ul><li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`)}}>{menu.menuCode}  {menu.categoryCode}  {menu.name}  {menu.price}  {menu.description}  </li>
-                            <img src={menu.imgURL}/>
-                        </ul>
-            })}
-        </>
+        <ul>
+            {menuList}
+        </ul>
     )
 }
 
