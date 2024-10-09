@@ -15,6 +15,11 @@ const HomePage = () => {
     const [weather, setWeather] = useState({});
     const [temp, setTemp] = useState({});
     const [iconURL, setIconURL] = useState(``);
+
+    // 이미지 API 호출하기 위한 state
+    const [satanUrl, setSatanUrl] = useState(``);
+    const [loading, setLoading] = useState(true);
+
     // const [aboutDeath, setAboutDeath] = useState("");
     
     const navigate = useNavigate();
@@ -76,6 +81,17 @@ const HomePage = () => {
         }
         weatherAtLocation();
 
+        const fetchImage =async()=>{
+            const response = await fetch("https://loremflickr.com/320/300/satan");
+            if(response.ok){
+                setSatanUrl(response.url);
+            }else{
+                console.error("이미지씨.. 어딨나요? ㅠㅠ");
+            }
+            setLoading(false);
+        };
+        fetchImage();
+
         // https 보안 이슈로 주석처리합니다.
         // async function wiseSaying(){
         //     const saying = await bringAPI();
@@ -90,7 +106,7 @@ const HomePage = () => {
             <h1>김밥지옥</h1>
             <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
             <img src={iconURL}/>
-            <img src={"https://loremflickr.com/320/240/satan"}/>
+            {loading || !satanUrl ? <h2>COMING.. DEVIL</h2> : <img src={satanUrl}/>}
             <div>
             {/* <h3>{aboutDeath}</h3> */}
             <button onClick={onClickHandler}>매장식사</button>
