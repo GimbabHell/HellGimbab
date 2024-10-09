@@ -136,25 +136,22 @@ export const useMemberStore = create((set, get) => ({
 
 
     // 회원 조회 
-    // 원래는 return member : null; 이였음.... 
+    // 원래는 return member || null; 이였음.... 
     findMember: (phoneNumber) => {
         const member = get().members.find(member => member.phoneNumber === phoneNumber);
-        return member || null; // 회원이 없으면 null 반환
+        return member? member : null; // 회원이 없으면 null 반환
+        
     },
 
     // 포인트 조회
     getPoints: (phoneNumber) => {
-        set(state => {
-            console.log(state.members)
+        
+       // console.log(state.members)
          const member = get().members.find(member => member.phoneNumber === phoneNumber);
         // console.log(member);
         // console.log(member.point);
-        return member ? member.point : null; // 포인트 반환, 없으면 null
-
-        })
-        
+        return member ? member.point : null;; // 포인트 반환, 없으면 null
     }
-
 
 }))
 

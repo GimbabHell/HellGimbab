@@ -2,23 +2,21 @@ import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 
-const MemberCheckNumber = () => {
-
+const MemberCheckNumber = ({push}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [poiint, setPoiint] = useState(""); // 입력받은 회원의 point 저장
+    const [poiint, setPoiint] = useState("");
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const getPoints = useMemberStore(state => state.getPoints);
     const [show, setShow] = useState(false);
     
-
     const handleButtonClick = (digit) => {
         if (num.length < 11) {
             setNum((prev) => prev + digit);
             setErrorMessage(""); 
         }
-    };getPoints(num)
+    };
 
     const handleClear = () => {
         setNum("");
@@ -26,29 +24,28 @@ const MemberCheckNumber = () => {
     };
 
     const handleConfirm = () => {
-
         const formattedNum = formatPhoneNumber(num);
-
+        
         if (!isValidPhoneNumber(formattedNum)) {
             setErrorMessage("전화번호는 010으로 시작하고 11자리여야 합니다.");
+            setNum("");
             return; 
         }
 
         const memb = findMember(num);
         
-        if (memb) { // 이미 회원이라면 바로 포인트 적립 진행
+        if (memb !== null) {
             setShow(true);
-            
-        } else if(memb == 1) {
-            add(num,0);
+        } else {
+            add(num, 0);
             setShow(true);
         }
-        
+
         const p = getPoints(num);
         setPoiint(p);
-        console.log(poiint);
+        
     };
-
+        
     const formatPhoneNumber = (number) => {
         if (number.length === 11) {
             return `${number.slice(0, 3)} ${number.slice(3, 7)} ${number.slice(7)}`;
@@ -78,7 +75,7 @@ const MemberCheckNumber = () => {
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
                 
-                {show? <MemberCheckPoint getphoneNumber={num} poiint={poiint}/>:null}
+                {show ? <MemberCheckPoint num={num} poiint={poiint} push={push}  /> : null}
             </div>
         </>
     );
