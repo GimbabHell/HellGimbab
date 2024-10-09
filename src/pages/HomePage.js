@@ -89,7 +89,8 @@ const HomePage = () => {
                 console.error("이미지씨.. 어딨나요? ㅠㅠ");
             }
             setLoading(false);
-        }
+        };
+        fetchImage();
 
         // https 보안 이슈로 주석처리합니다.
         // async function wiseSaying(){
