@@ -5,13 +5,20 @@ import Footer from "../components/Footer";
 const LastPage = () => {
 
     const [satanUrl, setSatanUrl] = useState("");
+    const [loading, setLoading] = useState(true); // 로딩 중이면 트루, 로딩이 끝났으면 펄스
     const navigate = useNavigate();
 
     useEffect(()=>{
 
         const fetchImage =async()=>{
-            const response = await fetch("https://loremflickr.com/320/240/satan");
-            setSatanUrl(response.url);
+            const response = await fetch("https://loremflickr.com/320/300/satan");
+            if(response.ok){
+                setSatanUrl(response.url);
+            }else{
+                console.error("이미지씨가 도착하지 못 했읍니다.. 이미지씨 어딨어요?!!");
+            }
+            setLoading(false); // 이미지씨가 오든 말든 로딩은 끝났으니까..
+            
         };
         fetchImage();
     }, []);
@@ -22,7 +29,7 @@ const LastPage = () => {
 
     return(
         <>
-        <img src={satanUrl}/>
+        {loading || !satanUrl ? <h2>COMING.. DEVIL</h2> : <img src={satanUrl}/>}
         <h2>결재가 완료되었습니다.</h2>
         <h3>영수증 하단 주문 번호를 확인해 주세요.</h3>
         <br/>
