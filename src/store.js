@@ -13,31 +13,51 @@ export const orderStore = create((set, get) => ({
     menuName: "",
     price: 0, // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
     quantity: 1,
-    details: "",
+    details: "",    // details key 와 value 로 이루어진 배열
+    detailsToShow: "",  // 보여주기용 details values
+    orderNum: 1,
     order: [],
 
-    eatPlace: (takeOut) => set({ takeOut }),
+    setPlace: (takeOut) => set({ takeOut }),
 
     setPrice: (detailPrice) => {
         const { price } = get(); // 현재 price 접근
         set({ price: price + detailPrice });
     },
 
+    setDetailsToShow: () => {
+        const { details } = get(); // 현재 details 접근
+        const detailValues = Object.values(details);
+        set({ detailsToShow: detailValues.join('   ||   ')});
+    },
+
     orderSingleMenu: (menuName, price, details) => set({ menuName, price, details }),
 
     singleOrder: () => {
-        const { menuName, price, quantity, details, order } = get(); // 현재 값 접근
-        const newOrder = [...order, { menuName, price, quantity, details }];
+        const { menuName, price, quantity, details, detailsToShow, order, orderNum } = get(); // 현재 값 접근
+        const newOrder = [...order, { orderNum, menuName, price, quantity, details, detailsToShow }];
         set({ order: newOrder });
+        set({ orderNum: orderNum + 1 });
     },
 
-    deleteSingleOrder: (index) => {
+    deleteSingleOrder: (num) => {
         const { order } = get();
-        const deletedOrder = order.filter((ord) => ord.index !== parseInt(index));
+        const deletedOrder = order.filter((ord) => ord.orderNum !== parseInt(num));
         set({ order: deletedOrder });
     },
 
-    reset: () => set({ takeOut: false, menuName: '', price: 0, quantity: 1, details: '' }),
+    reduceQuantity: (num) =>{
+        const { order } = get();
+        const redQttOrder = order.map((ord)=> {
+            if(ord.orderNum === parseInt(num)){
+                return {...ord, quantity: ord.quantity - 1};
+            }
+            return ord;
+        });
+        set({ order : redQttOrder});
+    },
+
+    reset: () => set({ takeOut: false, menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '' }),
 }));
 
 export const orderHistory = create((set) => ({
