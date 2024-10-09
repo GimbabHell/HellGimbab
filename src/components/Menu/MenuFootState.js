@@ -3,14 +3,13 @@
 // 시간초 카운터
 // 결제 버튼 (장바구니 확인)
 
-import { useNavigate } from "react-router-dom";
 import { orderStore } from "../../store";
 import MenuOrder from "./MenuOrder";
 import { useState } from "react";
+import OrderCheck from "./OrderCheck";
 
 const MenuFootState = ()=>{
 
-    const navigate = useNavigate();
     const { clearAll } = orderStore();
     const [show, setShow] = useState(false);
 
@@ -18,7 +17,8 @@ const MenuFootState = ()=>{
         <>
             <MenuOrder />
             <button onClick={()=>clearAll()}>전체삭제</button>
-            <button onClick={()=>navigate('/paycheck')}>주문하기</button>
+            <button onClick={()=> setShow(true)}>주문하기</button>
+            <OrderCheck show={show} setShow={setShow} />
         </>
     )
 }

@@ -66,14 +66,16 @@ const MenuOrder = ()=>{
     useEffect(()=>{
         
         const orderList = order.map((singleOrder,index)=> {
-            return <ul>
-                <button onClick={()=>deleteSingleOrder(singleOrder.orderNum)}>X</button>
-                <li key={index}>{singleOrder.menuName}
+            let num = index + 1;
+            return <ul><li key={index}>
+                    <button onClick={()=>deleteSingleOrder(singleOrder.orderNum)}>X</button>            
+                    <span>  {num}   </span>
+                    <span> {singleOrder.menuName} </span>
                     <button onClick={()=>reduceQuantity(singleOrder.orderNum)}>-</button>
-                    {singleOrder.quantity}
+                    <span> {singleOrder.quantity} </span>
                     <button onClick={()=>addQuantity(singleOrder.orderNum)}>+</button>
-                    <h5>{singleOrder.detailsToShow}</h5>
-                    <h4>{singleOrder.unitPrice}</h4>                    
+                    <span> {singleOrder.unitPrice} </span>
+                    <h5>{singleOrder.detailsToShow}</h5>                    
                     </li></ul>
         });
 

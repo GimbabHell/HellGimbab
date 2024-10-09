@@ -11,7 +11,7 @@ const MenuState = ({menus})=>{
         return(
             
             <li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu})}}>
-            {menu.menuCode}  {menu.categoryCode}  {menu.name}  {menu.price}  {menu.description} <img src={menu.imgURL}/> </li>
+            {menu.name}  {menu.price} <img src={menu.imgURL}/> </li>
         )
     })
     
