@@ -38,9 +38,11 @@ export const Option = ({ item, index, group }) => {
             <li>
                 <input type="checkbox" name={group} id={`${group}-${index}`} onChange={(e) => onChangeHandler(e, group)} value={item.name} required={isRequired} checked={isChecked} />
                 <label htmlFor={`${group}-${index}`}>
-                    <img src={item.imgURL} alt={item.name} />
-                    <span className="name">{item.name}</span>
-                    <span className="price">{item.price >= 0 ? `+${item.price}원` : `${item.price}원`}</span>
+                    <div>
+                        <img src={item.imgURL} alt={item.name} />
+                    </div>
+                    <p className="name">{item.name}</p>
+                    <p className="price">{item.price >= 0 ? `+${item.price}원` : `${item.price}원`}</p>
                 </label>
             </li>
         </>
