@@ -7,7 +7,8 @@ import { orderStore } from "../../store";
 
 const MenuOrder = ()=>{
 
-    const {price, details, singleOrder, order, deleteSingleOrder, setPrice, reset, reduceQuantity} = orderStore();
+    const {price, details, singleOrder, order, deleteSingleOrder, setItemPrice, reset, reduceQuantity, 
+        addQuantity, setDetailPrice, setUnitPrice, setTotalObjNum, setTotalPrice, totalObjNum, totalPrice} = orderStore();
     const [orders, setOrders] = useState();
 
 
@@ -27,7 +28,6 @@ const MenuOrder = ()=>{
             for(let k=0; k < detailKeys.length; k++){
                 if(detailKeys[k] === "rice"){
                     const riceValue = details.rice;
-                    console.log(detailPrice);
                     if(riceValue === "건두부"){ detailPrice += 300;}
                 }else if(detailKeys[k] === "dipping"){
                     const dippingValue = details.dipping;
@@ -45,9 +45,15 @@ const MenuOrder = ()=>{
                     }
                 }
             }
+            // zustand에 details 선택으로 인한 추가금 저장
+            setDetailPrice(detailPrice);
 
-            // zustand로 기본가격에 추가금 계산
-            setPrice(detailPrice);
+            // zustand에  price + detailsPrice 저장
+            setItemPrice();
+            
+            // zustand에 itemPrice * quantity 저장
+            setUnitPrice();
+            
             // 장바구니 추가
             singleOrder();
             // zustand의 한개 메뉴 비우기
@@ -64,6 +70,9 @@ const MenuOrder = ()=>{
     const onClickReduce = orderNum =>{
         reduceQuantity(orderNum);
     };
+    const onClickAdd = orderNum =>{
+        addQuantity(orderNum);
+    };
 
     useEffect(()=>{
         const orderList = order.map((singleOrder,index)=> {
@@ -72,12 +81,23 @@ const MenuOrder = ()=>{
                 <li key={index}>{singleOrder.menuName}
                     <button onClick={()=>onClickReduce(singleOrder.orderNum)}>-</button>
                     {singleOrder.quantity}
-                    <button>+</button>
+                    <button onClick={()=>onClickAdd(singleOrder.orderNum)}>+</button>
                     <h5>{singleOrder.detailsToShow}</h5>
-                    <h4>{singleOrder.price}</h4>                    
+                    <h4>{singleOrder.unitPrice}</h4>                    
                     </li></ul>
         });
+        // 보여주기위한 장바구니 리스트
         setOrders(orderList);
+        // 총 상품 개수
+        setTotalObjNum(orderList.length);
+
+        let price = 0;
+        for(let i = 0; i<order.length; i++){
+            // setTotalPrice(value => value + parseInt(orderList[i].price));
+            price += parseInt(order[i].unitPrice);
+        }
+
+        setTotalPrice(price);
     },[order]);
     
 
@@ -86,7 +106,8 @@ const MenuOrder = ()=>{
     return(
         <>
             {orders}
-            <button>전체삭제</button>
+            <p>선택한 상품 {totalObjNum} 개 </p>
+            <p>TOTAL {totalPrice} 원 </p>
         </>
     )
 }
