@@ -8,7 +8,6 @@ const MenuState = ({menus})=>{
     const navigate = useNavigate();
 
     const menuList = menus.map((menu)=>{
-        
         return(
             
             <li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu})}}>

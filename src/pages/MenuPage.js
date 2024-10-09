@@ -10,13 +10,14 @@ const MenuPage = () => {
     const orderData = location.state;
 
     // zustand orderStore
-    const { orderSingleMenu } = orderStore();
+    const { orderSingleMenu, setDetailsToShow } = orderStore();
 
     useEffect(() => {
         if (orderData !== null) {
             const menu = orderData.menu;
             const details = orderData.selectedValues;
             orderSingleMenu(menu.name, menu.price, details);
+            setDetailsToShow();
         }
     }, [orderData]);
 

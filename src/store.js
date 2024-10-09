@@ -11,33 +11,90 @@ import { create } from "zustand";
 export const orderStore = create((set, get) => ({
     takeOut: false, //false: 매장식사, true: 포장주문
     menuName: "",
-    price: 0, // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
     quantity: 1,
-    details: "",
+    details: "",    // details key 와 value 로 이루어진 배열
+    detailsToShow: "",  // 보여주기용 details values
+    orderNum: 1,
+    price: 0, // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
+    detailsPrice: 0,       // details 선택으로 인한 추가금
+    itemPrice: 0,          // price + detailsPrice
+    unitPrice: 0,           // itemPrice * quantity
+    totalPrice: 0,
+    totalObjNum: 0,
     order: [],
 
-    eatPlace: (takeOut) => set({ takeOut }),
+    clearAll: () => set({ order: [] }),
 
-    setPrice: (detailPrice) => {
-        const { price } = get(); // 현재 price 접근
-        set({ price: price + detailPrice });
+    setPlace: (takeOut) => set({ takeOut }),
+
+    setDetailPrice: (detailsPrice) => set({detailsPrice}),
+
+    setItemPrice: () => {
+        const { price, detailsPrice } = get(); // 현재 price 접근
+        set({ itemPrice: price + detailsPrice });
+    },
+
+    setUnitPrice: () => {
+        const { itemPrice, quantity} = get();
+        set({ unitPrice: itemPrice * quantity});
+    },
+
+    setTotalPrice: (totalPrice) => set({totalPrice}),
+
+    setTotalObjNum: (totalObjNum) => set({totalObjNum}),
+
+    setDetailsToShow: () => {
+        const { details } = get(); // 현재 details 접근
+        const detailValues = Object.values(details);
+        set({ detailsToShow: detailValues.join('   ||   ')});
     },
 
     orderSingleMenu: (menuName, price, details) => set({ menuName, price, details }),
 
     singleOrder: () => {
-        const { menuName, price, quantity, details, order } = get(); // 현재 값 접근
-        const newOrder = [...order, { menuName, price, quantity, details }];
+        const { menuName, price, quantity, details, detailsToShow, order, orderNum, detailsPrice, itemPrice, unitPrice } = get(); // 현재 값 접근
+        const newOrder = [...order, { orderNum, menuName, price, quantity, details, detailsToShow, detailsPrice, itemPrice, unitPrice }];
         set({ order: newOrder });
+        set({ orderNum: orderNum + 1 });
     },
 
-    deleteSingleOrder: (index) => {
+    deleteSingleOrder: (num) => {
         const { order } = get();
-        const deletedOrder = order.filter((ord) => ord.index !== parseInt(index));
+        const deletedOrder = order.filter((ord) => ord.orderNum !== parseInt(num));
         set({ order: deletedOrder });
     },
 
-    reset: () => set({ takeOut: false, menuName: "", price: "", quantity: "", details: "" }),
+    reduceQuantity: (num) =>{
+        const { order } = get();
+        const redQttOrder = order.map((ord)=> {
+            if(ord.orderNum === parseInt(num)){
+                if(ord.quantity > 1){
+                    return {...ord, quantity: ord.quantity - 1,
+                                    unitPrice: ord.unitPrice - ord.itemPrice
+                    };
+                }
+            }
+            return ord;
+        });
+        set({ order : redQttOrder});
+    },
+
+    addQuantity: (num) =>{
+        const { order } = get();
+        const addQttOrder = order.map((ord)=> {
+            if(ord.orderNum === parseInt(num)){
+                if(ord.quantity < 10){
+                    return {...ord, quantity: ord.quantity + 1,
+                                    unitPrice: ord.unitPrice + ord.itemPrice
+                    };
+                }
+            }
+            return ord;
+        });
+        set({ order : addQttOrder});
+    },
+
+    reset: () => set({ takeOut: false, menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 }));
 
 export const orderHistory = create((set) => ({

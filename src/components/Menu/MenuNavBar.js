@@ -11,8 +11,9 @@ const MenuNavBar =()=>{
 
     useEffect(()=>{
 
+        // 디폴트로 김밥류 보여주기
         navi("/menu/1");
-        // 1. 메뉴카테고리 배열 가져오기(categoryCode, name, products 포함 객체 배열)
+        // 메뉴카테고리 배열 가져오기(categoryCode, name, products 포함 객체 배열)
         const cate = getWholeMenuCate();
         setCategories(cate);
 
