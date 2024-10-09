@@ -10,14 +10,22 @@ import OrderCheck from "./OrderCheck";
 
 const MenuFootState = ()=>{
 
-    const { clearAll } = orderStore();
+    const { clearAll, order } = orderStore();
     const [show, setShow] = useState(false);
+
+    const showModal = ()=>{
+        if(order.length !== 0){
+            setShow(true)
+        }else{
+            alert("뭐라도 담고 주문해주세요~");
+        }
+    };
 
     return(
         <>
             <MenuOrder />
             <button onClick={()=>clearAll()}>전체삭제</button>
-            <button onClick={()=> setShow(true)}>주문하기</button>
+            <button onClick={()=> showModal()}>주문하기</button>
             <OrderCheck show={show} setShow={setShow} />
         </>
     )
