@@ -1,7 +1,7 @@
 // 장바구니
 // menu 선택 --> detail 선택후 추가 --> menu 창으로 돌아와서 장바구니에 자동추가
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getToppingDetails } from "../../api/MenuApi";
 import { orderStore } from "../../store";
 
@@ -63,29 +63,20 @@ const MenuOrder = ()=>{
     },[details]);
 
 
-    const onClickDelete = orderNum =>{
-        deleteSingleOrder(orderNum);
-    };
-
-    const onClickReduce = orderNum =>{
-        reduceQuantity(orderNum);
-    };
-    const onClickAdd = orderNum =>{
-        addQuantity(orderNum);
-    };
-
     useEffect(()=>{
+        
         const orderList = order.map((singleOrder,index)=> {
             return <ul>
-                <button onClick={()=>onClickDelete(singleOrder.orderNum)}>X</button>
+                <button onClick={()=>deleteSingleOrder(singleOrder.orderNum)}>X</button>
                 <li key={index}>{singleOrder.menuName}
-                    <button onClick={()=>onClickReduce(singleOrder.orderNum)}>-</button>
+                    <button onClick={()=>reduceQuantity(singleOrder.orderNum)}>-</button>
                     {singleOrder.quantity}
-                    <button onClick={()=>onClickAdd(singleOrder.orderNum)}>+</button>
+                    <button onClick={()=>addQuantity(singleOrder.orderNum)}>+</button>
                     <h5>{singleOrder.detailsToShow}</h5>
                     <h4>{singleOrder.unitPrice}</h4>                    
                     </li></ul>
         });
+
         // 보여주기위한 장바구니 리스트
         setOrders(orderList);
         // 총 상품 개수

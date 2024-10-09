@@ -6,11 +6,13 @@
 import { useNavigate } from "react-router-dom";
 import { orderStore } from "../../store";
 import MenuOrder from "./MenuOrder";
+import { useState } from "react";
 
 const MenuFootState = ()=>{
 
     const navigate = useNavigate();
     const { clearAll } = orderStore();
+    const [show, setShow] = useState(false);
 
     return(
         <>
