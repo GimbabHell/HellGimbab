@@ -28,7 +28,7 @@ const LastPage = () => {
         <br/>
         <h4>"우리 김밥지옥 먹어줘서 고맙다!"</h4>
         <br/>
-        <button onClick={onClickHandler}>Return to Hell</button>
+        <button onClick={onClickHandler}>RETURN TO HELL</button>
         <br/>
         <Footer/>
 
