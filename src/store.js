@@ -39,7 +39,7 @@ export const orderStore = create((set, get) => ({
         set({order: deletedOrder});
     },
 
-    reset: () => set({ takeOut: false, menuName: "", price: "", quantity: "", details: "" }),
+    reset: () => set({ takeOut: false, menuName: '', price: 0, quantity: 1, details: '' }),
 }));
 
 export const orderHistory = create((set) => ({

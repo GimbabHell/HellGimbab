@@ -19,6 +19,7 @@ const MenuPage = () => {
             const menu = orderData.menu;
             const details = orderData.selectedValues;
             orderSingleMenu(menu.name, menu.price, details);
+            console.log(orderData);
         }
         
     },[orderData]);
