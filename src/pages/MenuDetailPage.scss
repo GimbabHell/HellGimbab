@@ -1,0 +1,181 @@
+@import "../Common";
+
+.menuDetail {
+    .menuBox {
+        display: flex;
+        align-items: center;
+        padding: 12px 60px;
+        justify-content: space-between;
+
+        > div {
+            display: flex;
+            align-items: center;
+            img {
+                width: 172px;
+            }
+            .name {
+                font-size: 32px;
+                font-weight: 700;
+                margin-left: 67px;
+            }
+        }
+
+        .price {
+            color: $point;
+            span {
+                font-size: 28px;
+                font-weight: 800;
+                &.num {
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+    .optionBox {
+        font-size: 22px;
+
+        position: relative;
+        font-weight: 700;
+        padding: $padding;
+        > div {
+            width: 100%;
+            min-height: 80px;
+            border-top: 1px solid #ccc;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            > div {
+                display: flex;
+                width: calc(100% - 150px);
+                .option {
+                    flex-shrink: 0;
+                }
+                .options {
+                    padding: 0 7px;
+                    line-height: 1.2;
+                    width: calc(100% - 130px);
+                }
+            }
+            .btn {
+                width: 150px;
+                height: 50px;
+                font-size: 20px;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                svg {
+                    font-size: 22px;
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+
+    .menuState {
+        background: $bgColor;
+        padding: 55px 60px 80px;
+        .scrollContainer {
+            height: 996px;
+        }
+
+        .optionList {
+            margin-top: 35px;
+            &:first-child {
+                margin-top: 0;
+            }
+            > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .subCategoryName {
+                    font-size: 24px;
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                }
+                .scrollNext {
+                    display: none;
+                    color: #666;
+                    font-size: 18px;
+                    font-weight: 700;
+                    svg {
+                        font-size: 16px;
+                    }
+                    &.show {
+                        display: block;
+                    }
+                }
+            }
+
+            ul {
+                display: flex;
+                overflow-x: auto;
+                li {
+                    width: 210px;
+                    height: 245px;
+                    margin-right: 20px;
+                    flex-shrink: 0;
+                    text-align: center;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    input {
+                        display: none;
+                        &:checked {
+                            + label {
+                                border: 3px solid $point;
+                            }
+                        }
+                    }
+                    label {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        border: 1px solid #ccc;
+                        background: #fff;
+                        > div {
+                            height: 154px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 20px;
+                            position: relative;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                bottom: 0;
+                                left: 50%;
+                                width: 120px;
+                                margin-left: -60px;
+                                height: 1px;
+                                background: #ccc;
+                            }
+
+                            img {
+                                width: 130px;
+                            }
+                        }
+                        p {
+                            font-weight: 700;
+                        }
+                        .name {
+                            font-size: 22px;
+                            margin-bottom: 5px;
+                        }
+                        .price {
+                            font-size: 20px;
+                            color: $point;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
