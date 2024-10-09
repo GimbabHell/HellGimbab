@@ -1,50 +1,61 @@
-
-import MemberCheckNumber from "../components/PayCheck/MemberCheckNumber"
-
+import MemberCheckNumber from "../components/PayCheck/MemberCheckNumber";
 import { useState } from "react";
-import NaverPay from "../components/PayCheck/NaverPay";
-import KakaoPay from "../components/PayCheck/KakaoPay";
-import CardPay from "../components/PayCheck/CardPay";
 
 
-const PayCheckPage = () => {
-    const {totalCount, setTotalCount} = useState("");
-    // 불러와야 하는 총 금액 !
-    
-    const {pay, setPay} = useState("");
-    // 카드결제-> 0, 카카오페이-> 1, 네이버페이->2
+const PayCheckPage = ({ totalCount }) => {
+    const [pay, setPay] = useState(null);
+    const [show, setShow] = useState(false);
+    // const [isPointsUsed, setIsPointsUsed] = useState(false);
+    const [push, setPush] = useState(0);
 
-    const onClickHandler= () => {
-        if(pay ==  0){
-            <CardPay totalCount={totalCount}/>
-        }else if(pay == 1){
-            <KakaoPay totalCount={totalCount}/>
+    const onClickHandler = () => {
+        setShow(true);
+        // setIsPointsUsed(true);
+    };
 
-        } else{<NaverPay totalCount={totalCount}/>
-    }}
+    // const selectPaymentMethod = (method) => {
+    //     if (!isPointsUsed && method !== null) {
+    //         alert("포인트 사용 여부를 확인해 주세요.");
+    //         return;
+    //     }
+    //     setPay(method);
+    // };
 
+    // const renderPaymentComponent = () => {
+    //     switch (pay) {
+    //         case 0:
+    //             return <CardPay totalCount={totalCount} />;
+    //         case 1:
+    //             return <KakaoPay totalCount={totalCount} />;
+    //         case 2:
+    //             return <NaverPay totalCount={totalCount} />;
+    //         default:
+    //             return null;
+    //     }
+    // };
 
-    return(
+    const handleNotUsingPoints = () => {
+        // setIsPointsUsed(false);
+        setShow(false); 
+    };
 
+    return (
         <>
-        <p>포인트 사용 여부 확인</p>
-        <button onClick = {<MemberCheckNumber/>}>사용</button>
-        <button>사용안함</button>
+            <p>포인트 사용 여부 확인</p>
+            <button onClick={onClickHandler}>사용</button>
+            {show ? <MemberCheckNumber push={push}/> : null}
 
-        <p>결제 수단 선택</p>
-        <button onClick = {setPay(0)}>카드결제</button>
-        <button onClick = {setPay(1)}>카카오Pay</button>
-        <button onClick = {setPay(2)}>네이버Pay</button> 
-        {/* 결제수단이 alert 느낌으로 띄우고 싶으면 component 로 만들어놔야 한다..*/}
+            <button onClick={handleNotUsingPoints}>사용안함</button>
 
-        {/* <h4>결제 금액 :  {}</h4>
-        <h4>포인드 사용   {}</h4> */}
-        <h2>최종 결제 금액  {}</h2> 
-        {/* 최종 결제 금액 -> 가지고와야댐 zustand로 */}
-        <button onClick={onClickHandler}>결제</button>
+            <p>결제 수단 선택</p>
+            <button onClick={() => setPush(0)}>카드결제</button>
+            <button onClick={() => setPush(1)}>카카오Pay</button>
+            <button onClick={() => setPush(2)}>네이버Pay</button>
 
+            <h2>최종 결제 금액: {totalCount}</h2>
+            {/* {renderPaymentComponent()} */}
         </>
-    )
-}
+    );
+};
 
 export default PayCheckPage;

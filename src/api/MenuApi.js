@@ -15,5 +15,5 @@ export function getMenuFromCate(catecode){
 
 // 토핑 detail들만 반환
 export function getToppingDetails(){
-    return menuDetails.filter((detail)=> detail.subCategoryCode === parseInt(5));
+    return menuDetails.filter((detail)=> detail.subCategoryCode === 1005);
 }
