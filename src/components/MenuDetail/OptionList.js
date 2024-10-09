@@ -1,5 +1,6 @@
 import { Option } from "./Option";
 import { Option2 } from "./Option2";
+import { FaAngleRight } from "react-icons/fa6";
 
 export const OptionList = ({ cate, subCategoryName, group }) => {
     if (subCategoryName === "밥" || subCategoryName === "디핑소스" || subCategoryName === "소스" || subCategoryName === "컵누들" || subCategoryName === "컵라면" || subCategoryName === "음료") {
@@ -12,7 +13,12 @@ export const OptionList = ({ cate, subCategoryName, group }) => {
 
     return (
         <div className="optionList">
-            <h4 className="subCategoryName">{subCategoryName}</h4>
+            <div>
+                <h4 className="subCategoryName">{subCategoryName}</h4>
+                <p className={`scrollNext ${cate.length > 4 ? "show" : ""}`}>
+                    옆으로 넘겨보세요 <FaAngleRight />
+                </p>
+            </div>
             <ul>
                 {cate.map((item, index) => {
                     if (item.subCategoryCode === 1002 || item.subCategoryCode === 1005) {
