@@ -5,7 +5,9 @@ import { checkDetail } from "../../store";
 export const Option2 = ({ item, index, group }) => {
     const { setSelectedValues } = checkDetail();
 
-    const onChangeHandler = (e, group) => setSelectedValues(group, e.target.value);
+    const onChangeHandler = (e, group) => {
+        setSelectedValues(group, e.target.value);
+    };
 
     return (
         <>
