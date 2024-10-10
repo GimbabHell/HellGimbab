@@ -7,7 +7,7 @@ import { useMemberStore,orderStore} from "../../store";
 // import KakaoPay from "./KakaoPay";
 // import CardPay from "./CardPay";
 
-const MemberCheckPoint = ({ num, poiint, setShow}) => {
+const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
     const [plusPointNumber, setPlusPointNumber] = useState(""); 
     // const [totalCount, setTotalCount] = useState(0);  //남아있는 포인트
     // const [lastPrice, setLastPrice] = useState(0); // 최최종 결제 금액
@@ -27,13 +27,13 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
     const onClickHandler2 = useCallback(() => {
         console.log(num);
         
-         subtractPoints(num, plusPointNumber); // 기존포인트 - 사용할포인트
+         subtractPoints(num, plusPointNumber); 
+         // num: 회원번호, plusPointNumber: 사용하고픈 포인트
 
-         // 최최종가격 = 기존totalprice - 사용할포인트
-
-        if ( poiint >= plusPointNumber) {
+        if ( poiint >= plusPointNumber){
             // setTotalCount(total);
             alert("확인!");
+            setDefa(plusPointNumber);
             setShow(false);
             // setLastPrice(totalPrice-plusPointNumber);
             navigate(`/paycheck?poiint=${num}`); 
@@ -43,26 +43,19 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
         }
     }, [plusPointNumber, num, navigate, subtractPoints]);
 
-    // const renderPaymentComponent = useCallback(() => {
-    //     switch (push) {
-    //         case 0:
-    //             return <CardPay totalCount={totalCount} />;
-    //         case 1:
-    //             return <KakaoPay totalCount={totalCount} />;
-    //         case 2:
-    //             return <NaverPay totalCount={totalCount} />;
-    //         default:
-    //             return alert("결제 수단을 선택해주세요!");
-    //     }
-    // }, [push, totalCount]);
-
     const onClickHandler3 = () => {
         setPlusPointNumber(""); 
     }
 
+    const onClickHandlerr = () => {
+        setDefa(0);
+        setShow(false);
+        navigate(`/paycheck?poiint=${num}`);
+    }
+
     const handlePayment = () => {
         setShow(false);
-        console.log(poiint);
+        // console.log(poiint);
         navigate(`/payCheck?poiint=${num}`); 
         }
 
@@ -77,7 +70,7 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
             {poiint === 0 ? (
                 <div>
                     <h4>고객님의 누적 포인트는 0원입니다. 사용하기 버튼을 누르시면 바로 결제로 넘어갑니다.</h4>
-                    <button onClick={onClickHandler2}>사용하기</button>
+                    <button onClick={onClickHandlerr}>사용하기</button>
                 </div>
             ) : (
                 <>

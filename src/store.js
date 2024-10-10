@@ -150,13 +150,13 @@ export const useMemberStore = create((set, get) => ({
     members : [],
 
 
-    // 회원 추가
+    // 회원 추가 
     add: (phoneNumber, point) => {
         set(state => {
             const exists = state.members.some(member => member.phoneNumber === phoneNumber);
             if (!exists) {
                 return {
-                    members: [...state.members, { phoneNumber, point }],
+                    members: [...state.members, { phoneNumber, point}],
                     phoneNumber: '',
                     point: 0
                 };
@@ -171,7 +171,7 @@ export const useMemberStore = create((set, get) => ({
         set(state => {
             const members = state.members.map(member => {
                 if (member.phoneNumber === phoneNumber) {
-                    return { ...member, point: member.point + pointsToAdd };
+                    return { ...member, point: parseInt(member.point) + parseInt(pointsToAdd) };
                 }
                 return member;
             });

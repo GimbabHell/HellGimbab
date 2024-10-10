@@ -3,13 +3,15 @@ import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
 
-const MemberCheckNumber = ({setShow}) => {
+const MemberCheckNumber = ({setShow, setDefa}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
+    const {members} = useMemberStore();
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const getPoints = useMemberStore(state => state.getPoints);
+    const addPoints = useMemberStore(state => state.addPoints);
     const [showw, setShoww] = useState(false);
     const nevi = useNavigate();
     
@@ -36,8 +38,9 @@ const MemberCheckNumber = ({setShow}) => {
 
         const memb = findMember(num);
         
-        if (memb !== null) {
+        if (memb) {
             setShoww(true);
+            
         } else {
             add(num, 0);
             setShoww(true);
@@ -80,7 +83,7 @@ const MemberCheckNumber = ({setShow}) => {
                 ))}
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
-                {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} /> : null}
+                {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
             </div>
         </>
     );
