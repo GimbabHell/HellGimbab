@@ -55,6 +55,8 @@ const OrderCheck= ({show, setShow})=>{
                     backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
                 }
                 }}
+
+                className="orderModal"
             >
 
             <h2>주문리스트</h2>
