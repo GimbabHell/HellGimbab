@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom"
 import { getWholeMenuCate } from "../../api/MenuApi";
+import MenuNavBarStyle from './MenuNavBar.css';
 
 const MenuNavBar =()=>{
 
@@ -28,9 +29,11 @@ const MenuNavBar =()=>{
 
 
     return(
-        <ul>
-            {categoryList}
-        </ul>
+        <nav>
+            <ul>
+                {categoryList}
+            </ul>
+        </nav>
         
     )
 }

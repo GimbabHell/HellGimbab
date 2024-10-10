@@ -1,0 +1,100 @@
+.home {
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+.home .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+.home .bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.home .cont {
+  padding-top: 128px;
+}
+.home .cont .logo {
+  margin-bottom: 185px;
+}
+.home .cont .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 162px;
+}
+.home .cont .info p {
+  color: #ccc;
+  font-size: 24px;
+  font-weight: 800;
+}
+.home .cont .info .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .cont .info .left img {
+  width: 95px;
+}
+.home .cont .imgBox {
+  width: 700px;
+  height: 616px;
+  margin: 0 auto;
+}
+.home .cont .altText {
+  font-size: 48px;
+  font-weight: 700;
+  color: #8B8B8B;
+  line-height: 616px;
+}
+.home .cont .txt {
+  font-size: 48px;
+  font-weight: 700;
+  color: #8B8B8B;
+  margin-top: 180px;
+  line-height: 70px;
+}
+.home .btn-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.home .btn-wrap button {
+  height: 280px;
+  width: 50%;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  font-family: "Gowun Batang", serif;
+  background: #bd2030;
+}
+.home .btn-wrap button span {
+  font-size: 40px;
+  margin-left: 25px;
+  font-weight: 400;
+}
+.home .btn-wrap button:last-of-type {
+  background: #D62839;
+}
