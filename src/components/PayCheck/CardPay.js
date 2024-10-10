@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
+import { useNavigate } from "react-router-dom";
 
 const CardPay = ({ totalCount }) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const navi = useNavigate();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -23,12 +27,27 @@ const CardPay = ({ totalCount }) => {
         setLoading(false);
     };
 
+    const onClickHandler = () => {
+        setShow(true);
+    };
+
+    const onClickHandler2 = () => {
+        navi("/lastpage");
+
+    };
+
     return (
         <>
             <h2>카드 결제 안내</h2>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
+                <>
                 <h3>결제가 완료되었습니다! 감사합니다.</h3>
+                <h2>포인트 적립을 하시겠습니까 ?</h2>
+                <button onClick={onClickHandler}>적립하기</button>
+                <button onClick={onClickHandler2}>적립 건너뛰기</button>
+
+                </>
             ) : (
                 <>
                     <h3>결제금액: {totalCount}</h3>
@@ -42,8 +61,7 @@ const CardPay = ({ totalCount }) => {
                     </h5>
                 </>
             )}
-            <PointSave totalCount={totalCount} />
-            {paymentSuccess && <button onClick={handleRetry}>다시 결제하기</button>}
+            {show? <PointSave totalCount={totalCount}/>:navi("/lastpage")}
         </>
     );
 };
