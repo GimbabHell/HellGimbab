@@ -18,6 +18,7 @@ const HomePage = () => {
     const [satanUrl, setSatanUrl] = useState(``);
     const [loading, setLoading] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
+    const [fadeOut, setFadeOut] = useState(false);
 
     // const [aboutDeath, setAboutDeath] = useState("");
 
@@ -64,19 +65,29 @@ const HomePage = () => {
             }else{
                 console.error("이미지씨.. 어딨나요? ㅠㅠ");
             }
-
-             setTimeout(() => {
-                setIsVisible(true);
-                setLoading(false);
-            }, 3000);
-            console.log(isVisible);
-
+            
+            setLoading(false);
 
             
         }
-        weatherAtLocationAndfetchImage();      
+        weatherAtLocationAndfetchImage();
 
-    }, []);
+        }, []);
+
+    useEffect(() => {
+        
+        if (!loading) {
+            // 로딩이 끝나면 페이드 아웃 시작
+            setFadeOut(true);
+            setTimeout(() => {
+                setIsVisible(true); // 새로운 정보가 보이도록 설정
+                setFadeOut(false); // 페이드 아웃 상태 해제
+            }, 1000); // 페이드 아웃 시간과 일치시킴
+        } else {
+            setIsVisible(false); // 로딩 중에는 정보 숨김
+        }
+    }, [loading]);
+    
     console.log(isVisible);
     return (
 
@@ -85,28 +96,28 @@ const HomePage = () => {
             <div className={`cont`}>
                 <h1 className="logo">Gimbab HELL</h1>
                 <div className={`info`}>
-                    {loading ?
-                    <>
-                        <div className="left">
-                            <img src={"../images/logo/weatherOfHell.png"}/> 
-                            <p>HELL</p>
-                        </div>
-                        <div className="right">
-                            <p>99999999℃ | THREE SUNS</p>
-                        </div>
-                    </>
-                        :
-                    <>
-                        <div className={`left fade-in ${isVisible ? 'visible' : ''}`}>
-                            <img src={iconURL}/> 
-                            <p>{cityName}</p>
-                        </div>
-                        <div className={`right fade-in ${isVisible ? 'visible' : ''}`}>
-                            <p>{`${temp}℃ | ${weather}`}</p>
-                        </div>
-                    </> 
-                    }
-                </div>
+            {loading ? (
+                <>
+                    <div className="left">
+                        <img src={"../images/logo/weatherOfHell.png"} alt="로고" />
+                        <p>HELL</p>
+                    </div>
+                    <div className="right">
+                        <p>99999999℃ | THREE SUNS</p>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className={`left fade-in ${fadeOut ? 'fade-out hidden' : ''} ${isVisible ? 'visible' : ''}`}>
+                        <img src={iconURL} alt="날씨 아이콘" />
+                        <p>{cityName}</p>
+                    </div>
+                    <div className={`right fade-in ${fadeOut ? 'fade-out hidden' : ''} ${isVisible ? 'visible' : ''}`}>
+                        <p>{`${temp}℃ | ${weather}`}</p>
+                    </div>
+                </>
+            )}
+        </div>
                 <div className={`imgBox`}>
                     {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
                 </div>
