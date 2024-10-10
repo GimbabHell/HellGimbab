@@ -1,0 +1,105 @@
+@import '../../Common';
+
+
+.menuFootState {
+    display: flex;
+    .menuOrder {
+        width: calc(100% - 200px);
+        padding: 45px 60px 0;
+        ul {
+            height: 224px;
+            
+            overflow-y: auto;
+            margin-bottom: 20px;
+            li {
+                
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 14px;
+                > div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                .num {
+                    margin: 0 35px 0 25px;
+                }
+                button {
+                    background: none;
+                    color: #ccc;
+                    vertical-align: top;
+                    svg {
+                        font-size: 24px;
+                    }
+                    &.btn-x {
+                        color: #1a1a1a;
+                    }
+                }
+                .notoSans {
+                    font-size: 20px;
+                    line-height: 24px;
+                    font-weight: 400;
+                    margin: 0 15px;
+                }
+                .price {
+                    width: 120px;
+                    display: inline-block;
+                    text-align: right;
+                }
+
+                h5 {
+                    margin-left: 110px;
+                    margin-top: 5px;
+                    font-size: 16px;
+                    width: 340px;
+                    word-break: keep-all;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+               
+            }
+        }
+        .orderBottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            p {
+                font-weight: 700;
+                font-size: 22px;
+                span {
+                    font-weight: 400;
+                    &.red {
+                        color: $point;
+                        font-weight: 700;
+                    }
+                }
+                &:last-child {
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+    
+    .menu-btn-wrap {
+        width: 200px;
+        .btn {
+            flex-direction: column;
+            width: 100%;
+            &-black {
+                height: 130px;
+            }
+            &-red {
+                height: 226px;
+            }
+            p {
+                margin-top: 8px;
+              
+                
+            }
+        }
+    }
+}

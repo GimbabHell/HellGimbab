@@ -32,6 +32,9 @@ a {
 }
 
 .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 700;
     color: #fff;
@@ -47,6 +50,9 @@ a {
     }
     &-gray {
         background: #666;
+    }
+    &-black {
+        background: $black;
     }
 }
 .btn-wrap {

@@ -1,0 +1,62 @@
+.menuContainer {
+  padding: 64px 60px;
+  background: #f5f5f5;
+}
+.menuContainer .scrollContainer {
+  height: 889px;
+}
+.menuContainer .scrollContainer > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.menuContainer .scrollContainer > ul > li {
+  width: 210px;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 20px 0;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.menuContainer .scrollContainer > ul > li:nth-child(4n) {
+  margin-right: 0;
+}
+.menuContainer .scrollContainer > ul > li:nth-child(-n+4) {
+  margin-top: 0;
+}
+.menuContainer .scrollContainer > ul > li .imgBox {
+  width: 172px;
+  height: 172px;
+  margin: 0 auto 17px;
+  position: relative;
+}
+.menuContainer .scrollContainer > ul > li .imgBox img {
+  width: 100%;
+}
+.menuContainer .scrollContainer > ul > li .imgBox::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 1px;
+  background: #ccc;
+  left: 50%;
+  margin-left: -60px;
+}
+.menuContainer .scrollContainer > ul > li p {
+  font-weight: 700;
+}
+.menuContainer .scrollContainer > ul > li .name {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.menuContainer .scrollContainer > ul > li .price {
+  font-size: 20px;
+  color: #bd2030;
+}
+.menuContainer .scrollContainer > ul > li.active {
+  border: 3px solid #bd2030;
+}

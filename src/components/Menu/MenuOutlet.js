@@ -27,7 +27,6 @@ const MenuOutlet =()=>{
 
     return(
         <>
-            <h1>메뉴들???</h1>
             <MenuState menus ={menus} />
             <MenuFootState />
             
