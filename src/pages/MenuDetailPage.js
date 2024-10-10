@@ -108,7 +108,10 @@ const MenuDetailPage = () => {
     };
 
     return (
+        
+        
         <div className="menuDetail">
+        {/* <div className={menuDetailStyle.menuDetail}> */}
             <div className="menuBox">
                 <div>
                     <img src={menu.imgURL} alt={menu.name} />
