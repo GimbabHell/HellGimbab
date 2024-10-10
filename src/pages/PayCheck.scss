@@ -1,0 +1,45 @@
+@import "../Common";
+
+.payCheckContainer {
+    padding: $padding;
+
+    .txtBold {
+        font-size: 28px;
+        font-weight: 700;
+    }
+    .pointUse {
+        padding: 120px 0;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        > div {
+            display: flex;
+            > div {
+                position: relative;
+            }
+            input {
+                position: absolute;
+                left: 30px;
+                opacity: 0;
+            }
+            label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 150px;
+                height: 60px;
+                font-family: "NotoSans KR", sans-serif;
+                font-size: 20px;
+                font-weight: 700;
+                color: #fff;
+                border-radius: 30px;
+                margin-left: 20px;
+                cursor: pointer;
+
+                &:last-of-type {
+                    bottom: #aaa;
+                }
+            }
+        }
+    }
+}

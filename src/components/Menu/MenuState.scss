@@ -1,14 +1,14 @@
-
-@import '../../Common';
-
+@import "../../Common";
 
 .menuContainer {
-    padding: 64px 60px;   
+    padding: 64px 60px;
     background: $bgColor;
     height: 1014px;
     .scrollContainer {
         // height: 889px;
-        overflow: visible;
+        overflow-y: visible;
+        overflow-x: hidden;
+
         > ul {
             display: flex;
             flex-wrap: wrap;
@@ -17,14 +17,15 @@
                 height: 282px;
                 margin-right: 20px;
                 margin-top: 20px;
-                padding: 20px 0;
+                // padding: 20px 0;
                 text-align: center;
                 background: #fff;
                 border: 1px solid #ccc;
-                &:nth-child(4n){
+                cursor: pointer;
+                &:nth-child(4n) {
                     margin-right: 0;
                 }
-                &:nth-child(-n+4){
+                &:nth-child(-n + 4) {
                     margin-top: 0;
                 }
 
@@ -38,7 +39,7 @@
                         width: 100%;
                     }
                     &::after {
-                        content: '';
+                        content: "";
                         position: absolute;
                         bottom: 0;
                         width: 120px;
@@ -52,7 +53,7 @@
                     font-weight: 700;
                 }
                 .name {
-                    font-size: 22px;
+                    font-size: 21px;
                     margin-bottom: 10px;
                 }
                 .price {

@@ -4,24 +4,22 @@
   height: 1014px;
 }
 .menuContainer .scrollContainer {
-  overflow: visible;
+  overflow-y: visible;
+  overflow-x: hidden;
 }
 .menuContainer .scrollContainer > ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .menuContainer .scrollContainer > ul > li {
   width: 210px;
   height: 282px;
   margin-right: 20px;
   margin-top: 20px;
-  padding: 20px 0;
   text-align: center;
   background: #fff;
   border: 1px solid #ccc;
+  cursor: pointer;
 }
 .menuContainer .scrollContainer > ul > li:nth-child(4n) {
   margin-right: 0;
@@ -52,7 +50,7 @@
   font-weight: 700;
 }
 .menuContainer .scrollContainer > ul > li .name {
-  font-size: 22px;
+  font-size: 21px;
   margin-bottom: 10px;
 }
 .menuContainer .scrollContainer > ul > li .price {
