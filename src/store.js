@@ -157,7 +157,7 @@ export const useMemberStore = create((set, get) => ({
     // 회원 추가
 
     phoneNumber : '', // 회원 전화번호
-    point : '', // 회원 포인트
+    point : 0, // 회원 포인트
     members : [],
 
 
@@ -199,7 +199,7 @@ export const useMemberStore = create((set, get) => ({
                     return { ...member, point: Math.max(0, member.point - pointsToSubtract) };
                      // 포인트가 0 이하로 떨어지지 않도록
                 }
-                return member;
+                return member.point;
             });
             return { members };
         });

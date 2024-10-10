@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
 import { useNavigate } from "react-router-dom";
 
-const CardPay = ({ totalCount }) => {
+const CardPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
-    const [show, setShow] = useState(false);
+    const nevi = useNavigate();
+    // const [show, setShow] = useState(false);
 
     const navi = useNavigate();
 
@@ -20,37 +21,40 @@ const CardPay = ({ totalCount }) => {
         }, 3000); 
 
         return () => clearTimeout(timer);
-    }, [totalCount]);
+    }, [lastPrice]);
 
-    const handleRetry = () => {
-        setPaymentSuccess(false);
-        setLoading(false);
-    };
+    // const handleRetry = () => {
+    //     setPaymentSuccess(false);
+    //     setLoading(false);
+    // };
+
+    // const onClickHandler = () => {
+    //     setShow(true);
+    // };
 
     const onClickHandler = () => {
-        setShow(true);
-    };
+        nevi("/paycheck");
+    }
 
-    const onClickHandler2 = () => {
-        navi("/last");
-
-    };
+    
 
     return (
         <>
             <h2>카드 결제 안내</h2>
+            <button onClick={onClickHandler}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
                 <>
                 <h3>결제가 완료되었습니다! 감사합니다.</h3>
-                <h2>포인트 적립을 하시겠습니까 ?</h2>
-                <button onClick={onClickHandler}>적립하기</button>
-                <button onClick={onClickHandler2}>적립 건너뛰기</button>
+                <PointSave lastPrice={lastPrice}/>
+                
+                {/* <button onClick={onClickHandler}>적립하기</button>
+                <button onClick={onClickHandler2}>적립 건너뛰기</button> */}
 
                 </>
             ) : (
                 <>
-                    <h3>결제금액: {totalCount}</h3>
+                    <h3>결제금액: {lastPrice}</h3>
                     <h5>
                         <ul>
                             <li>다음 그림과 같이 카드 리더기에 카드를 꽂아주세요.</li>
@@ -61,9 +65,9 @@ const CardPay = ({ totalCount }) => {
                     </h5>
                 </>
             )}
-            {show? <PointSave totalCount={totalCount}/>:navi("/last")}
+          
         </>
     );
-};
+}
 
 export default CardPay;

@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { getToppingDetails } from "../../api/MenuApi";
 import { orderStore } from "../../store";
+import { FaCircleXmark, FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 
 const MenuOrder = ()=>{
 
@@ -67,16 +68,29 @@ const MenuOrder = ()=>{
         
         const orderList = order.map((singleOrder,index)=> {
             let num = index + 1;
-            return <ul><li key={index}>
-                    <button onClick={()=>deleteSingleOrder(singleOrder.orderNum)}>X</button>            
-                    <span>  {num}   </span>
-                    <span> {singleOrder.menuName} </span>
-                    <button onClick={()=>reduceQuantity(singleOrder.orderNum)}>-</button>
-                    <span> {singleOrder.quantity} </span>
-                    <button onClick={()=>addQuantity(singleOrder.orderNum)}>+</button>
-                    <span> {singleOrder.unitPrice} </span>
-                    <h5>{singleOrder.detailsToShow}</h5>                    
-                    </li></ul>
+            return <li key={index}>
+                        <div>
+                            <div className="left">
+                                <button className="btn-x" onClick={()=>deleteSingleOrder(singleOrder.orderNum)}>
+                                    <FaCircleXmark />
+                                </button>            
+                                <span className="num">{num}</span>
+                                <span>{singleOrder.menuName}</span>
+                            </div>
+                            <div className="right">
+                                <button onClick={()=>reduceQuantity(singleOrder.orderNum)}>
+                                    <FaCircleMinus />
+                                </button>
+                                <span className="notoSans"> {singleOrder.quantity}개 </span>
+                                <button onClick={()=>addQuantity(singleOrder.orderNum)}>
+                                    <FaCirclePlus />
+                                </button>
+                                <span className="price">{singleOrder.unitPrice}원</span>
+                                   
+                            </div> 
+                        </div>                
+                        <h5>- {singleOrder.detailsToShow}</h5>
+                    </li>
         });
 
         // 보여주기위한 장바구니 리스트
@@ -97,11 +111,15 @@ const MenuOrder = ()=>{
 
     
     return(
-        <>
-            {orders}
-            <p>선택한 상품 {totalObjNum} 개 </p>
-            <p>TOTAL {totalPrice} 원 </p>
-        </>
+        <div className="menuOrder">
+            <ul>
+                {orders}
+            </ul>
+            <div className="orderBottom">
+                <p><span>선택한 상품</span> &nbsp;{totalObjNum}개 </p>
+                <p><span className="red">TOTAL</span> &nbsp;{totalPrice}원 </p>
+            </div>
+        </div>
     )
 }
 

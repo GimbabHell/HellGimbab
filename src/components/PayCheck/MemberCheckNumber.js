@@ -1,15 +1,17 @@
 import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
+import { useNavigate } from "react-router-dom";
 
-const MemberCheckNumber = ({push}) => {
+const MemberCheckNumber = ({setShow}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const getPoints = useMemberStore(state => state.getPoints);
-    const [show, setShow] = useState(false);
+    const [showw, setShoww] = useState(false);
+    const nevi = useNavigate();
     
     const handleButtonClick = (digit) => {
         if (num.length < 11) {
@@ -35,16 +37,20 @@ const MemberCheckNumber = ({push}) => {
         const memb = findMember(num);
         
         if (memb !== null) {
-            setShow(true);
+            setShoww(true);
         } else {
             add(num, 0);
-            setShow(true);
+            setShoww(true);
         }
 
         const p = getPoints(num);
         setPoiint(p);
         
     };
+
+    const onClickHandler = () => {
+        nevi("/paycheck"); // x를 누르면 전에 page 로 간다.
+    }
         
     const formatPhoneNumber = (number) => {
         if (number.length === 11) {
@@ -63,7 +69,7 @@ const MemberCheckNumber = ({push}) => {
             <h2>핸드폰 번호 입력</h2>
             <h3>핸드폰 번호를 입력해주세요</h3>
             <h4>{formatPhoneNumber(num)}</h4> 
-            <h4 onClick={handleClear}>x</h4>
+            <h4 onClick={onClickHandler}>x</h4>
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
 
             <div>
@@ -74,8 +80,7 @@ const MemberCheckNumber = ({push}) => {
                 ))}
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
-                
-                {show ? <MemberCheckPoint num={num} poiint={poiint} push={push}  /> : null}
+                {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} /> : null}
             </div>
         </>
     );

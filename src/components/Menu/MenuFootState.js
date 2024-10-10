@@ -7,6 +7,8 @@ import { orderStore } from "../../store";
 import MenuOrder from "./MenuOrder";
 import { useState } from "react";
 import OrderCheck from "./OrderCheck";
+import MenuFootStateStyle from './MenuFootState.css';
+import { FaTrashCan, FaCreditCard } from "react-icons/fa6";
 
 const MenuFootState = ()=>{
 
@@ -22,12 +24,19 @@ const MenuFootState = ()=>{
     };
 
     return(
-        <>
+        <div className="menuFootState">
             <MenuOrder />
-            <button onClick={()=>clearAll()}>전체삭제</button>
-            <button onClick={()=> showModal()}>주문하기</button>
+            <div className="menu-btn-wrap">
+                <button className="btn btn-black" onClick={()=>clearAll()} >
+                    <FaTrashCan /> <p>전체삭제</p>
+                </button>
+                <button className="btn btn-red" onClick={()=> setShow(true)} >
+                    <FaCreditCard />
+                    <p>주문하기</p>
+                </button>
+            </div>
             <OrderCheck show={show} setShow={setShow} />
-        </>
+        </div>
     )
 }
 

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { orderStore } from "../store";
 //import "./HomePage.css";
+import HomeStyle from "./HomePage.css";
 
 const HomePage = () => {
     // 상단에 띄울 현재 시간 state
@@ -74,7 +75,7 @@ const HomePage = () => {
         weatherAtLocation();
 
         const fetchImage =async()=>{
-            const response = await fetch("https://loremflickr.com/320/300/satan");
+            const response = await fetch("https://loremflickr.com/700/616/satan");
             if(response.ok){
                 setSatanUrl(response.url);
             }else{
@@ -93,17 +94,31 @@ const HomePage = () => {
     }, []);
 
     return (
-        <>
-            <h1>김밥지옥</h1>
-            <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
-            <img src={iconURL}/>
-            {loading || !satanUrl ? <h2>COMING.. DEVIL</h2> : <img src={satanUrl}/>}
-            <div>
-                {/* <h3>{aboutDeath}</h3> */}
-                <button onClick={e=>onClickForHere(e)}>매장식사</button>
-                <button onClick={e=>onClickForHere(e)}>포장</button>
+        <div className="home">
+            <div className="bg" style={{backgroundImage: `url(${satanUrl})`}}>
             </div>
-        </>
+            <div className="cont">
+                <h1 className="logo">Gimbab HELL</h1>
+                <div className="info">
+                    <div className="left">
+                        <img src={iconURL}/> 
+                        <p>{cityName}</p>
+                    </div>
+                    <div className="right">
+                    <p>{`${temp}℃ | ${weather}`}</p>
+                    </div>
+                </div>
+                <div className="imgBox">
+                    {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img src={satanUrl}/>}
+                </div>
+                <p className="txt">원하시는 옵션을<br/>선택해주세요</p>
+            </div>
+            
+            <div className="btn-wrap">
+                <button onClick={onClickHandler}>매장식사 <span>For here</span></button>
+                <button onClick={onClickHandler}>포장 <span>To go</span></button>
+            </div>
+        </div>
     );
 };
 
