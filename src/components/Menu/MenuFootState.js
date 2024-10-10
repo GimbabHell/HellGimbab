@@ -5,16 +5,20 @@
 
 import { orderStore } from "../../store";
 import MenuOrder from "./MenuOrder";
+import { useState } from "react";
+import OrderCheck from "./OrderCheck";
 
 const MenuFootState = ()=>{
 
     const { clearAll } = orderStore();
+    const [show, setShow] = useState(false);
 
     return(
         <>
             <MenuOrder />
             <button onClick={()=>clearAll()}>전체삭제</button>
-            <button>주문하기</button>
+            <button onClick={()=> setShow(true)}>주문하기</button>
+            <OrderCheck show={show} setShow={setShow} />
         </>
     )
 }

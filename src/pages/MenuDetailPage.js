@@ -3,6 +3,8 @@ import { getDetailGroup, getDetailOption, getDetails, getSubCategoryCode, getSub
 import { OptionList } from "../components/MenuDetail/OptionList";
 import { checkDetail } from "../store";
 import { useLocation, useNavigate } from "react-router-dom";
+import menuDetailStyle from "./MenuDetailPage.css";
+import { FaArrowsRotate } from "react-icons/fa6";
 
 const MenuDetailPage = () => {
     const [details, setDetails] = useState([]);
@@ -106,42 +108,58 @@ const MenuDetailPage = () => {
     };
 
     return (
-        <>
-            <h3>선택하신 상품의 옵션 상품을 모두 선택해주세요.</h3>
+        <div className="menuDetail">
             <div className="menuBox">
-                <img src={menu.imgURL} alt={menu.name} />
-                <p className="name">{menu.name}</p>
+                <div>
+                    <img src={menu.imgURL} alt={menu.name} />
+                    <p className="name">{menu.name}</p>
+                </div>
                 <p className="price">
                     <span className="num">{menu.price}</span>
                     <span>원</span>
                 </p>
             </div>
             <div className="optionBox">
-                <p>선택된 옵션 | </p>
+                <div>
+                    <div>
+                        <p className="option">선택된 옵션 | </p>
 
-                <p>
-                    <span>{selectedValues.rice} </span>
-                    <span>{selectedValues.vegi} </span>
-                    <span>{selectedValues.sauce} </span>
-                    <span>{selectedValues.dipping} </span>
-                    <span>{selectedValues.topping} </span>
-                    <span>{selectedValues.noodle} </span>
-                    <span>{selectedValues.ramen} </span>
-                    <span>{selectedValues.drink} </span>
-                    {/* 데이터 추가 후에  더 있는거 추가하기 !! */}
-                </p>
-                <button onClick={onClickHandler}>초기화</button>
-            </div>
-            <form onSubmit={onClickOrderHandler}>
-                {details.map((cate, index) => {
-                    return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
-                })}
-                <div className="button-wrap">
-                    <button onClick={() => navi(-1)}>취소</button>
-                    <button type="submit">주문담기</button>
+                        <p className="options">
+                            <span>{selectedValues.rice} </span>
+                            <span>{selectedValues.vegi} </span>
+                            <span>{selectedValues.sauce} </span>
+                            <span>{selectedValues.dipping} </span>
+                            <span>{selectedValues.topping} </span>
+                            <span>{selectedValues.noodle} </span>
+                            <span>{selectedValues.ramen} </span>
+                            <span>{selectedValues.drink} </span>
+                            {/* 데이터 추가 후에  더 있는거 추가하기 !! */}
+                        </p>
+                    </div>
+                    <button onClick={onClickHandler} className="btn btn-red">
+                        <FaArrowsRotate />
+                        초기화
+                    </button>
                 </div>
-            </form>
-        </>
+            </div>
+            <div className="menuState">
+                <form onSubmit={onClickOrderHandler}>
+                    <div className="scrollContainer">
+                        {details.map((cate, index) => {
+                            return <OptionList key={index} cate={cate} subCategoryName={subCategoryName[index]} group={group[index]} />;
+                        })}
+                    </div>
+                    <div className="btn-wrap">
+                        <button onClick={() => navi(-1)} className="btn btn-small btn-gray">
+                            취소
+                        </button>
+                        <button type="submit" className="btn btn-small btn-red">
+                            주문담기
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
 };
 

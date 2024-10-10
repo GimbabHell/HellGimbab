@@ -16,8 +16,8 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
     const subtractPoints = useMemberStore(state => state.subtractPoints);
     const navigate = useNavigate();
 
-    const handleButtonClick = (num) => {
-        setPlusPointNumber((prev) => prev + num);
+    const handleButtonClick = (n) => {
+        setPlusPointNumber((prev) => prev + n);
     };
 
     const handleClear = () => {
@@ -25,16 +25,18 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
     };
 
     const onClickHandler2 = useCallback(() => {
+        console.log(num);
         
          subtractPoints(num, plusPointNumber); // 기존포인트 - 사용할포인트
 
          // 최최종가격 = 기존totalprice - 사용할포인트
 
-        if (num >= plusPointNumber) {
+        if ( poiint >= plusPointNumber) {
             // setTotalCount(total);
             alert("확인!");
+            setShow(false);
             // setLastPrice(totalPrice-plusPointNumber);
-            navigate(`/payCheck? poiint=${ poiint}`); 
+            navigate(`/paycheck?poiint=${num}`); 
         } else {
             alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
             setPlusPointNumber(""); 
@@ -61,7 +63,7 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
     const handlePayment = () => {
         setShow(false);
         console.log(poiint);
-        navigate(`/payCheck? poiint=${ poiint}`); 
+        navigate(`/payCheck?poiint=${num}`); 
         }
 
 
@@ -84,9 +86,9 @@ const MemberCheckPoint = ({ num, poiint, setShow}) => {
 
                     <div>
                         <p>사용을 원하는 포인트를 입력해주세요!</p>
-                        {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num) => (
-                            <button key={num} onClick={() => handleButtonClick(num)}>
-                                {num}
+                        {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((n) => (
+                            <button key={n} onClick={() => handleButtonClick(n)}>
+                                {n}
                             </button>
                         ))}
                         <button onClick={handleClear}>지우기</button>

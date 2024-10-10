@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CardPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
+    const nevi = useNavigate();
     // const [show, setShow] = useState(false);
 
-    // const navi = useNavigate();
+    const navi = useNavigate();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -31,14 +32,16 @@ const CardPay = ({lastPrice}) => {
     //     setShow(true);
     // };
 
-    // const onClickHandler2 = () => {
-    //     navi("/lastpage");
+    const onClickHandler = () => {
+        nevi("/paycheck");
+    }
 
-    // };
+    
 
     return (
         <>
             <h2>카드 결제 안내</h2>
+            <button onClick={onClickHandler}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
                 <>
@@ -62,9 +65,9 @@ const CardPay = ({lastPrice}) => {
                     </h5>
                 </>
             )}
-            {/* {show? <PointSave totalCount={totalCount}/>:navi("/lastpage")} */}
+          
         </>
     );
-};
+}
 
 export default CardPay;

@@ -80,7 +80,7 @@ const MemberCheckNumber = ({setShow}) => {
                 ))}
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
-                {showw ? <MemberCheckPoint num={num} poiint={poiint}  setShow={setShow} /> : null}
+                {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} /> : null}
             </div>
         </>
     );
