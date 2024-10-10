@@ -6,10 +6,10 @@ import NaverPay from "./NaverPay";
 import KakaoPay from "./KakaoPay";
 import CardPay from "./CardPay";
 
-const MemberCheckPoint = ({ num, poiint }) => {
+const MemberCheckPoint = ({ num, poiint, push }) => {
     const [plusPointNumber, setPlusPointNumber] = useState(""); 
     const [totalCount, setTotalCount] = useState(0); 
-    const [paymentMethod, setPaymentMethod] = useState(null); // Local state for payment method
+    // const [paymentMethod, setPaymentMethod] = useState(null); // Local state for payment method
     const subtractPoints = useMemberStore(state => state.subtractPoints);
     const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const MemberCheckPoint = ({ num, poiint }) => {
     }, [plusPointNumber, num, navigate, subtractPoints]);
 
     const renderPaymentComponent = useCallback(() => {
-        switch (paymentMethod) {
+        switch (push) {
             case 0:
                 return <CardPay totalCount={totalCount} />;
             case 1:
@@ -43,12 +43,12 @@ const MemberCheckPoint = ({ num, poiint }) => {
             case 2:
                 return <NaverPay totalCount={totalCount} />;
             default:
-                return null;
+                return alert("결제 수단을 선택해주세요!");
         }
-    }, [paymentMethod, totalCount]);
+    }, [push, totalCount]);
 
     const handlePayment = () => {
-        if (paymentMethod == null) {
+        if (push == null) {
             alert("결제 수단을 선택해주세요!");
         } else {
             navigate(`/payCheckPage/${totalCount}`);
