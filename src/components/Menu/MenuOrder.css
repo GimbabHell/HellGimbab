@@ -1,0 +1,65 @@
+.menuOrderModal {
+  padding-bottom: 90px;
+}
+.menuOrderModal .scrollContainer {
+  max-height: 455px;
+  margin: 70px 0;
+}
+.menuOrderModal ul {
+  padding: 0 60px;
+}
+.menuOrderModal ul > li {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 45px;
+}
+.menuOrderModal ul > li:last-child {
+  margin-bottom: 0;
+}
+.menuOrderModal ul > li > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.menuOrderModal ul > li > div .num {
+  color: #bd2030;
+  margin-right: 35px;
+}
+.menuOrderModal ul > li > div .quantity {
+  font-size: 20px;
+  font-weight: 400;
+}
+.menuOrderModal ul > li > div .price {
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+}
+.menuOrderModal ul > li h5 {
+  margin-left: 55px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.menuOrderModal .totalPrice {
+  margin: 0 60px;
+  padding: 60px 30px;
+  border-top: 1px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.menuOrderModal .totalPrice p {
+  font-size: 32px;
+}
+.menuOrderModal .totalPrice p:last-child {
+  font-weight: 700;
+}
