@@ -1,0 +1,65 @@
+
+@import '../../Common';
+
+
+.menuContainer {
+    padding: 64px 60px;   
+    background: $bgColor;
+    .scrollContainer {
+        height: 889px;
+        > ul {
+            display: flex;
+            flex-wrap: wrap;
+            > li {
+                width: 210px;
+                margin-right: 20px;
+                margin-top: 20px;
+                padding: 20px 0;
+                text-align: center;
+                background: #fff;
+                border: 1px solid #ccc;
+                &:nth-child(4n){
+                    margin-right: 0;
+                }
+                &:nth-child(-n+4){
+                    margin-top: 0;
+                }
+
+                .imgBox {
+                    width: 172px;
+                    height: 172px;
+                    margin: 0 auto 17px;
+                    position: relative;
+                    // padding: 10px;
+                    img {
+                        width: 100%;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        width: 120px;
+                        height: 1px;
+                        background: #ccc;
+                        left: 50%;
+                        margin-left: -60px;
+                    }
+                }
+                p {
+                    font-weight: 700;
+                }
+                .name {
+                    font-size: 22px;
+                    margin-bottom: 10px;
+                }
+                .price {
+                    font-size: 20px;
+                    color: $point;
+                }
+                &.active {
+                    border: 3px solid $point;
+                }
+            }
+        }
+    }
+}

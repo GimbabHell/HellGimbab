@@ -1,6 +1,7 @@
 @import "../Common";
 
-.menuDetail {
+
+.menuDetail { // menuDetail
     .menuBox {
         display: flex;
         align-items: center;
@@ -62,9 +63,7 @@
                 height: 50px;
                 font-size: 20px;
                 border-radius: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                
                 position: absolute;
                 right: 0;
                 top: 50%;

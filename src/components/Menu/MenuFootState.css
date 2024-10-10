@@ -1,0 +1,111 @@
+.menuFootState {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.menuFootState .menuOrder {
+  width: calc(100% - 200px);
+  padding: 45px 60px 0;
+}
+.menuFootState .menuOrder ul {
+  height: 224px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+.menuFootState .menuOrder ul li {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.menuFootState .menuOrder ul li > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.menuFootState .menuOrder ul li .num {
+  margin: 0 35px 0 25px;
+}
+.menuFootState .menuOrder ul li button {
+  background: none;
+  color: #ccc;
+  vertical-align: top;
+}
+.menuFootState .menuOrder ul li button svg {
+  font-size: 24px;
+}
+.menuFootState .menuOrder ul li button.btn-x {
+  color: #1a1a1a;
+}
+.menuFootState .menuOrder ul li .notoSans {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  margin: 0 15px;
+}
+.menuFootState .menuOrder ul li .price {
+  width: 120px;
+  display: inline-block;
+  text-align: right;
+}
+.menuFootState .menuOrder ul li h5 {
+  margin-left: 110px;
+  margin-top: 5px;
+  font-size: 16px;
+  width: 340px;
+  word-break: keep-all;
+}
+.menuFootState .menuOrder ul li:last-child {
+  margin-bottom: 0;
+}
+.menuFootState .menuOrder .orderBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+}
+.menuFootState .menuOrder .orderBottom p {
+  font-weight: 700;
+  font-size: 22px;
+}
+.menuFootState .menuOrder .orderBottom p span {
+  font-weight: 400;
+}
+.menuFootState .menuOrder .orderBottom p span.red {
+  color: #bd2030;
+  font-weight: 700;
+}
+.menuFootState .menuOrder .orderBottom p:last-child {
+  font-size: 26px;
+}
+.menuFootState .menu-btn-wrap {
+  width: 200px;
+}
+.menuFootState .menu-btn-wrap .btn {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.menuFootState .menu-btn-wrap .btn-black {
+  height: 130px;
+}
+.menuFootState .menu-btn-wrap .btn-red {
+  height: 226px;
+}
+.menuFootState .menu-btn-wrap .btn p {
+  margin-top: 8px;
+}

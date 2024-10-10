@@ -32,6 +32,9 @@ a {
 }
 
 .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 700;
     color: #fff;
@@ -47,6 +50,9 @@ a {
     }
     &-gray {
         background: #666;
+    }
+    &-black {
+        background: $black;
     }
 }
 .btn-wrap {
@@ -83,6 +89,15 @@ header {
     height: 140px;
     text-align: center;
     position: relative;
+    .btn-home {
+        position: absolute;
+        left: 60px;
+        bottom: 40px;
+        svg {
+            font-size: 32px;
+            color: #fff;
+        }
+    }
 
     h1 {
         margin: 0 auto;
