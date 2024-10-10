@@ -1,12 +1,22 @@
 import MemberCheckNumber from "../components/PayCheck/MemberCheckNumber";
 import { useState } from "react";
 
+import { useNavigate, useParams } from "react-router-dom";
+import { orderStore } from "../store";
+import CardPay from "../components/PayCheck/CardPay";
+import KakaoPay from "../components/PayCheck/KakaoPay";
+import NaverPay from "../components/PayCheck/NaverPay";
 
-const PayCheckPage = ({ totalCount }) => {
-    const [pay, setPay] = useState(null);
+
+const PayCheckPage = ({}) => {
+    // const [pay, setPay] = useState(null);
     const [show, setShow] = useState(false);
     // const [isPointsUsed, setIsPointsUsed] = useState(false);
-    const [push, setPush] = useState(0);
+    const [push, setPush] = useState(0); 
+    // const [test, setTest] = useState(false);
+    const nevi = useNavigate();
+    const { totalPrice } = orderStore();
+    const {poiint} = useParams();
 
     const onClickHandler = () => {
         setShow(true);
@@ -39,11 +49,35 @@ const PayCheckPage = ({ totalCount }) => {
         setShow(false); 
     };
 
+   
+
+    const onClickHandler2 = () => {
+        nevi("/menu");
+    
+    }
+
+    const onClickHandler3 = () => {
+        // setTest(true);
+       
+
+        switch (push) {
+                    case 0:
+                        return <CardPay lastPrice={totalPrice-poiint} />;
+                    case 1:
+                        return <KakaoPay lastPrice={totalPrice-poiint} />;
+                    case 2:
+                        return <NaverPay lastPrice={totalPrice-poiint} />;
+                    default:
+                        return null;
+                }
+            
+    }
+
     return (
         <>
             <p>포인트 사용 여부 확인</p>
             <button onClick={onClickHandler}>사용</button>
-            {show ? <MemberCheckNumber push={push}/> : null}
+            {show ? <MemberCheckNumber  setShow={setShow}/> : null}
 
             <button onClick={handleNotUsingPoints}>사용안함</button>
 
@@ -52,8 +86,17 @@ const PayCheckPage = ({ totalCount }) => {
             <button onClick={() => setPush(1)}>카카오Pay</button>
             <button onClick={() => setPush(2)}>네이버Pay</button>
 
-            <h2>최종 결제 금액: {totalCount}</h2>
+            <h3>결제 금액 : {totalPrice}</h3>
+            {console.log(poiint)}
+            <h3>포인트 사용 : {poiint}</h3>
+
+            <h2>총 결제 금액: {totalPrice-poiint}</h2>
             {/* {renderPaymentComponent()} */}
+
+            <button onClick={onClickHandler2}>취소</button>
+            <button onClick={onClickHandler3}>결제하기</button>
+            {/* 일단 결제하기 대강 만들어봄 .. */}
+            {/* {test? <CardPay lastPrice={totalPrice-poiint} />:null} */}
         </>
     );
 };

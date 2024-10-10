@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
 
-const PointSave = ({ totalCount }) => {
+const PointSave = ({lastPrice}) => {
     const [phoneNum, setPhoneNum] = useState(""); // 입력받은 폰 번호
     const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지 상태
     const [ppoint, setPpoint] = useState(""); // 결제 금액에 따른 추가될 포인트
     const addPoints = useMemberStore(state => state.addPoints);
     const add = useMemberStore(state => state.add);
-    const findMember = useMemberStore(state => state.findMembernavi("/lastpage"))
+    const findMember = useMemberStore(state => state.findMember());
     const nevi = useNavigate();
 
 
@@ -30,12 +30,12 @@ const PointSave = ({ totalCount }) => {
     const onClickHandler2 = () => {
         const memb = findMember(phoneNum);
         if(memb) { // 이미 회원이라면 포인트 적립 진행
-            const pointsToAdd = totalCount * 0.005; // 총 결제금액에 0.5% 적립
+            const pointsToAdd = lastPrice * 0.005; // 총 결제금액에 0.5% 적립
             setPpoint(pointsToAdd);
             addPoints(phoneNum, pointsToAdd);
             alert(`${pointsToAdd} 가 적립되었습니다!`);
         } else {
-            const pointsToAdd = totalCount * 0.005;
+            const pointsToAdd = lastPrice * 0.005;
             setPpoint(pointsToAdd);
             add(phoneNum, pointsToAdd); // 회원이 아니라면 회원 등록
         }
@@ -54,7 +54,7 @@ const PointSave = ({ totalCount }) => {
                     </button>
                 ))}
                 <button onClick={handleClear}>지우기</button> 
-                <button onClick={() => nevi("/lastpage")}>확인</button>
+                <button onClick={() => nevi("/last")}>확인</button>
             </div>
            
         </>
