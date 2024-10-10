@@ -5,8 +5,6 @@ import { orderStore } from "../store";
 import HomeStyle from "./HomePage.css";
 
 const HomePage = () => {
-    // 상단에 띄울 현재 시간 state
-    const [currentAtTime, setCurrentAtTime] = useState("");
 
     // 날씨 API 호출을 위한 state
     const API_KEY = "207a52923e0d2e1ca4acea1ce48628fc";
@@ -19,6 +17,7 @@ const HomePage = () => {
     // 이미지 API 호출하기 위한 state
     const [satanUrl, setSatanUrl] = useState(``);
     const [loading, setLoading] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     // const [aboutDeath, setAboutDeath] = useState("");
 
@@ -48,21 +47,8 @@ const HomePage = () => {
         return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=${API_KEY}&units=metric`).then((response) => response.json());
     };
 
-    // https 보안 이슈로 주석처리합니다.
-    // const bringAPI =async()=>{
-
-    //     return(
-    //         fetch('https://api.quotable.io/random')
-    //     .then(response=>response.json())
-    //     .then(data=>setAboutDeath(data.content))
-    //     )
-    //     // const response = await fetch('https://api.quotable.io/random');
-    //     // const data = await response.json();
-    //     // setHello(data.content);
-    // }
-
     useEffect(() => {
-        async function weatherAtLocation() {
+        async function weatherAtLocationAndfetchImage() {
             const currentPosition = await getPosition();
             const weatherInfo = await getWeather(currentPosition);
             const icon = await weatherInfo.weather[0].icon;
@@ -71,45 +57,58 @@ const HomePage = () => {
             setWeather(weatherInfo.weather[0].description);
             setTemp(weatherInfo.main.temp);
             setIconURL(`https://openweathermap.org/img/wn/${icon}@2x.png`);
-        }
-        weatherAtLocation();
 
-        const fetchImage =async()=>{
             const response = await fetch("https://loremflickr.com/700/616/satan");
             if(response.ok){
                 setSatanUrl(response.url);
             }else{
                 console.error("이미지씨.. 어딨나요? ㅠㅠ");
             }
-            setLoading(false);
-        };
-        fetchImage();
 
-        // https 보안 이슈로 주석처리합니다.
-        // async function wiseSaying(){
-        //     const saying = await bringAPI();
+             setTimeout(() => {
+                setIsVisible(true);
+                setLoading(false);
+            }, 3000);
+            console.log(isVisible);
 
-        // }
-        // wiseSaying();
+
+            
+        }
+        weatherAtLocationAndfetchImage();      
+
     }, []);
-
+    console.log(isVisible);
     return (
+
         <div className="home">
-            <div className="bg" style={{backgroundImage: `url(${satanUrl})`}}>
-            </div>
-            <div className="cont">
+            <div className={`bg`} style={{ backgroundImage: `url(${satanUrl})` }}></div>
+            <div className={`cont`}>
                 <h1 className="logo">Gimbab HELL</h1>
-                <div className="info">
-                    <div className="left">
-                        <img src={iconURL}/> 
-                        <p>{cityName}</p>
-                    </div>
-                    <div className="right">
-                    <p>{`${temp}℃ | ${weather}`}</p>
-                    </div>
+                <div className={`info`}>
+                    {loading ?
+                    <>
+                        <div className="left">
+                            <img src={"../images/logo/weatherOfHell.png"}/> 
+                            <p>HELL</p>
+                        </div>
+                        <div className="right">
+                            <p>99999999℃ | THREE SUNS</p>
+                        </div>
+                    </>
+                        :
+                    <>
+                        <div className={`left fade-in ${isVisible ? 'visible' : ''}`}>
+                            <img src={iconURL}/> 
+                            <p>{cityName}</p>
+                        </div>
+                        <div className={`right fade-in ${isVisible ? 'visible' : ''}`}>
+                            <p>{`${temp}℃ | ${weather}`}</p>
+                        </div>
+                    </> 
+                    }
                 </div>
-                <div className="imgBox">
-                    {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img src={satanUrl}/>}
+                <div className={`imgBox`}>
+                    {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
                 </div>
                 <p className="txt">원하시는 옵션을<br/>선택해주세요</p>
             </div>
