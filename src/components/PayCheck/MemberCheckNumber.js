@@ -2,6 +2,7 @@ import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
+import ReactModal from "react-modal";
 
 const MemberCheckNumber = ({setShow, setDefa}) => {
     const [num, setNum] = useState("");
@@ -67,8 +68,36 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
         return regex.test(number);
     };
 
-    return (
+    const closeModal =()=>{
+        setShoww(false);
+    };
+
+    return(
         <>
+            <ReactModal
+                isOpen={showw}        // Modal visibility
+                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                contentLabel="주문리스트"
+                style={{
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        bottom: 'auto',
+                        marginRight: '-50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 784,
+                        borderRadius: 0,
+                        border: "none",
+                        padding: 0,
+                    },
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                    }
+                }}
+            >
+
+            <div className="menuOrderModal">
             <h2>핸드폰 번호 입력</h2>
             <h3>핸드폰 번호를 입력해주세요</h3>
             <h4>{formatPhoneNumber(num)}</h4> 
@@ -85,8 +114,12 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
                 <button onClick={handleConfirm}>확인</button>
                 {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
             </div>
-        </>
-    );
-};
+            </div>
+            </ReactModal>
+
+            </>
+        
+    )
+}
 
 export default MemberCheckNumber;

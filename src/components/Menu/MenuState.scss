@@ -5,13 +5,16 @@
 .menuContainer {
     padding: 64px 60px;   
     background: $bgColor;
+    height: 1014px;
     .scrollContainer {
-        height: 889px;
+        // height: 889px;
+        overflow: visible;
         > ul {
             display: flex;
             flex-wrap: wrap;
             > li {
                 width: 210px;
+                height: 282px;
                 margin-right: 20px;
                 margin-top: 20px;
                 padding: 20px 0;

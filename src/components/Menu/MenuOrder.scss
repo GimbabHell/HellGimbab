@@ -1,0 +1,61 @@
+@import '../../Common';
+
+.menuOrderModal {
+    padding-bottom: 90px;
+
+    .scrollContainer {
+        max-height: 455px;
+        margin: 70px 0;
+    }
+    ul {
+        padding: $padding;
+        
+        
+        > li {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 45px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            > div {
+                display: flex;
+                justify-content: space-between;
+                .num {
+                    color: $point;
+                    margin-right: 35px;
+                }
+                .quantity {
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+                .price {
+                    display: inline-block;
+                    width: 200px;
+                    text-align: right;
+                }
+            }
+            h5 {
+                margin-left: 55px;
+                margin-top: 15px;
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+    }
+    .totalPrice {
+        margin: $padding;
+        padding: 60px 30px; 
+        border-top: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+            font-size: 32px;
+            &:last-child {
+                font-weight: 700;
+            }
+        }
+    }
+
+}
