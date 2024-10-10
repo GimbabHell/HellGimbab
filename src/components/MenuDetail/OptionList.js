@@ -8,7 +8,7 @@ export const OptionList = ({ cate, subCategoryName, group }) => {
     } else if (subCategoryName === "야채") {
         subCategoryName += "선택(필수, 다중선택)";
     } else if (subCategoryName === "토핑") {
-        subCategoryName += "선택(선택, 단일선택)";
+        subCategoryName += "선택(선택, 다중선택)";
     }
 
     return (

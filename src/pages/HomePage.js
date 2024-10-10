@@ -52,7 +52,7 @@ const HomePage = () => {
             const currentPosition = await getPosition();
             const weatherInfo = await getWeather(currentPosition);
             const icon = await weatherInfo.weather[0].icon;
-            console.log(weatherInfo);
+            // console.log(weatherInfo);
             setCityName(weatherInfo.name);
             setWeather(weatherInfo.weather[0].description);
             setTemp(weatherInfo.main.temp);
