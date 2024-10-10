@@ -94,7 +94,7 @@ export const orderStore = create((set, get) => ({
         set({ order : addQttOrder});
     },
 
-    reset: () => set({ takeOut: false, menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
+    reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 }));
 
 

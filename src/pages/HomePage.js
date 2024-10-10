@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { orderStore } from "../store";
 //import "./HomePage.css";
 
 const HomePage = () => {
@@ -21,8 +22,11 @@ const HomePage = () => {
     // const [aboutDeath, setAboutDeath] = useState("");
 
     const navigate = useNavigate();
+    const { setPlace } = orderStore();
 
-    const onClickHandler = () => {
+    const onClickForHere = e => {
+        if(e.target.innerText === "포장"){ setPlace(true); }
+        else{ setPlace(false) }
         navigate("/menu");
     };
 
@@ -96,8 +100,8 @@ const HomePage = () => {
             {loading || !satanUrl ? <h2>COMING.. DEVIL</h2> : <img src={satanUrl}/>}
             <div>
                 {/* <h3>{aboutDeath}</h3> */}
-                <button onClick={onClickHandler}>매장식사</button>
-                <button onClick={onClickHandler}>포장</button>
+                <button onClick={e=>onClickForHere(e)}>매장식사</button>
+                <button onClick={e=>onClickForHere(e)}>포장</button>
             </div>
         </>
     );
