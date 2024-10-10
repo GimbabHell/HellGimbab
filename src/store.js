@@ -9,32 +9,94 @@ import { create } from "zustand";
 // orderHistory 는 singleOrder들로 이루어진 배열???
 
 export const orderStore = create((set, get) => ({
-    takeOut : false,     //false: 매장식사, true: 포장주문
-    menuName : '',
-    price : '',         // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
-    quantity : 1,
-    details : '',
-    order : [],
+    takeOut: false, //false: 매장식사, true: 포장주문
+    menuName: "",
+    quantity: 1,
+    details: "",    // details key 와 value 로 이루어진 배열
+    detailsToShow: "",  // 보여주기용 details values
+    orderNum: 1,
+    price: 0, // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
+    detailsPrice: 0,       // details 선택으로 인한 추가금
+    itemPrice: 0,          // price + detailsPrice
+    unitPrice: 0,           // itemPrice * quantity
+    totalPrice: 0,
+    totalObjNum: 0,
+    order: [],
 
-    eatPlace : (takeOut) => set({takeOut}),
+    clearAll: () => set({ order: [] }),
 
-    orderSingleMenu : (menuName, price, quantity, details) => set({menuName, price, quantity, details}),
+    setPlace: (takeOut) => set({ takeOut }),
 
-    singleOrder : ()=>{
-        const { menuName, price, quantity, details, order } = get();   // 현재 값 접근        
-        const newOrder = [...order, { menuName, price, quantity, details }];    
-        set({ order: newOrder});
-              
+    setDetailPrice: (detailsPrice) => set({detailsPrice}),
+
+    setItemPrice: () => {
+        const { price, detailsPrice } = get(); // 현재 price 접근
+        set({ itemPrice: price + detailsPrice });
     },
 
-    deleteSingleOrder : (index)=>{
-        const {order} = get();
-        const deletedOrder = order.filter((ord)=> ord.index !== parseInt(index));
-        set({order: deletedOrder});
+    setUnitPrice: () => {
+        const { itemPrice, quantity} = get();
+        set({ unitPrice: itemPrice * quantity});
     },
 
-    reset: () => set({ takeOut: false, menuName: "", price: "", quantity: "", details: "" }),
+    setTotalPrice: (totalPrice) => set({totalPrice}),
+
+    setTotalObjNum: (totalObjNum) => set({totalObjNum}),
+
+    setDetailsToShow: () => {
+        const { details } = get(); // 현재 details 접근
+        const detailValues = Object.values(details);
+        set({ detailsToShow: detailValues.join('   ||   ')});
+    },
+
+    orderSingleMenu: (menuName, price, details) => set({ menuName, price, details }),
+
+    singleOrder: () => {
+        const { menuName, price, quantity, details, detailsToShow, order, orderNum, detailsPrice, itemPrice, unitPrice } = get(); // 현재 값 접근
+        const newOrder = [...order, { orderNum, menuName, price, quantity, details, detailsToShow, detailsPrice, itemPrice, unitPrice }];
+        set({ order: newOrder });
+        set({ orderNum: orderNum + 1 });
+    },
+
+    deleteSingleOrder: (num) => {
+        const { order } = get();
+        const deletedOrder = order.filter((ord) => ord.orderNum !== parseInt(num));
+        set({ order: deletedOrder });
+    },
+
+    reduceQuantity: (num) =>{
+        const { order } = get();
+        const redQttOrder = order.map((ord)=> {
+            if(ord.orderNum === parseInt(num)){
+                if(ord.quantity > 1){
+                    return {...ord, quantity: ord.quantity - 1,
+                                    unitPrice: ord.unitPrice - ord.itemPrice
+                    };
+                }
+            }
+            return ord;
+        });
+        set({ order : redQttOrder});
+    },
+
+    addQuantity: (num) =>{
+        const { order } = get();
+        const addQttOrder = order.map((ord)=> {
+            if(ord.orderNum === parseInt(num)){
+                if(ord.quantity < 10){
+                    return {...ord, quantity: ord.quantity + 1,
+                                    unitPrice: ord.unitPrice + ord.itemPrice
+                    };
+                }
+            }
+            return ord;
+        });
+        set({ order : addQttOrder});
+    },
+
+    reset: () => set({ takeOut: false, menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 }));
+
 
 export const orderHistory = create((set) => ({
     ordersPerDay: [{}],
@@ -42,9 +104,10 @@ export const orderHistory = create((set) => ({
     storeOrder: () => [{}],
 }));
 
+
 export const checkDetail = create((set) => ({
     selectedValues: {},
-    
+
     setSelectedValues: (group, value) =>
         set((state) => ({
             selectedValues: {
@@ -61,7 +124,6 @@ export const checkDetail = create((set) => ({
                         ...state.selectedValues,
                         [group]: selectedCheckboxes.filter((v) => v !== value),
                     },
-                    
                 };
             } else {
                 return {
@@ -69,21 +131,97 @@ export const checkDetail = create((set) => ({
                         ...state.selectedValues,
                         [group]: [...selectedCheckboxes, value],
                     },
-                    
                 };
             }
         }),
+
     resetValues: () =>
         set({
             selectedValues: {},
         }),
 }));
 
-export const memberNumber = create((set) => ({
+
+export const useMemberStore = create((set, get) => ({
     // 회원 추가
 
-    phoneNumber: "", // 회원 전화번호
-    point: "", // 회원 포인트
+    phoneNumber : '', // 회원 전화번호
+    point : '', // 회원 포인트
+    members : [],
 
-    add: (phoneNumber, point) => set({ phoneNumber, point }),
-}));
+
+    // 회원 추가
+    add: (phoneNumber, point) => {
+        set(state => {
+            const exists = state.members.some(member => member.phoneNumber === phoneNumber);
+            if (!exists) {
+                return {
+                    members: [...state.members, { phoneNumber, point }],
+                    phoneNumber: '',
+                    point: 0
+                };
+            }
+            return state; // 중복되는 전화번호일 경우 상태를 변경하지 않음
+        });
+    },
+
+
+    // 포인트 추가
+    addPoints: (phoneNumber, pointsToAdd) => {
+        set(state => {
+            const members = state.members.map(member => {
+                if (member.phoneNumber === phoneNumber) {
+                    return { ...member, point: member.point + pointsToAdd };
+                }
+                return member;
+            });
+            return { members };
+        });
+    },
+
+
+    // 포인트 차감
+    subtractPoints: (phoneNumber, pointsToSubtract) => {
+        set(state => {
+            const members = state.members.map(member => {
+                if (member.phoneNumber === phoneNumber) {
+                    return { ...member, point: Math.max(0, member.point - pointsToSubtract) };
+                     // 포인트가 0 이하로 떨어지지 않도록
+                }
+                return member;
+            });
+            return { members };
+        });
+    },
+
+
+    // 회원 조회 
+    // 원래는 return member || null; 이였음.... 
+    findMember: (phoneNumber) => {
+        const member = get().members.find(member => member.phoneNumber === phoneNumber);
+        return member? member : null; // 회원이 없으면 null 반환
+        
+    },
+
+    // 포인트 조회
+    getPoints: (phoneNumber) => {
+        
+       // console.log(state.members)
+         const member = get().members.find(member => member.phoneNumber === phoneNumber);
+        // console.log(member);
+        // console.log(member.point);
+        return member ? member.point : null;; // 포인트 반환, 없으면 null
+    }
+
+}))
+
+
+
+
+
+
+
+
+
+
+

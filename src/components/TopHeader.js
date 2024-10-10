@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
+import { FaHouse } from "react-icons/fa6";
 
 // 홈, 언어설정 버튼
 
 const TopHeader = () => {
-    return(
+    const today = new Date();
+    return (
         <header>
-            <Link to="/">Home</Link>
-            <Link to="/"><img src="../images/logo/hellKimbab.png" alt="logo" /></Link>
-            <div className="lang">
-                <Link to="/">KR</Link>
-                <span> / </span>
-                <Link to="">EN</Link>
-            </div>
+            <Link to="/" className="btn-home">
+                <FaHouse />
+            </Link>
+            <h1 className="logo white">
+                {/* <Link to="/" > */}
+                    gimbab hell
+                {/* </Link> */}
+            </h1>
+            <p className="time">{`${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`}</p>
         </header>
-    )
-}
+    );
+};
 
 export default TopHeader;

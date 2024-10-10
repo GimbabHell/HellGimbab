@@ -1,54 +1,100 @@
-/* HomePage.css */
-
-body {
-    background-color: #1a1a1a; /* 어두운 배경색 */
-    color: #e63946; /* 강렬한 글자 색상 */
-    font-family: 'Creepster', cursive; /* 악마 분위기에 맞는 폰트 */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 수평 중앙 정렬 */
-    justify-content: center; /* 수직 중앙 정렬 */
-    
+.home {
+  height: 100%;
+  position: relative;
+  text-align: center;
 }
-
-
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 20px 0;
-    color: #f1faee; /* 밝은 색상으로 강조 */
+.home .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
 }
-
-p {
-    text-align: center;
-    font-size: 1.5rem;
+.home .bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
 }
-
-.button-container {
-    display: flex; /* flexbox 사용 */
-    flex-direction: column; /* 수직 방향으로 정렬 */
-    align-items: center; /* 수평 중앙 정렬 */
+.home .cont {
+  padding-top: 128px;
 }
-
-button {
-    background-color: #e63946; /* 버튼 배경색 */
-    color: #ffffff; /* 버튼 글자색 */
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 200px;
-    transition: background-color 0.3s ease;
+.home .cont .logo {
+  margin-bottom: 185px;
 }
-
-button:hover {
-    background-color: #d62839; /* 버튼 호버 색상 */
+.home .cont .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 162px;
 }
-
-img {
-    display: block;
-    margin: 20px auto;
-    border-radius: 10px; /* 이미지 모서리 둥글게 */
+.home .cont .info p {
+  color: #ccc;
+  font-size: 24px;
+  font-weight: 800;
+}
+.home .cont .info .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .cont .info .left img {
+  width: 95px;
+}
+.home .cont .imgBox {
+  width: 700px;
+  height: 616px;
+  margin: 0 auto;
+}
+.home .cont .altText {
+  font-size: 48px;
+  font-weight: 700;
+  color: #8B8B8B;
+  line-height: 616px;
+}
+.home .cont .txt {
+  font-size: 48px;
+  font-weight: 700;
+  color: #8B8B8B;
+  margin-top: 180px;
+  line-height: 70px;
+}
+.home .btn-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.home .btn-wrap button {
+  height: 280px;
+  width: 50%;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  font-family: "Gowun Batang", serif;
+  background: #bd2030;
+}
+.home .btn-wrap button span {
+  font-size: 40px;
+  margin-left: 25px;
+  font-weight: 400;
+}
+.home .btn-wrap button:last-of-type {
+  background: #D62839;
 }

@@ -1,0 +1,54 @@
+.last {
+    height: calc(100% - 100px);
+    background: #000;
+    padding-top: 128px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    .imgBox {
+        width: 700px;
+        height: 616px;
+        margin: 152px auto 134px;
+        .altText {
+            font-size: 48px;
+            font-weight: 700;
+            color: #8B8B8B;
+            line-height: 616px;
+        }
+    }
+    h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+    h3 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 58px;
+    }
+    .dot {
+        font-size: 28px;
+        color: #8B8B8B;
+        margin-bottom: 25px;
+    }
+    h4 {
+        font-size: 28px;
+        color: #8B8B8B;
+        margin-bottom: 125px;
+    }
+    .btn-back {
+        font-size: 36px;
+        font-weight: 700;
+        position: relative;
+        color: #fff;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            width: 138px;
+            height: 1px;
+            background: #fff;
+            left: 50%;
+            margin-left: -69px;
+        }
+    }
+}
