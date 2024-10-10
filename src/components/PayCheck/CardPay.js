@@ -8,7 +8,7 @@ const CardPay = ({lastPrice}) => {
     const nevi = useNavigate();
     // const [show, setShow] = useState(false);
 
-    const navi = useNavigate();
+    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -22,15 +22,6 @@ const CardPay = ({lastPrice}) => {
 
         return () => clearTimeout(timer);
     }, [lastPrice]);
-
-    // const handleRetry = () => {
-    //     setPaymentSuccess(false);
-    //     setLoading(false);
-    // };
-
-    // const onClickHandler = () => {
-    //     setShow(true);
-    // };
 
     const onClickHandler = () => {
         nevi("/paycheck");
