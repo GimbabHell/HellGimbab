@@ -18,7 +18,7 @@ const MenuPage = () => {
         if(orderData !== null){
             const menu = orderData.menu;
             const details = orderData.selectedValues;
-            setOrderDetails(menu.name, menu.price, details);
+            setOrderDetails(menu.name, menu.price, menu.categoryCode, details);
             setDetailsToShow();
         }
         
