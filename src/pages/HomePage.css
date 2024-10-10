@@ -15,7 +15,6 @@
 }
 .home .fade-in {
   opacity: 0;
-  -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
 .home .fade-in.visible {
@@ -48,15 +47,9 @@
   margin-bottom: 185px;
 }
 .home .cont .info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 162px;
 }
 .home .cont .info p {
@@ -65,12 +58,8 @@
   font-weight: 800;
 }
 .home .cont .info .left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .home .cont .info .left img {
   width: 95px;
