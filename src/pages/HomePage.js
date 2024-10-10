@@ -115,8 +115,8 @@ const HomePage = () => {
             </div>
             
             <div className="btn-wrap">
-                <button onClick={onClickHandler}>매장식사 <span>For here</span></button>
-                <button onClick={onClickHandler}>포장 <span>To go</span></button>
+                <button onClick={onClickForHere}>매장식사 <span>For here</span></button>
+                <button onClick={onClickForHere}>포장 <span>To go</span></button>
             </div>
         </div>
     );
