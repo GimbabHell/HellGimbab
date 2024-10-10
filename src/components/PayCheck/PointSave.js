@@ -8,7 +8,7 @@ const PointSave = ({ totalCount }) => {
     const [ppoint, setPpoint] = useState(""); // 결제 금액에 따른 추가될 포인트
     const addPoints = useMemberStore(state => state.addPoints);
     const add = useMemberStore(state => state.add);
-    const findMember = useMemberStore(state => state.findMembernavi("/lastpage"))
+    const findMember = useMemberStore(state => state.findMembernavi("/last"))
     const nevi = useNavigate();
 
 
@@ -54,7 +54,7 @@ const PointSave = ({ totalCount }) => {
                     </button>
                 ))}
                 <button onClick={handleClear}>지우기</button> 
-                <button onClick={() => nevi("/lastpage")}>확인</button>
+                <button onClick={() => nevi("/last")}>확인</button>
             </div>
            
         </>

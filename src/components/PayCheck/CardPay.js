@@ -32,7 +32,7 @@ const CardPay = ({ totalCount }) => {
     };
 
     const onClickHandler2 = () => {
-        navi("/lastpage");
+        navi("/last");
 
     };
 
@@ -61,7 +61,7 @@ const CardPay = ({ totalCount }) => {
                     </h5>
                 </>
             )}
-            {show? <PointSave totalCount={totalCount}/>:navi("/lastpage")}
+            {show? <PointSave totalCount={totalCount}/>:navi("/last")}
         </>
     );
 };
