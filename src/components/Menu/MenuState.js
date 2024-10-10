@@ -4,21 +4,43 @@
 import { useNavigate } from "react-router-dom"
 import MenuStateStyle from './MenuState.css';
 import { orderStore } from "../../store";
+import { useEffect, useState } from "react";
 
 const MenuState = ({menus})=>{
 
-    const {order} = orderStore();
-
+    const { order, selectedMenus, setSelectedMenus} = orderStore();
     const navigate = useNavigate();
     
-    const menuNames = order.length > 0 ? order[0].menuName : "";
+    useEffect(()=>{
+
+        if(order.length > 0){
+            const list=[];
+            for(let i=0; i<order.length; i++){
+                list.push(order[i].menuName);
+            }
+            setSelectedMenus(list);
+        }
+       
+    },[order]);
+
+    // const onClickMenuSelector = (menu) =>{
+
+    //     if(menu.categorycode === 7){
+    //         console.log(menu);
+    //         navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu});
+    //     }
+
+        
+    // }
+
+
     
 
     const menuList = menus.map((menu)=>{
         return(
-            
-            <li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu})}} 
-            className={menu.name === menuNames ? "active": null}
+            // <li onClick={()=>onClickMenuSelector(menu)}
+            <li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu})}}                 
+            className={selectedMenus.includes(menu.name) ? "active": null }
             >
                 <div className="imgBox">
                     <img src={menu.imgURL}/> 

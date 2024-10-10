@@ -12,6 +12,7 @@ export const orderStore = create((set, get) => ({
     takeOut: false, //false: 매장식사, true: 포장주문
     menuName: '',
     quantity: 1,
+    categoryCode: 1,
     details: '',    // details key 와 value 로 이루어진 배열
     detailsToShow: '',  // 보여주기용 details values
     orderNum: 1,
@@ -23,8 +24,14 @@ export const orderStore = create((set, get) => ({
     totalObjNum: 0,
     order: [],
     orderHistory: [],
+    receitNum:0,
+    selectedMenus: [],
 
-    clearAll: () => set({ order: [] }),
+    setSelectedMenus: (selecMenu) => {
+        set({ selectedMenus: selecMenu});
+    },
+
+    clearAll: () => set({ order: [], selectedMenus: [] }),
 
     setPlace: (takeOut) => set({ takeOut }),
 
@@ -50,11 +57,11 @@ export const orderStore = create((set, get) => ({
         set({ detailsToShow: detailValues.join('   ||   ')});
     },
 
-    setOrderDetails: (menuName, price, details) => set({ menuName, price, details }),
+    setOrderDetails: (menuName, price, categoryCode, details) => set({ menuName, price, categoryCode, details }),
 
     singleOrder: () => {
-        const { menuName, price, quantity, details, detailsToShow, order, orderNum, detailsPrice, itemPrice, unitPrice } = get(); // 현재 값 접근
-        const newOrder = [...order, { orderNum, menuName, price, quantity, details, detailsToShow, detailsPrice, itemPrice, unitPrice }];
+        const { menuName, price, quantity, details, detailsToShow, order, orderNum, detailsPrice, itemPrice, unitPrice, categoryCode } = get(); // 현재 값 접근
+        const newOrder = [...order, { orderNum, menuName, categoryCode, price, quantity, details, detailsToShow, detailsPrice, itemPrice, unitPrice }];
         set({ order: newOrder });
         set({ orderNum: orderNum + 1 });
     },
@@ -97,8 +104,8 @@ export const orderStore = create((set, get) => ({
 
     reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 
-    resetAll: () => set({ takeOut : false, menuName: '', quantity: 1, details: '', detailsToShow: '', orderNum:1, 
-        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [] }),
+    resetAll: () => set({ takeOut : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
+        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [], selectedMenus: [] }),
 
     setOrderHistory: (userNum) => {
         const { order, orderHistory, takeOut, totalPrice, totalObjNum } = get();
@@ -157,7 +164,7 @@ export const useMemberStore = create((set, get) => ({
     // 회원 추가
 
     phoneNumber : '', // 회원 전화번호
-    point : 0, // 회원 포인트
+    point : '', // 회원 포인트
     members : [],
 
 
@@ -199,7 +206,7 @@ export const useMemberStore = create((set, get) => ({
                     return { ...member, point: Math.max(0, member.point - pointsToSubtract) };
                      // 포인트가 0 이하로 떨어지지 않도록
                 }
-                return member.point;
+                return member;
             });
             return { members };
         });

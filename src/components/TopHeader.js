@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { orderStore } from "../store";
+import { checkDetail, orderStore } from "../store";
 import { FaHouse } from "react-icons/fa6";
 
 // 홈, 언어설정 버튼
@@ -7,11 +7,16 @@ import { FaHouse } from "react-icons/fa6";
 const TopHeader = () => {
     const today = new Date();
     const { resetAll } = orderStore();
+    const { resetValues } = checkDetail();
 
+    const clickHomeHandler =()=>{
+        resetAll();
+        resetValues();
+    }
 
     return (
         <header>
-            <Link to="/" className="btn-home">
+            <Link to="/" className="btn-home" onClick={()=>clickHomeHandler()}>
                 <FaHouse />
             </Link>
             <h1 className="logo white">
