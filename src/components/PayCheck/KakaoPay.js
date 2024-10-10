@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
+import { useNavigate } from "react-router-dom";
 
-const KakaoPay = ({ totalCount }) => {
+const KakaoPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
+    const nevi = useNavigate();
+    // const [show, setShow] = useState(false);
+
+    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -16,22 +21,29 @@ const KakaoPay = ({ totalCount }) => {
         }, 3000); 
 
         return () => clearTimeout(timer);
-    }, [totalCount]);
+    }, [lastPrice]);
+    
 
-    const handleRetry = () => {
-        setPaymentSuccess(false);
-        setLoading(false);
-    };
+    const onClickHandler = () => {
+        nevi("/paycheck");
+    }
+
+    
 
     return (
         <>
-            <h2>카드 결제 안내</h2>
+            <h2>KakaoPay 결제 안내</h2>
+            <button onClick={onClickHandler}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
+                <>
                 <h3>결제가 완료되었습니다! 감사합니다.</h3>
+                <PointSave lastPrice={lastPrice}/>
+                
+                </>
             ) : (
                 <>
-                    <h3>결제금액: {totalCount}</h3>
+                    <h3>결제금액: {lastPrice}</h3>
                     <h5>
                         <ul>
                             <li>다음 그림과 같이 카드 리더기에 카드를 꽂아주세요.</li>
@@ -42,10 +54,9 @@ const KakaoPay = ({ totalCount }) => {
                     </h5>
                 </>
             )}
-            <PointSave totalCount={totalCount} />
-            {paymentSuccess && <button onClick={handleRetry}>다시 결제하기</button>}
+          
         </>
     );
-};
+}
 
 export default KakaoPay;
