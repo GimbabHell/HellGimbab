@@ -13,29 +13,23 @@ const MenuOutlet =()=>{
 
     const [menus, setMenus] = useState([]);
     const {cateCode} = useParams();
+    // const selectedMenu = menu;
 
+
+    // NavBar 에서 카테고리 선택시
     useEffect(()=>{
-
         // 선택한 카테고리의 menu들 반환
-        // const menuList = getMenuFromCate(cateCode);
-        
         // (menuCode, categoryCode, name, price, description, imgURL, quantity, soldout, state, details) 를 갖는 배열
         setMenus(getMenuFromCate(cateCode));
     },[cateCode]);
 
-    // const menulist = useMemo(()=>{
-    //     console.log(`${cateCode}safdf`);
-    //     return getMenuFromCate(cateCode);
-        
-    // },[cateCode]);
-
-
+    
 
     return(
         <>
             <h1>메뉴들???</h1>
-            <MenuState menus ={menus}/>
-            <MenuFootState/>
+            <MenuState menus ={menus} />
+            <MenuFootState />
             
         </>
     )
