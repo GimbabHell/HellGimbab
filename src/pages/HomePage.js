@@ -66,6 +66,7 @@ const HomePage = () => {
             setWeather(weatherInfo.weather[0].description);
             setTemp(weatherInfo.main.temp);
             setIconURL(`https://openweathermap.org/img/wn/${icon}@2x.png`);
+            setLoading(false);
         }
         weatherAtLocation();
 
@@ -91,8 +92,9 @@ const HomePage = () => {
     return (
         <>
             <h1>김밥지옥</h1>
-            <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
-            <img src={iconURL}/>
+            {loading ? <><p>HELL / 99999999℃ / THREE SUNS</p> <img src={"../images/logo/weatherOfHell.png"}/></> : <><p>{`${cityName} / ${temp}℃ / ${weather}`}</p> <img src={iconURL}/></>}
+            {/* <p>{`${cityName} / ${temp}℃ / ${weather}`}</p>
+            <img src={iconURL}/> */}
             {loading || !satanUrl ? <h2>COMING.. DEVIL</h2> : <img src={satanUrl}/>}
             <div>
                 {/* <h3>{aboutDeath}</h3> */}
