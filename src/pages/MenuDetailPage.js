@@ -132,7 +132,8 @@ const MenuDetailPage = () => {
                                 {selectedValues.rice}
                             </span>
                             <span>
-                                {selectedValues.vegi.length>0?selectedValues.vegi.join(', '):""} 
+                                {selectedValues.vegi}
+                                {/* {selectedValues.vegi.length>0?selectedValues.vegi.join(', '):""}  */}
                             </span>
                             <span>
                                 {selectedValues.sauce}
