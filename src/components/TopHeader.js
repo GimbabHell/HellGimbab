@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { orderStore } from "../store";
 
 // 홈, 언어설정 버튼
 
 const TopHeader = () => {
     const today = new Date();
+    const { resetAll } = orderStore();
+
+
     return (
         <header>
             <h1>

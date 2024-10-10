@@ -10,10 +10,10 @@ import { create } from "zustand";
 
 export const orderStore = create((set, get) => ({
     takeOut: false, //false: 매장식사, true: 포장주문
-    menuName: "",
+    menuName: '',
     quantity: 1,
-    details: "",    // details key 와 value 로 이루어진 배열
-    detailsToShow: "",  // 보여주기용 details values
+    details: '',    // details key 와 value 로 이루어진 배열
+    detailsToShow: '',  // 보여주기용 details values
     orderNum: 1,
     price: 0, // price와 quantity 는 number, string 중에 뭘로 하는지에 따라서 함수에서 state 쓸지 결정됨
     detailsPrice: 0,       // details 선택으로 인한 추가금
@@ -22,6 +22,7 @@ export const orderStore = create((set, get) => ({
     totalPrice: 0,
     totalObjNum: 0,
     order: [],
+    orderHistory: [],
 
     clearAll: () => set({ order: [] }),
 
@@ -49,7 +50,7 @@ export const orderStore = create((set, get) => ({
         set({ detailsToShow: detailValues.join('   ||   ')});
     },
 
-    orderSingleMenu: (menuName, price, details) => set({ menuName, price, details }),
+    setOrderDetails: (menuName, price, details) => set({ menuName, price, details }),
 
     singleOrder: () => {
         const { menuName, price, quantity, details, detailsToShow, order, orderNum, detailsPrice, itemPrice, unitPrice } = get(); // 현재 값 접근
@@ -95,6 +96,16 @@ export const orderStore = create((set, get) => ({
     },
 
     reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
+
+    resetAll: () => set({ takeOut : false, menuName: '', quantity: 1, details: '', detailsToShow: '', orderNum:1, 
+        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [] }),
+
+    setOrderHistory: (userNum) => {
+        const { order, orderHistory, takeOut, totalPrice, totalObjNum } = get();
+        const newHistory = [...orderHistory, { userNum, takeOut, totalPrice, totalObjNum, order }];
+        set({ orderHistory: newHistory });
+    }
+
 }));
 
 
