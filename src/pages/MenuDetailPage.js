@@ -128,11 +128,21 @@ const MenuDetailPage = () => {
                         <p className="option">선택된 옵션 | </p>
 
                         <p className="options">
-                            <span>{selectedValues.rice} </span>
-                            <span>{selectedValues.vegi} </span>
-                            <span>{selectedValues.sauce} </span>
-                            <span>{selectedValues.dipping} </span>
-                            <span>{selectedValues.topping} </span>
+                            <span>
+                                {selectedValues.rice}
+                            </span>
+                            <span>
+                                {selectedValues.vegi.length>0?selectedValues.vegi.join(', '):""} 
+                            </span>
+                            <span>
+                                {selectedValues.sauce}
+                            </span>&nbsp;
+                            <span>
+                                {selectedValues.dipping}
+                            </span>
+                            <span>
+                                {selectedValues.topping}
+                            </span>
                             <span>{selectedValues.noodle} </span>
                             <span>{selectedValues.ramen} </span>
                             <span>{selectedValues.drink} </span>

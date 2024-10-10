@@ -89,7 +89,7 @@ const MenuOrder = ()=>{
                                    
                             </div> 
                         </div>                
-                        <h5>- {singleOrder.detailsToShow}</h5>
+                        <h5>{singleOrder.detailsToShow===""? "": `- ${singleOrder.detailsToShow}`}</h5>
                     </li>
         });
 

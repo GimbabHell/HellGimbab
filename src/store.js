@@ -47,7 +47,7 @@ export const orderStore = create((set, get) => ({
     setDetailsToShow: () => {
         const { details } = get(); // 현재 details 접근
         const detailValues = Object.values(details);
-        set({ detailsToShow: detailValues.join('   ||   ')});
+        set({ detailsToShow: detailValues.join(', ')});
     },
 
     setOrderDetails: (menuName, price, details) => set({ menuName, price, details }),
