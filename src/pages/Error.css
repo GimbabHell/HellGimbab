@@ -28,6 +28,9 @@
 .container .scared-text {
   font-size: 1.2rem;
 }
+.container .dot1 {
+  margin-top: 20px;
+}
 .container .come-back-home {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -42,9 +45,9 @@
   color: #333;
   border: none;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   border-radius: 5px;
-  padding: 5px 20px;
+  padding: 5px 0px;
   font-size: 1.2rem;
   cursor: pointer;
   -webkit-transition: background-color 0.3s ease, color 0.3s ease;

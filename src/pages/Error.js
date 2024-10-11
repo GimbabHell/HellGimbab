@@ -18,7 +18,7 @@ const Error = () => {
             </video>
             <span className="scared-text">어..? 이거 뭐야 무서워..</span>
 
-            <p className="scared-text">.</p>
+            <p className="dot1">.</p>
             <p className="scared-text">.</p>
             <p className="scared-text">.</p>
 
