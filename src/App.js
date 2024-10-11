@@ -25,6 +25,7 @@ function App() {
                     </Route>
                     <Route path="/last" element={<LastPage />} />
                     <Route path="*" element={<Error />} />
+                    <Route path="/admin" element={<AdminPage />} />
                 </Routes>
             </BrowserRouter>
         </>
