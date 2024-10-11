@@ -3,7 +3,7 @@ import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 import ReactModal from "react-modal";
 import MemberCheckNumberStyle from './MemberCheckNumber.css';
-import { FaXmark } from "react-icons/fa6";
+import { FaXmark, FaArrowLeft, FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
@@ -29,8 +29,8 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         setErrorMessage(""); 
     };
 
-    const handleDelete = (num) => {
-        
+    const handleDelete = () => {
+        setNum((prev)=> prev.slice(0,-1));
     }
 
     const handleConfirm = () => {
@@ -74,6 +74,8 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
     };
 
     const closeModal =()=>{
+        setShow(false);
+
         setSubCategoryId(0);
         setShow2(false);
     };
@@ -110,8 +112,17 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
                 </div>
                 <div className="top">
                     <h3>휴대폰 번호를 입력해주세요</h3>
-                    <h4>{formatPhoneNumber(num)}</h4> 
-                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
+                    <h4>
+                        <span>{formatPhoneNumber(num)}</span>
+                        {
+                            num.length > 0 ? 
+                            <button onClick={handleDelete} className="btn-delete">
+                                <FaDeleteLeft />
+                            </button>
+                            : null
+                        }
+                    </h4> 
+                    {errorMessage && <p style={{ color: "red", fontSize: '20px' }}>{errorMessage}</p>} 
                 </div>
                 
                 <div className="numbers">
@@ -121,7 +132,8 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
                         </button>
                     ))}
                     
-                    <button onClick={handleClear} className="btn-clear">지우기</button>
+                    
+                    <button onClick={handleClear} className="btn-clear">삭제</button>
                     <button key="0" onClick={()=>handleButtonClick("0")}>0</button>
                     <button onClick={handleConfirm} className="btn-confirm">확인</button>
                     
