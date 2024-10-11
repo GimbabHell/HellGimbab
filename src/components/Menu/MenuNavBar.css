@@ -3,9 +3,14 @@ nav {
 }
 nav ul {
   padding: 0 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-top: 1px solid #D85865;
   position: relative;
 }
@@ -20,7 +25,8 @@ nav ul::before {
 }
 nav ul li {
   height: 90px;
-  flex-shrink: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 nav ul li a {
   display: block;

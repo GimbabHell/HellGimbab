@@ -13,12 +13,13 @@
   background: #000;
   z-index: -1;
 }
-.home .fade-in {
+.home .fade-out {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
 }
-.home .fade-in.visible {
-  opacity: 1;
+.home .visible {
+  display: block;
 }
 .home .bg {
   position: absolute;
@@ -47,10 +48,38 @@
   margin-bottom: 185px;
 }
 .home .cont .info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   padding: 0 162px;
+  height: 95px;
+}
+.home .cont .info > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .cont .info > div:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 162px;
+}
+.home .cont .info > div:last-child .left, .home .cont .info > div:last-child .right {
+  opacity: 0;
+}
+.home .cont .info > div:last-child .left.fade-in, .home .cont .info > div:last-child .right.fade-in {
+  opacity: 1;
+  -webkit-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+}
+.home .cont .info > div > div.hidden {
+  display: none;
 }
 .home .cont .info p {
   color: #ccc;
@@ -58,8 +87,12 @@
   font-weight: 800;
 }
 .home .cont .info .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .home .cont .info .left img {
   width: 95px;

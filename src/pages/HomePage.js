@@ -70,7 +70,7 @@ const HomePage = () => {
             }
             setLoading(false);
 
-            
+          
         }
         weatherAtLocationAndfetchImage();
 
@@ -82,13 +82,15 @@ const HomePage = () => {
             // 로딩이 끝나면 페이드 아웃 시작
             setFadeOut(true);
             const timer = setTimeout(() => {
-                setIsVisible(true); // 새로운 정보가 보이도록 설정
                 setFadeOut(false); // 페이드 아웃 상태 해제
+                setIsVisible(true); // 새로운 정보가 보이도록 설정
+               
             }, 1000); // 페이드 아웃 시간과 일치시킴
             return ()=> clearTimeout(timer)
         } else {
-            setIsVisible(false); // 로딩 중에는 정보 숨김
             setFadeOut(false);
+            setIsVisible(false); // 로딩 중에는 정보 숨김
+            
         }
     }, [loading]);
     
@@ -99,29 +101,28 @@ const HomePage = () => {
             <div className={`bg`} style={{ backgroundImage: `url(${satanUrl})` }}></div>
             <div className={`cont`}>
                 <h1 className="logo">Gimbab HELL</h1>
-                <div className={`info`}>
-            {loading ? (
-                <>
-                    <div className="left">
+            <div className={`info`}>
+
+                <div>
+                    <div className={`left ${isVisible? 'hidden' : ''}`}>
                         <img src={"../images/logo/weatherOfHell.png"} alt="로고" />
                         <p>HELL</p>
                     </div>
-                    <div className="right">
+                    <div className={`right ${isVisible? 'hidden' : ''}`}>
                         <p>99999999℃ | THREE SUNS</p>
                     </div>
-                </>
-            ) : (
-                <>
-                    <div className={`left fade-in ${fadeOut ? 'fade-out hidden' : ''} ${isVisible ? 'visible' : ''}`}>
+                </div>
+                <div style={{visibility: isVisible? "visible":"hidden"}}>
+                    <div className={`left  ${fadeOut ? '' : 'fade-in'}`}>
                         <img src={iconURL} alt="날씨 아이콘" />
                         <p>{cityName}</p>
                     </div>
-                    <div className={`right fade-in ${fadeOut ? 'fade-out hidden' : ''} ${isVisible ? 'visible' : ''}`}>
+                    <div className={`right  ${fadeOut ? '' : 'fade-in'}`}>
                         <p>{`${temp}℃ | ${weather}`}</p>
                     </div>
-                </>
-            )}
-        </div>
+                </div>
+                
+            </div>
                 <div className={`imgBox`}>
                     {loading ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
                 </div>
