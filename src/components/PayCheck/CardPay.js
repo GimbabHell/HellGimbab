@@ -16,6 +16,7 @@ const CardPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
+                alert("결제 완료되었습니다 !");
                 setShow2(false);
                 
             }, 2000); 
@@ -35,7 +36,7 @@ const CardPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
                 contentLabel="카드페이"
                 style={{
                     content: {

@@ -9,10 +9,10 @@ import PayCheckStyle from "./PayCheck.css";
 import { FaCreditCard } from "react-icons/fa6";
 
 const PayCheckPage = () => {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(0);
     const [push, setPush] = useState("");
     const [defa, setDefa] = useState(0);
-    const [contents, setContents] = useState("");
+    // const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
     // const { phoneNumber, getPoints } = useMemberStore();
@@ -22,18 +22,19 @@ const PayCheckPage = () => {
     // const [testNum, setTestNum] = useState(0);
     const [modalContent, setModalContent] = useState(null);
     const [showModal, setShowModal] = useState(false);
-
-
-
-    const [test, setTest] = useState(false);
+    const [subCategoryId, setSubCategoryId] = useState(0);
+    // const [test, setTest] = useState(false);
     
     
 
     const onClickHandler = () => {
+        setSubCategoryId(1);
         setShow(true);
+        console.log(subCategoryId, show)
     };
 
     const handleNotUsingPoints = () => {
+        setSubCategoryId(2);
         setShow(false);
     };
 
@@ -76,21 +77,23 @@ const PayCheckPage = () => {
                     <p className="txtBold">포인트 사용 여부 확인</p>
                     <div>
                         <div>
-                            <input type="radio" name="point" id="yes" onChange={onClickHandler}  required />
+                            <input type="radio" name="point" id="yes" checked={subCategoryId === 1} onChange={onClickHandler}  required />
+                            {console.log(subCategoryId)}
                             <label htmlFor="yes" className="btn btn-black">
                                 사용
                             </label>
                         </div>
                         <div>
-                            <input type="radio" name="point" id="no" onChange={handleNotUsingPoints} />
+                            <input type="radio" name="point" id="no" checked={subCategoryId === 2} onChange={handleNotUsingPoints} />
                             <label htmlFor="no" className="btn btn-gray">
+                            {console.log(subCategoryId)}
                                 사용안함
                             </label>
                         </div>
                     </div>
                 </div>
                
-                {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} /> : null}
+                {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} setSubCategoryId={setSubCategoryId} /> : null}
 
                 <div className="payMethod borderBottom">
                     <p className="txtBold">결제 수단 선택</p>
@@ -144,10 +147,7 @@ const PayCheckPage = () => {
                 </div>
                 </form>
 
-                {showModal && 
-                        modalContent
-        
-            }
+                {showModal && modalContent}
         </div>
     );
 };

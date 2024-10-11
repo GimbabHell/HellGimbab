@@ -1,0 +1,53 @@
+.pointModal .top {
+  font-weight: 700;
+  text-align: center;
+  padding: 50px 0;
+  position: relative;
+}
+.pointModal .top::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 1px;
+  background: #ccc;
+  width: 480px;
+}
+.pointModal .top h3 {
+  font-size: 28px;
+}
+.pointModal .top h4 {
+  margin-top: 30px;
+  font-size: 48px;
+  position: relative;
+}
+.pointModal .top h4 .btn-delete {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: none;
+  font-size: 36px;
+  vertical-align: middle;
+}
+.pointModal .numbers {
+  padding: 20px 60px 75px;
+}
+.pointModal .numbers button {
+  font-weight: 700;
+  font-size: 48px;
+  font-family: "Noto Sans KR", sans-serif;
+  background: none;
+  padding: 25px 65px;
+}
+.pointModal .numbers .btn-confirm {
+  color: #bd2030;
+}
+.pointModal .numbers .btn-clear,
+.pointModal .numbers .btn-confirm {
+  padding: 25px 45px;
+  font-size: 36px;
+}

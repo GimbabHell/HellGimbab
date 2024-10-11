@@ -192,4 +192,5 @@ footer > div span.active::after {
   background: none;
   font-size: 32px;
   color: #fff;
+  padding: 0;
 }

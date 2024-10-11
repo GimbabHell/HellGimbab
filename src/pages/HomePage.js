@@ -94,7 +94,7 @@ const HomePage = () => {
         }
     }, [loading]);
     
-    // console.log(isVisible);
+    
     return (
 
         <div className="home">

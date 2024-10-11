@@ -40,7 +40,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
             alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
             setPlusPointNumber(""); 
         }
-    }, [plusPointNumber, num,  subtractPoints]);
+    }, [plusPointNumber, num, subtractPoints]);
 
     const onClickHandler3 = () => {
         setPlusPointNumber(""); 
@@ -62,7 +62,8 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
 
 
     const closeModal =()=>{
-            setShow2(false);
+        
+        setShow2(false);
         };
 
 

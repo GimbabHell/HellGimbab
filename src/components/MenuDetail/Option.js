@@ -21,6 +21,7 @@ export const Option = ({ item, index, group }) => {
         } else {
             setIsChecked(false);
         }
+        e.target.classList.toggle('active');
 
         const checkboxes = document.querySelectorAll('input[name="vegi"]');
         const isAnyChecked = Array.from(checkboxes).some((checkbox) => checkbox.checked);
