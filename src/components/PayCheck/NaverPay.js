@@ -36,7 +36,8 @@ const NaverPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                shouldCloseOnOverlayClick={false}
                 contentLabel="네이버페이"
                 style={{
                     content: {

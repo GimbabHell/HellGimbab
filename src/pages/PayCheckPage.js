@@ -15,7 +15,7 @@ const PayCheckPage = () => {
     // const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
-    const { phoneNumber}= useMemberStore();
+    const { phoneNumber, plusPoint}= useMemberStore();
     // const { phoneNumber, getPoints } = useMemberStore();
     // const [search] = useSearchParams();
     // const num = search.get("poiint");
@@ -46,7 +46,7 @@ const PayCheckPage = () => {
 
     const onClickHandler3 = (event) => {
 
-        subtractPoints(phoneNumber, plusPointNumber); 
+        subtractPoints(phoneNumber, plusPoint); 
         event.preventDefault();
         
         if (push === 0) {

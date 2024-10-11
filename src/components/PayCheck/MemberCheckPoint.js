@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { useMemberStore,orderStore} from "../../store";
 import ReactModal from "react-modal";
 import MemberCheckPointStyle from './MemberCheckPoint.css';
@@ -9,13 +9,17 @@ ReactModal.setAppElement('#root');
 const MemberCheckPoint = ({num, poiint, setShow, setDefa, setSubCategoryId}) => {
     const [plusPointNumber, setPlusPointNumber] = useState(""); 
     const { totalPrice } = orderStore();
+    const {plus} = useMemberStore();
     const [show2, setShow2] = useState(true);
+    // const [homePoint, setHomePoint] = useState(0);
     
-    const subtractPoints = useMemberStore(state => state.subtractPoints);
+    
+    // const subtractPoints = useMemberStore(state => state.subtractPoints);
     
 
     const handleButtonClick = (n) => {
         setPlusPointNumber((prev) => prev + n);
+        
     };
 
     const handleClear = () => {
@@ -48,12 +52,13 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa, setSubCategoryId}) => 
         setDefa(0);
         setShow(false);
         setShow2(false);
-    } else{
-        subtractPoints(num, plusPointNumber); 
+
+    } else{  
          
         if ( poiint >= plusPointNumber){
          
             alert("확인!");
+            plus(plusPointNumber); // 입력받은 사용 할 포인트 담아줌.
             setDefa(plusPointNumber);
             setShow(false);
             setShow2(false);

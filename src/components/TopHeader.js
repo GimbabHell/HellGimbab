@@ -13,7 +13,7 @@ const TopHeader = () => {
     const clickHomeHandler =()=>{
         resetAll();
         resetValues();
-        addPoints(phoneNumber, minusPoint);
+        // addPoints(phoneNumber, minusPoint);
         // 이미 사용한 포인트를 다시 더해줌
     }
 
