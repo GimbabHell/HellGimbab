@@ -14,11 +14,11 @@ const PayCheckPage = () => {
     const [defa, setDefa] = useState(0);
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
-    const { phoneNumber, getPoints } = useMemberStore();
-    const [search] = useSearchParams();
+    // const { phoneNumber, getPoints } = useMemberStore();
+    // const [search] = useSearchParams();
     // const num = search.get("poiint");
-    const [too, setToo] = useState("");
-    const [testNum, setTestNum] = useState(0);
+    // const [too, setToo] = useState("");
+    // const [testNum, setTestNum] = useState(0);
 
     const [test, setTest] = useState(false);
     const [test2, setTest2] = useState(false);
@@ -49,12 +49,12 @@ const PayCheckPage = () => {
         }
     };
 
-    useEffect(() => {
-        const nn = () => {
-            return getPoints(phoneNumber);
-        };
-        setTestNum(nn);
-    });
+    // useEffect(() => {
+    //     const nn = () => {
+    //         return getPoints(phoneNumber);
+    //     };
+    //     setTestNum(nn);
+    // });
 
     return (
         <div className="payCheckContainer">
@@ -128,11 +128,11 @@ const PayCheckPage = () => {
                     <button className="btn btn-gray" onClick={onClickHandler2}>취소</button>
                     <button className="btn btn-red" type="submit">결제하기</button>
                 </div>
-
-                {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
-                {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
-                {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
+                
             </form>
+            {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
+            {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
+            {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
         </div>
     );
 };
