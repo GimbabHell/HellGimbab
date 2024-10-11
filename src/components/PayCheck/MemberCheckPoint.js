@@ -92,7 +92,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
                         <h2 className="title">포인트 사용</h2>
                         <button className="btn-close" onClick={()=>closeModal()}><FaXmark /></button> 
                     </div>
-                    <div className="container">
+                    <div className="modalContainer">
                         <div className="left">
                             <h3>회원 번호: {num}</h3>
                             <h3>결제 금액: {totalPrice}</h3>
