@@ -9,7 +9,7 @@ import { create } from "zustand";
 // orderHistory 는 singleOrder들로 이루어진 배열???
 
 export const orderStore = create((set, get) => ({
-    takeOut: false, //false: 매장식사, true: 포장주문
+    
     menuName: '',
     quantity: 1,
     categoryCode: 1,
@@ -20,13 +20,16 @@ export const orderStore = create((set, get) => ({
     detailsPrice: 0,       // details 선택으로 인한 추가금
     itemPrice: 0,          // price + detailsPrice
     unitPrice: 0,           // itemPrice * quantity
+
+    toGo: false, //false: 매장식사, true: 포장주문
     totalPrice: 0,          // 총 가격
     totalObjNum: 0,         // 총 개수
+    forHereReceiptNum: 0,            // 주문번호/// 결제완료시 배부
+    toGoReceiptNum: 100,
+    date: [],
     order: [],              // 1회의 주문을 담아주는 배열//// 결제완료시 reset
     orderHistory: [],       // 결제완료된 모든 주문을 담아주는 기록 배열
-    ForHereReceiptNum: 0,            // 주문번호/// 결제완료시 배부
-    ToGoReceiptNum: 0,
-    date: [],
+    
     selectedMenus: [],      // 장바구니에 담긴 메뉴들의 이름을 기록해주는 배열 
 
     setDate: (year, month, date, day, hour, minute) => set({ date: {['year'] : year,
@@ -36,13 +39,38 @@ export const orderStore = create((set, get) => ({
                                                                     ['hour'] : hour,
                                                                     ['minute'] : minute }}),
 
+    setReceiptNum: () => {
+        const { toGo, toGoReceiptNum, forHereReceiptNum } = get();
+        if(toGo === true){
+            set({ toGoReceiptNum : toGoReceiptNum + 1});
+        }else{
+            set({ forHereReceiptNum : forHereReceiptNum + 1});
+        }
+    },
+
+    setOrderHistory: (userNum) => {
+        const { order, orderHistory, toGo, totalPrice, totalObjNum, toGoReceiptNum, forHereReceiptNum } = get();
+        const newHistory = toGo === true? [...orderHistory, { userNum, toGo, toGoReceiptNum, totalPrice, totalObjNum, order }] :
+                                          [...orderHistory, { userNum, toGo, forHereReceiptNum, totalPrice, totalObjNum, order }];
+        set({ orderHistory: newHistory });
+    },
+
+    resetReceiptNum: () => {
+        const { orderHistory, date } = get();
+        if(orderHistory.length !== 0) {
+            if(date.date !== orderHistory[orderHistory.length - 1].date){
+                set({ forHereReceiptNum: 0, toGoReceiptNum: 100 })
+            }
+        }
+    },
+
     setSelectedMenus: (selecMenu) => {
         set({ selectedMenus: selecMenu});
     },
 
     clearAll: () => set({ order: [], selectedMenus: [] }),
 
-    setPlace: (takeOut) => set({ takeOut }),
+    setPlace: (toGo) => set({ toGo }),
 
     setDetailPrice: (detailsPrice) => set({detailsPrice}),
 
@@ -113,23 +141,12 @@ export const orderStore = create((set, get) => ({
 
     reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 
-    resetAll: () => set({ takeOut : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
-        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [], selectedMenus: [] }),
+    resetAll: () => set({ toGo : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
+        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [], selectedMenus: [] })
 
-    setOrderHistory: (userNum) => {
-        const { order, orderHistory, takeOut, totalPrice, totalObjNum } = get();
-        const newHistory = [...orderHistory, { userNum, takeOut, totalPrice, totalObjNum, order }];
-        set({ orderHistory: newHistory });
-    }
 
 }));
 
-
-export const orderHistory = create((set) => ({
-    ordersPerDay: [{}],
-
-    storeOrder: () => [{}],
-}));
 
 
 export const checkDetail = create((set) => ({
@@ -174,7 +191,6 @@ export const useMemberStore = create((set, get) => ({
 
     phoneNumber : '', // 회원 전화번호
     point : '', // 회원 포인트
-    minusPoint : '', // 사용자가 사용할 포인트
     members : [],
 
 
@@ -211,8 +227,6 @@ export const useMemberStore = create((set, get) => ({
     // 포인트 차감
     subtractPoints: (phoneNumber, pointsToSubtract) => {
         set(state => {
-            set({ minusPoint : pointsToSubtract});
-             // minusPoint 에 사용할 포인트 값 저장/ 사용 후 home 버튼 눌렀을 때 다시 더해주기 !
             const members = state.members.map(member => {
                 if (member.phoneNumber === phoneNumber) {
                     return { ...member, point: Math.max(0, member.point - pointsToSubtract) };
@@ -223,12 +237,6 @@ export const useMemberStore = create((set, get) => ({
             return { members };
         });
     },
-
-    // reset: (phoneNumber) => {
-    //     set(state => {
-            
-    //     })
-    // },
 
 
     // 회원 조회 

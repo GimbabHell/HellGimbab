@@ -61,6 +61,7 @@ const MenuState = ({menus})=>{
          <div className="scrollContainer">
             <ul>
                 {menuList}
+                {console.log(order)}
             </ul>
          </div>
        </div>

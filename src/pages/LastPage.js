@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import LastStyle from "./LastPage.css";
+import { orderStore, useMemberStore } from "../store";
 
 const LastPage = () => {
 
     const [satanUrl, setSatanUrl] = useState("");
     const [loading, setLoading] = useState(true); // 로딩 중이면 트루, 로딩이 끝났으면 펄스
-    const navigate = useNavigate();
+
+    const { setDate, resetReceiptNum, setReceiptNum, setOrderHistory, toGo, forHereReceiptNum, toGoReceiptNum } = orderStore();
+    const { phoneNumber } = useMemberStore();
 
     useEffect(()=>{
 
@@ -22,6 +25,21 @@ const LastPage = () => {
             
         };
         fetchImage();
+
+        // date 배열 생성(현재 날짜, 시간 저장)
+        const orderDate = new Date();
+        setDate(orderDate.getFullYear(), orderDate.getMonth(), orderDate.getDate(), orderDate.getDay(), orderDate.getHours(), orderDate.getMinutes());
+        
+        // 날짜가 바뀌었으면 주문번호 reset
+        resetReceiptNum();
+
+        // 주문번호 set
+        setReceiptNum();
+
+        // 주문 기록 배열에 저장
+        setOrderHistory(phoneNumber);
+
+
     }, []);
     
 
@@ -34,7 +52,7 @@ const LastPage = () => {
                 </div>
                 <h2>결제가 완료되었습니다.</h2>
                 <h3>영수증 하단 주문 번호를 확인해 주세요.</h3>
-                <p className="dot">.</p>
+                <p className="dot">{ toGo===true? toGoReceiptNum : forHereReceiptNum }</p>
                 <p className="dot">.</p>
                 <p className="dot">.</p>
                 <h4>"우리 김밥지옥 먹어줘서 고맙다!"</h4>
