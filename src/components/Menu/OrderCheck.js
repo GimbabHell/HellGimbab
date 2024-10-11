@@ -74,7 +74,7 @@ const OrderCheck= ({show, setShow})=>{
             >
 
             <div className="menuOrderModal">
-                <div class="modalTop">
+                <div className="modalTop">
                     <h2 className="title">주문리스트</h2>
                     <button className="btn-close" onClick={()=>closeModal()}><FaXmark /></button>    
                 </div>

@@ -17,10 +17,21 @@
 }
 .pointModal .top h3 {
   font-size: 28px;
-  margin-bottom: 20px;
 }
 .pointModal .top h4 {
+  margin-top: 30px;
   font-size: 48px;
+  position: relative;
+}
+.pointModal .top h4 .btn-delete {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: none;
+  font-size: 36px;
+  vertical-align: middle;
 }
 .pointModal .numbers {
   padding: 20px 60px 75px;
@@ -32,9 +43,11 @@
   background: none;
   padding: 25px 65px;
 }
-.pointModal .numbers .btn-clear {
-  padding: 0;
-}
 .pointModal .numbers .btn-confirm {
-  padding: 0;
+  color: #bd2030;
+}
+.pointModal .numbers .btn-clear,
+.pointModal .numbers .btn-confirm {
+  padding: 25px 45px;
+  font-size: 36px;
 }
