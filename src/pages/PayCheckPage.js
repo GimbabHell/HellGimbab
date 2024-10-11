@@ -64,15 +64,7 @@ const PayCheckPage = () => {
     };
 
 
-    // useEffect(() => {
-    //     const nn = () => {
-    //         return getPoints(phoneNumber);
-    //     };
-    //     setTestNum(nn);
-    // });
-    // {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
-    //         {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
-    //         {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
+    
 
     return (
         <div className="payCheckContainer">

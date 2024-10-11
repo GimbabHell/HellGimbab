@@ -101,13 +101,22 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa, setSubCategoryId}) => 
                         <button className="btn-close" onClick={()=>closeModal()}><FaXmark /></button> 
                     </div>
                     <p>사용을 원하는 포인트를 입력해주세요!</p>
+                    {poiint === 0 ? (
+                        <div className="txt">
+                            <h4>고객님의 누적 포인트는 <span>0원</span>입니다. <br/>사용하기 버튼을 누르시면 바로 결제로 넘어갑니다.</h4>
+                           
+                        </div>
+                    ) : (
+                       null
+                    )}
                     <div className="modalContainer">
                         
                         <div className="left">
                             <p><span>회원 번호</span> <span>{num}</span></p>
                             <p><span>결제 금액</span> <span>{totalPrice}원</span></p>
                             <p><span>사용 가능 포인트</span> <span>{poiint}원</span></p>
-                            <h3>사용 포인트: {sliceNum}</h3>
+                            <p><span>사용 포인트</span> <span className="red">{sliceNum}원</span></p>
+                            <button className="btn btn-black">전체 포인트 사용하기</button>
                         </div>
                         <div className="right">
                             
@@ -116,22 +125,16 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa, setSubCategoryId}) => 
                                     {n}
                                 </button>
                             ))}
-                            <button onClick={handleClear}>지우기</button>
+                            <button onClick={onClickHandler3} className="btn-clear">삭제</button>
+                            {/* <button onClick={handleClear}>지우기</button> */}
                             <button key="0" onClick={() => handleButtonClick("0")}>
                                 0
                             </button>
-                            <button onClick={onClickHandler3}>전체 삭제</button>
+                            <button className="btn-delete"><FaDeleteLeft /></button>
                         </div>
                     </div>
                 
-                    {poiint === 0 ? (
-                        <div>
-                            <h4>고객님의 누적 포인트는 0원입니다. 사용하기 버튼을 누르시면 바로 결제로 넘어갑니다.</h4>
-                           
-                        </div>
-                    ) : (
-                       null
-                    )}
+                   
                     <div className="btn-wrap">
                         <button className="btn btn-gray btn-small" onClick={()=> closeModal()}>취소</button>
                         <button className="btn btn-red btn-small" onClick={onClickHandlerr}>사용하기</button>

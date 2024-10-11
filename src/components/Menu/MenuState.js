@@ -14,7 +14,7 @@ const MenuState = ({menus})=>{
     
     useEffect(()=>{
 
-        if(order.length > 0){
+        if(order.length >= 0){
             const list=[];
             for(let i=0; i<order.length; i++){
                 list.push(order[i].menuName);
