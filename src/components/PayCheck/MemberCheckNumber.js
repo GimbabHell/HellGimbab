@@ -6,7 +6,7 @@ import MemberCheckNumberStyle from './MemberCheckNumber.css';
 import { FaXmark, FaArrowLeft, FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
-const MemberCheckNumber = ({setShow, setDefa}) => {
+const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
@@ -74,6 +74,7 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
     };
 
     const closeModal =()=>{
+        setSubCategoryId(0);
         setShow2(false);
     };
 
