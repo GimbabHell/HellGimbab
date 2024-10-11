@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useMemberStore,orderStore} from "../../store";
 import ReactModal from "react-modal";
 import MemberCheckPointStyle from './MemberCheckPoint.css';
