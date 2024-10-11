@@ -9,7 +9,7 @@ import { create } from "zustand";
 // orderHistory 는 singleOrder들로 이루어진 배열???
 
 export const orderStore = create((set, get) => ({
-    takeOut: false, //false: 매장식사, true: 포장주문
+    
     menuName: '',
     quantity: 1,
     categoryCode: 1,
@@ -20,12 +20,49 @@ export const orderStore = create((set, get) => ({
     detailsPrice: 0,       // details 선택으로 인한 추가금
     itemPrice: 0,          // price + detailsPrice
     unitPrice: 0,           // itemPrice * quantity
+
+    toGo: false, //false: 매장식사, true: 포장주문
     totalPrice: 0,          // 총 가격
     totalObjNum: 0,         // 총 개수
+    forHereReceiptNum: 0,            // 주문번호/// 결제완료시 배부
+    toGoReceiptNum: 100,
+    date: [],               // 결제시에 날짜, 시간이 담기는 배열
     order: [],              // 1회의 주문을 담아주는 배열//// 결제완료시 reset
     orderHistory: [],       // 결제완료된 모든 주문을 담아주는 기록 배열
-    receitNum:0,            // 주문번호/// 결제완료시 배부
+    
     selectedMenus: [],      // 장바구니에 담긴 메뉴들의 이름을 기록해주는 배열 
+
+    setDate: (year, month, date, day, hour, minute) => set({ date: {['year'] : year,
+                                                                    ['month'] : month,
+                                                                    ['date'] : date,
+                                                                    ['day'] : day,
+                                                                    ['hour'] : hour,
+                                                                    ['minute'] : minute }}),
+
+    setReceiptNum: () => {
+        const { toGo, toGoReceiptNum, forHereReceiptNum } = get();
+        if(toGo === true){
+            set({ toGoReceiptNum : toGoReceiptNum + 1});
+        }else{
+            set({ forHereReceiptNum : forHereReceiptNum + 1});
+        }
+    },
+
+    setOrderHistory: (userNum) => {
+        const { order, orderHistory, toGo, totalPrice, totalObjNum, toGoReceiptNum, forHereReceiptNum } = get();
+        const newHistory = toGo === true? [...orderHistory, { userNum, toGo, toGoReceiptNum, totalPrice, totalObjNum, order }] :
+                                          [...orderHistory, { userNum, toGo, forHereReceiptNum, totalPrice, totalObjNum, order }];
+        set({ orderHistory: newHistory });
+    },
+
+    resetReceiptNum: () => {
+        const { orderHistory, date } = get();
+        if(orderHistory.length !== 0) {
+            if(date.date !== orderHistory[orderHistory.length - 1].date){
+                set({ forHereReceiptNum: 0, toGoReceiptNum: 100 })
+            }
+        }
+    },
 
     setSelectedMenus: (selecMenu) => {
         set({ selectedMenus: selecMenu});
@@ -33,7 +70,7 @@ export const orderStore = create((set, get) => ({
 
     clearAll: () => set({ order: [], selectedMenus: [] }),
 
-    setPlace: (takeOut) => set({ takeOut }),
+    setPlace: (toGo) => set({ toGo }),
 
     setDetailPrice: (detailsPrice) => set({detailsPrice}),
 
@@ -104,23 +141,15 @@ export const orderStore = create((set, get) => ({
 
     reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 
-    resetAll: () => set({ takeOut : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
+    resetAll: () => set({ toGo : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
         price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [], selectedMenus: [] }),
 
-    setOrderHistory: (userNum) => {
-        const { order, orderHistory, takeOut, totalPrice, totalObjNum } = get();
-        const newHistory = [...orderHistory, { userNum, takeOut, totalPrice, totalObjNum, order }];
-        set({ orderHistory: newHistory });
-    }
+
+    resetFinal: () => set({menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum: 1, price: 0, itemPrice: 0, unitPrice: 0, 
+        toGo: false, totalPrice: 0, date: [], order: [], selectedMenus: []})
 
 }));
 
-
-export const orderHistory = create((set) => ({
-    ordersPerDay: [{}],
-
-    storeOrder: () => [{}],
-}));
 
 
 export const checkDetail = create((set) => ({
@@ -215,12 +244,6 @@ export const useMemberStore = create((set, get) => ({
         });
     },
 
-    // reset: (phoneNumber) => {
-    //     set(state => {
-            
-    //     })
-    // },
-
 
     // 회원 조회 
     // 원래는 return member || null; 이였음.... 
@@ -238,7 +261,9 @@ export const useMemberStore = create((set, get) => ({
         // console.log(member);
         // console.log(member.point);
         return member ? member.point : null;; // 포인트 반환, 없으면 null
-    }
+    },
+
+    reset: () => set({ phoneNumber : '',   point : '', minusPoint : '' })
 
 }))
 
