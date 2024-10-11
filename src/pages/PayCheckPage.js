@@ -57,7 +57,7 @@ const PayCheckPage = () => {
 
     return (
         <div className="payCheckContainer">
-            <form>
+            <form onSubmit={onClickHandler3}>
                 <div className="pointUse">
                     <p className="txtBold">포인트 사용 여부 확인</p>
                     <div>
@@ -75,8 +75,7 @@ const PayCheckPage = () => {
                         </div>
                     </div>
                 </div>
-                {/* <button onClick={onClickHandler}>사용</button> */}
-                {/* <button onClick={handleNotUsingPoints}>사용안함</button> */}
+               
                 {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} /> : null}
 
                 <div className="payMethod">
@@ -99,15 +98,9 @@ const PayCheckPage = () => {
 
                 <h2>총 결제 금액: {totalPrice - defa}</h2>
 
-                {/* <input type="radio" name="yesno" id="y" onChange={onClickHandler2}/>
-                <label htmlFor="y">취소</label>
-                <input type="radio" name="yesno" id="n" onChange={onClickHandler3}/>
-                <label htmlFor="n">결제하기</label>
-                */}
 
                 <div>
                     <button onClick={onClickHandler2}>취소</button>
-                    {/* <button onClick={onClickHandler3}>결제하기</button> */}
                     <button type="submit">결제하기</button>
                 </div>
 
