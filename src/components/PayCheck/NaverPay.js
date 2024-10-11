@@ -9,6 +9,8 @@ const NaverPay = ({lastPrice}) => {
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const nevi = useNavigate();
     const [show2, setShow2] = useState(true);
+    const [modalContent, setModalContent] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     // const [show, setShow] = useState(false);
 
     
@@ -20,6 +22,10 @@ const NaverPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
+                // setShowModal(true);
+                // alert("결제 완료되었습니다 ! 성공 ~!");
+                setShow2(false);
+                // setModalContent(<PointSave lastPrice={lastPrice}/>);
             }, 2000); 
         }, 3000); 
 
@@ -27,7 +33,6 @@ const NaverPay = ({lastPrice}) => {
     }, [lastPrice]);
 
     
-
     const closeModal =()=>{
         setShow2(false);
     };
@@ -37,7 +42,7 @@ const NaverPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
                 contentLabel="네이버페이"
                 style={{
                     content: {
@@ -58,15 +63,16 @@ const NaverPay = ({lastPrice}) => {
                 }}
             >
 
-            <h2>네이버페이 결제 안내</h2>
+            <h2>네이버 결제 안내</h2>
             <button onClick={()=>closeModal()}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
                 <>
-                <h3>결제가 완료되었습니다! 감사합니다.</h3>
+                
+                {/* {console.log(showModal,modalContent)} */}
                 <PointSave lastPrice={lastPrice}/>
-               
-
+                
+        
                 </>
             ) : (
                 <>
@@ -82,6 +88,7 @@ const NaverPay = ({lastPrice}) => {
                 </>
             )}
             </ReactModal>
+           
         </>
     );
 }

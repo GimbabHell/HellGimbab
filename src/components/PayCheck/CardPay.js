@@ -26,8 +26,8 @@ const CardPay = ({lastPrice}) => {
                 alert("결제 완료되었습니다 ! 성공 ~!");
                 setShow2(false);
                 // setModalContent(<PointSave lastPrice={lastPrice}/>);
-            }, 10000); 
-        }, 30000); 
+            }, 2000); 
+        }, 3000); 
 
         return () => clearTimeout(timer);
     }, [lastPrice]);
@@ -42,7 +42,7 @@ const CardPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
                 contentLabel="카드페이"
                 style={{
                     content: {
