@@ -46,8 +46,8 @@ const MenuState = ({menus})=>{
             <li onClick={()=>onClickMenuSelector(menu)}
             className={selectedMenus.includes(menu.name) ? "active": null }
             >
-                {console.log(selectedMenus)}
-                {console.log(order)}
+                {/* {console.log(selectedMenus)}
+                {console.log(order)} */}
                 <div className="imgBox">
                     <img src={menu.imgURL}/> 
                 </div>

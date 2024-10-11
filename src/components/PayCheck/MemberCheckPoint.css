@@ -5,7 +5,7 @@
   text-align: center;
   font-size: 28px;
   font-weight: 700;
-  margin: 50px 0;
+  margin: 50px 0 0;
 }
 .pointUseModal .modalContainer {
   padding: 0 60px;
@@ -15,6 +15,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 60px;
 }
 .pointUseModal .modalContainer .left {
   width: 315px;
@@ -26,12 +27,76 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 23px;
+  margin-bottom: 30px;
 }
 .pointUseModal .modalContainer .left p span {
   font-size: 20px;
   font-weight: 700;
 }
 .pointUseModal .modalContainer .left p span:last-of-type {
+  font-size: 26px;
+}
+.pointUseModal .modalContainer .left p span.red {
+  color: #bd2030;
+}
+.pointUseModal .modalContainer .left .btn {
+  height: 60px;
+  font-size: 20px;
+  margin-top: 25px;
+}
+.pointUseModal .modalContainer .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 360px;
+}
+.pointUseModal .modalContainer .right button {
+  font-size: 32px;
+  font-weight: 700;
+  background: none;
+  padding: 19px 42px;
+}
+.pointUseModal .modalContainer .right button:nth-child(-n+3) {
+  padding-top: 0;
+}
+.pointUseModal .modalContainer .right .btn-clear {
+  padding: 19px 30px;
   font-size: 24px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.pointUseModal .modalContainer .right .btn-delete {
+  padding: 19px 35px;
+}
+.pointUseModal .modalContainer .right .btn-delete svg {
+  vertical-align: middle;
+}
+.pointUseModal .txt h4 {
+  position: relative;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 700;
+}
+.pointUseModal .txt h4 span {
+  color: #bd2030;
+}
+.pointUseModal .txt h4::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: calc(100% - 120px);
+  height: 1px;
+  background: #ccc;
+}
+.pointUseModal .btn-wrap {
+  margin-top: 80px;
 }

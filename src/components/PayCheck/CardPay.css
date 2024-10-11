@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.cardModal {
+  padding-bottom: 90px;
+}
+.cardModal > h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 50px;
+}
+.cardModal > h2 span {
+  color: #bd2030;
+}
+.cardModal > h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+.cardModal .cardModalContainer {
+  margin-top: 50px;
+  padding: 0 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.cardModal .cardModalContainer .left {
+  width: 330px;
+}
+.cardModal .cardModalContainer .left img {
+  width: 100%;
+}
+.cardModal .cardModalContainer .right {
+  width: 308px;
+  position: relative;
+}
+.cardModal .cardModalContainer .right h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 23px 0;
+  font-size: 24px;
+  font-weight: 700;
+  border-bottom: 1px solid #ccc;
+}
+.cardModal .cardModalContainer .right ul {
+  margin-top: 20px;
+}
+.cardModal .cardModalContainer .right ul li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 23px;
+  margin-bottom: 10px;
+}
+.cardModal .cardModalContainer .right ul li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+}
+.cardModal .cardModalContainer .right p {
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 23px;
+}
+.cardModal .cardModalContainer .right p span {
+  font-weight: 400;
+}

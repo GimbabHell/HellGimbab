@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
+import PointSaveStyle from './PointSave.css';
+import { FaXmark,FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const PointSave = ({lastPrice}) => {
@@ -79,6 +81,10 @@ const PointSave = ({lastPrice}) => {
         setShow2(false);
     };
 
+    const handleDelete = () => {
+        setPhoneNum((prev)=> prev.slice(0,-1));
+    }
+
 
     return(
         <>
@@ -94,7 +100,7 @@ const PointSave = ({lastPrice}) => {
                         bottom: 'auto',
                         marginRight: '-50%',
                         transform: 'translate(-50%, -50%)',
-                        width: 784,
+                        width: 600,
                         borderRadius: 0,
                         border: "none",
                         padding: 0,
@@ -105,22 +111,44 @@ const PointSave = ({lastPrice}) => {
                 }}
             >
 
-            <h2>포인트 적립!</h2>
-            <h3>적립하시려면 핸드폰 번호를 입력해주세요.</h3>
-            <button onClick={()=>nevi("/last")}>x</button>
-            <h3>{formatPhoneNumber(phoneNum)}</h3>
-            
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
-            {/* <h3 onClick={onClickHandler2}>적용</h3> */}
-            <div>
-                {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num) => (
-                    <button key={num} onClick={() => handleButtonClick(num)}>
-                        {num}
-                    </button>
-                ))}
-                <button onClick={handleClear}>지우기</button> 
-                <button onClick={onClickHandler2}>확인</button>
-            </div>
+                <div className="pointSaveModal pointModal">
+                    <div className="modalTop">
+                        <h2 className="title">포인트 적립</h2>
+                        <button className="btn-close" onClick={()=>nevi("/last")}><FaXmark /></button> 
+                    </div>
+                    
+                    <div className="top">
+                        <h3>적립하시려면 휴대폰 번호를 <br></br>입력해주세요.</h3>
+                        <h4>
+                            <span>{formatPhoneNumber(phoneNum)}</span>
+                            {
+                                phoneNum.length > 0 ? 
+                                <button onClick={handleDelete} className="btn-delete">
+                                    <FaDeleteLeft />
+                                </button>
+                                : null
+                            }
+                             {errorMessage && <p style={{ color: "red", fontSize: '20px' }}>{errorMessage}</p>} 
+                        </h4>
+                    </div>
+                    
+                    
+                    
+                    <div className="numbers">
+                        {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((num) => (
+                            <button key={num} onClick={() => handleButtonClick(num)}>
+                                {num}
+                            </button>
+                        ))}
+                        
+                        
+                        <button onClick={handleClear} className="btn-clear">삭제</button>
+                        <button key="0" onClick={()=>handleButtonClick("0")}>0</button>
+                        <button onClick={onClickHandler2} className="btn-confirm">확인</button>
+                        
+                    </div>
+                   
+                </div>
 
             </ReactModal>
            

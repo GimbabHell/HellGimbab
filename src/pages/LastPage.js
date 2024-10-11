@@ -16,7 +16,7 @@ const LastPage = () => {
     useEffect(()=>{
 
         const fetchImage =async()=>{
-            const response = await fetch("https://loremflickr.com/700/616/satan");
+            const response = await fetch("https://loremflickr.com/540/405/satan");
             if(response.ok){
                 setSatanUrl(response.url);
             }else{
@@ -56,9 +56,22 @@ const LastPage = () => {
                 <div className="imgBox">
                     {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img src={satanUrl}/>}
                 </div>
+                <p className="placeNumber">
+                    { 
+                        toGo === true? 
+                        <>
+                            <span>포장</span><span>{toGoReceiptNum}번</span>
+                        </>
+                        
+                        : 
+                        <>
+                            <span>매장</span><span>{forHereReceiptNum}번</span>
+                        </>
+                    }
+                </p>
                 <h2>결제가 완료되었습니다.</h2>
                 <h3>영수증 하단 주문 번호를 확인해 주세요.</h3>
-                <p className="dot">{ toGo===true? toGoReceiptNum : forHereReceiptNum }</p>
+                <p className="dot">.</p>
                 <p className="dot">.</p>
                 <p className="dot">.</p>
                 <h4>"우리 김밥지옥 먹어줘서 고맙다!"</h4>
