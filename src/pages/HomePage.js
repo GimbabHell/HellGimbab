@@ -65,7 +65,9 @@ const HomePage = () => {
             }else{
                 console.error("이미지씨.. 어딨나요? ㅠㅠ");
             }
-            
+            if(loading){
+                const timer = setTimeout
+            }
             setLoading(false);
 
             
@@ -79,12 +81,14 @@ const HomePage = () => {
         if (!loading) {
             // 로딩이 끝나면 페이드 아웃 시작
             setFadeOut(true);
-            setTimeout(() => {
+            const timer = setTimeout(() => {
                 setIsVisible(true); // 새로운 정보가 보이도록 설정
                 setFadeOut(false); // 페이드 아웃 상태 해제
             }, 1000); // 페이드 아웃 시간과 일치시킴
+            return ()=> clearTimeout(timer)
         } else {
             setIsVisible(false); // 로딩 중에는 정보 숨김
+            setFadeOut(false);
         }
     }, [loading]);
     
@@ -119,7 +123,7 @@ const HomePage = () => {
             )}
         </div>
                 <div className={`imgBox`}>
-                    {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
+                    {loading ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
                 </div>
                 <p className="txt">원하시는 옵션을<br/>선택해주세요</p>
             </div>

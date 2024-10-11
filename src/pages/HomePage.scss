@@ -26,9 +26,12 @@
         transition: opacity 1s ease-out;
     }
     
-    .loading, .weather-info {
-        display: flex;
-        align-items: center;
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
     }
     
 
