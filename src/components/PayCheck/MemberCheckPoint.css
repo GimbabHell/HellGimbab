@@ -1,0 +1,37 @@
+.pointUseModal {
+  padding-bottom: 90px;
+}
+.pointUseModal > p {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 50px 0;
+}
+.pointUseModal .modalContainer {
+  padding: 0 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.pointUseModal .modalContainer .left {
+  width: 315px;
+}
+.pointUseModal .modalContainer .left p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 23px;
+}
+.pointUseModal .modalContainer .left p span {
+  font-size: 20px;
+  font-weight: 700;
+}
+.pointUseModal .modalContainer .left p span:last-of-type {
+  font-size: 24px;
+}

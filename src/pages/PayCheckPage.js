@@ -15,6 +15,7 @@ const PayCheckPage = () => {
     // const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
+    const { phoneNumber}= useMemberStore();
     // const { phoneNumber, getPoints } = useMemberStore();
     // const [search] = useSearchParams();
     // const num = search.get("poiint");
@@ -23,6 +24,7 @@ const PayCheckPage = () => {
     const [modalContent, setModalContent] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [subCategoryId, setSubCategoryId] = useState(0);
+    const subtractPoints = useMemberStore(state => state.subtractPoints);
     // const [test, setTest] = useState(false);
     
     
@@ -43,6 +45,8 @@ const PayCheckPage = () => {
     };
 
     const onClickHandler3 = (event) => {
+
+        // subtractPoints(phoneNumber, plusPointNumber); 
         event.preventDefault();
         
         if (push === 0) {

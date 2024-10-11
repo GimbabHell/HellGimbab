@@ -3,7 +3,7 @@ import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 import ReactModal from "react-modal";
 import MemberCheckNumberStyle from './MemberCheckNumber.css';
-import { FaXmark, FaArrowLeft, FaDeleteLeft } from "react-icons/fa6";
+import { FaXmark, FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
@@ -140,7 +140,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
                 </div>
             </div>
             </ReactModal>
-            {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
+            {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} setSubCategoryId={setSubCategoryId} /> : null}
 
             </>
         
