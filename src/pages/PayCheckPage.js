@@ -12,7 +12,7 @@ const PayCheckPage = () => {
     const [show, setShow] = useState(false);
     const [push, setPush] = useState("");
     const [defa, setDefa] = useState(0);
-    const [contents, setContents] = useState("");
+    // const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
     // const { phoneNumber, getPoints } = useMemberStore();
@@ -22,10 +22,8 @@ const PayCheckPage = () => {
     // const [testNum, setTestNum] = useState(0);
     const [modalContent, setModalContent] = useState(null);
     const [showModal, setShowModal] = useState(false);
-
-
-
-    const [test, setTest] = useState(false);
+    const [subCategoryId, setSubCategoryId] = useState(null);
+    // const [test, setTest] = useState(false);
     
     
 
@@ -90,7 +88,7 @@ const PayCheckPage = () => {
                     </div>
                 </div>
                
-                {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} /> : null}
+                {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} setSubCategoryId={setSubCategoryId} /> : null}
 
                 <div className="payMethod borderBottom">
                     <p className="txtBold">결제 수단 선택</p>

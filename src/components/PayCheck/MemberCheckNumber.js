@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
 ReactModal.setAppElement('#root');
 
-const MemberCheckNumber = ({setShow, setDefa}) => {
+const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
@@ -72,7 +72,7 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
     };
 
     const closeModal =()=>{
-        setShow(false);
+        setSubCategoryId(null);
         setShow2(false);
     };
 
