@@ -72,6 +72,7 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
     };
 
     const closeModal =()=>{
+        setShow(false);
         setShow2(false);
     };
 

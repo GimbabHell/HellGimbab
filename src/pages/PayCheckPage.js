@@ -76,13 +76,13 @@ const PayCheckPage = () => {
                     <p className="txtBold">포인트 사용 여부 확인</p>
                     <div>
                         <div>
-                            <input type="radio" name="point" id="yes" onChange={onClickHandler}  required />
+                            <input type="radio" name="point" id="yes" checked={subCategoryId == 2} onChange={onClickHandler}  required />
                             <label htmlFor="yes" className="btn btn-black">
                                 사용
                             </label>
                         </div>
                         <div>
-                            <input type="radio" name="point" id="no" onChange={handleNotUsingPoints} />
+                            <input type="radio" name="point" id="no" checked={subCategoryId == 3} onChange={handleNotUsingPoints} />
                             <label htmlFor="no" className="btn btn-gray">
                                 사용안함
                             </label>
