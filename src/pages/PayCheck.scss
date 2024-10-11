@@ -26,6 +26,11 @@
                 position: absolute;
                 left: 30px;
                 opacity: 0;
+                &:checked {
+                    +label {
+                        border: 3px solid $point;
+                    }
+                }
             }
             label {
                 display: flex;
@@ -60,6 +65,11 @@
                     top: 0;
                     left: 0;
                     opacity: 0;
+                    &:checked {
+                        +label {
+                            border: 3px solid $point;
+                        }
+                    }
                 }
                 label {
                     display: flex;
