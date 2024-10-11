@@ -11,7 +11,7 @@ const MenuState = ({menus})=>{
     const { order, selectedMenus, setSelectedMenus, totalPrice } = orderStore();
     const { selectedValues } = checkDetail();
     const navigate = useNavigate();
-    const [list, setList] = useState();
+    
     
     useEffect(()=>{
 

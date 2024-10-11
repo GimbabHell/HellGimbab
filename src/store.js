@@ -139,6 +139,21 @@ export const orderStore = create((set, get) => ({
         set({ order : addQttOrder});
     },
 
+    addQuantityBySelect: () =>{
+        const { order, menuName } = get();
+        const addQttOrd = order.map((ord)=> {
+            if(ord.menuName === menuName){
+                if(ord.quantity < 10){
+                    return {...ord, quantity: ord.quantity + 1,
+                                    unitPrice: ord.unitPrice + ord.itemPrice
+                    };
+                }
+            }
+            return ord;
+        });
+        set({ order : addQttOrd});
+    },
+
     reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 
     resetAll: () => set({ toGo : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
