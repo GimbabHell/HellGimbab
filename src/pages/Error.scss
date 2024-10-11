@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+
+    .title{
+        margin-bottom: 20px;
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    .scared-video{
+        max-width: 100%;
+        height: auto;
+    }
+
+    .scared-text{
+        margin-top: 20px;
+        font-size: 1.2rem;
+    }
+
+}
