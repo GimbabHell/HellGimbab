@@ -74,6 +74,8 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
     };
 
     const closeModal =()=>{
+        setShow(false);
+
         setSubCategoryId(0);
         setShow2(false);
     };
