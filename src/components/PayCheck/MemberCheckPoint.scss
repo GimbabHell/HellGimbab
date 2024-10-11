@@ -1,0 +1,35 @@
+@import '../../Common';
+
+.pointUseModal {
+    padding-bottom: 90px;
+    > p {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 50px 0;
+    }
+    .modalContainer {
+        padding: $padding;
+        display: flex;
+        justify-content: space-between;
+       
+        .left {
+            width: 315px;
+            p {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 23px;
+                span {
+                    font-size: 20px;
+                    font-weight: 700;
+                    &:last-of-type {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        .right {
+            
+        }
+    }
+}

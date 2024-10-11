@@ -46,7 +46,7 @@ const PayCheckPage = () => {
 
     const onClickHandler3 = (event) => {
 
-        subtractPoints(phoneNumber, plusPoint); 
+        // subtractPoints(phoneNumber, plusPointNumber); 
         event.preventDefault();
         
         if (push === 0) {
