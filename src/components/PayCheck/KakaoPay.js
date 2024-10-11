@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import ReactModal from "react-modal";
+ReactModal.setAppElement('#root');
 
 const CardPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
-    const nevi = useNavigate();
-    const [show2, setShow2] = useState(false);
+    // const nevi = useNavigate();
+    const [show2, setShow2] = useState(true);
     // const [show, setShow] = useState(false);
 
-    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -24,10 +25,7 @@ const CardPay = ({lastPrice}) => {
         return () => clearTimeout(timer);
     }, [lastPrice]);
 
-    const onClickHandler = () => {
-        nevi("/paycheck");
-    }
-
+    
     const closeModal =()=>{
         setShow2(false);
     };
@@ -65,8 +63,7 @@ const CardPay = ({lastPrice}) => {
                 <>
                 <h3>결제가 완료되었습니다! 감사합니다.</h3>
                 <PointSave lastPrice={lastPrice}/>
-               
-
+                
                 </>
             ) : (
                 <>
@@ -82,6 +79,7 @@ const CardPay = ({lastPrice}) => {
                 </>
             )}
             </ReactModal>
+            
         </>
     );
 }

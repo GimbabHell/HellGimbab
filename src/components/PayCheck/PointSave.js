@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
+import ReactModal from "react-modal";
+ReactModal.setAppElement('#root');
 
 const PointSave = ({lastPrice}) => {
     const [phoneNum, setPhoneNum] = useState(""); // 입력받은 폰 번호
@@ -12,6 +14,8 @@ const PointSave = ({lastPrice}) => {
     const findMember = useMemberStore(state => state.findMember);
     const nevi = useNavigate();
     const [show2, setShow2] = useState(false);
+    
+
 
     const handleButtonClick = (num) => {
         if (phoneNum.length < 11) {

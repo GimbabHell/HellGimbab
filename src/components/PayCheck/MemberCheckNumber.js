@@ -3,18 +3,19 @@ import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
+ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
-    const {members} = useMemberStore();
+    // const {members} = useMemberStore();
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const getPoints = useMemberStore(state => state.getPoints);
     const addPoints = useMemberStore(state => state.addPoints);
     const [showw, setShoww] = useState(false);
-    const [show2, setShow2] = useState(false);
+    const [show2, setShow2] = useState(true);
     const nevi = useNavigate();
     
     const handleButtonClick = (digit) => {
@@ -41,10 +42,12 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
         
         if (memb) {
             setShoww(true);
+            setShow2(false);
             
         } else {
             add(num, 0);
             setShoww(true);
+            setShow2(false);
         }
 
         const p = getPoints(num);
@@ -112,10 +115,12 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
                 ))}
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
-                {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
+                {console.log(showw)}
+                
             </div>
             </div>
             </ReactModal>
+            {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
 
             </>
         

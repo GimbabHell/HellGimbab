@@ -6,6 +6,7 @@ import CardPay from "../components/PayCheck/CardPay";
 import KakaoPay from "../components/PayCheck/KakaoPay";
 import NaverPay from "../components/PayCheck/NaverPay";
 import PayCheckStyle from "./PayCheck.css";
+import { FaCreditCard } from "react-icons/fa6";
 
 const PayCheckPage = () => {
     const [show, setShow] = useState(false);
@@ -13,11 +14,11 @@ const PayCheckPage = () => {
     const [defa, setDefa] = useState(0);
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
-    const { phoneNumber, getPoints } = useMemberStore();
-    const [search] = useSearchParams();
+    // const { phoneNumber, getPoints } = useMemberStore();
+    // const [search] = useSearchParams();
     // const num = search.get("poiint");
-    const [too, setToo] = useState("");
-    const [testNum, setTestNum] = useState(0);
+    // const [too, setToo] = useState("");
+    // const [testNum, setTestNum] = useState(0);
 
     const [test, setTest] = useState(false);
     const [test2, setTest2] = useState(false);
@@ -48,21 +49,21 @@ const PayCheckPage = () => {
         }
     };
 
-    useEffect(() => {
-        const nn = () => {
-            return getPoints(phoneNumber);
-        };
-        setTestNum(nn);
-    });
+    // useEffect(() => {
+    //     const nn = () => {
+    //         return getPoints(phoneNumber);
+    //     };
+    //     setTestNum(nn);
+    // });
 
     return (
         <div className="payCheckContainer">
             <form onSubmit={onClickHandler3}>
-                <div className="pointUse">
+                <div className="pointUse borderBottom">
                     <p className="txtBold">포인트 사용 여부 확인</p>
                     <div>
                         <div>
-                            <input type="radio" name="point" id="yes" onChange={onClickHandler} />
+                            <input type="radio" name="point" id="yes" onChange={onClickHandler}  required />
                             <label htmlFor="yes" className="btn btn-black">
                                 사용
                             </label>
@@ -78,36 +79,60 @@ const PayCheckPage = () => {
                
                 {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} /> : null}
 
-                <div className="payMethod">
+                <div className="payMethod borderBottom">
                     <p className="txtBold">결제 수단 선택</p>
                     <div>
-                        <input type="radio" name="pay" id="card" onChange={() => setPush(0)}></input>
-                        <label htmlFor="card">카드결제</label>
-                        <input type="radio" name="pay" id="kakao" onChange={() => setPush(1)}></input>
-                        <label htmlFor="kakao">카카오Pay</label>
-                        <input type="radio" name="pay" id="naver" onChange={() => setPush(2)}></input>
-                        <label htmlFor="naver">네이버Pay</label>
+                        <div>
+                            <input type="radio" name="pay" id="card" onChange={() => setPush(0)} required></input>
+                            <label htmlFor="card">
+                                <FaCreditCard /> 
+                                <p>카드결제</p>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="pay" id="kakao" onChange={() => setPush(1)}></input>
+                            <label htmlFor="kakao"> 
+                                <img src="../images/kakaoLogo.svg" alt="kakao" /> 
+                                <p>카카오Pay</p> 
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="pay" id="naver" onChange={() => setPush(2)}></input>
+                            <label htmlFor="naver"> 
+                                <img src="../images/naverLogo.svg" alt="naver" />
+                                <p>네이버Pay</p>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <h3 className="txtBold">결제 금액 : {totalPrice}</h3>
+                <div className="payPricePoint borderBottom">
+                    <h3 className="txtBold"> 
+                        <span>결제 금액</span> 
+                        <span>{totalPrice}원</span>
+                    </h3>
 
-                    <h3 className="txtBold">포인트 사용 : -{defa}</h3>
+                    <h3 className="txtBold">
+                        <span>포인트 사용</span>
+                        <span>{defa<0?`-${defa}`:defa}원</span>
+                    </h3>
                 </div>
 
-                <h2>총 결제 금액: {totalPrice - defa}</h2>
+                <h2 className="totalPrice">
+                    <span>총 결제 금액</span>
+                    <span>{totalPrice - defa}원</span>
+                </h2>
 
 
-                <div>
-                    <button onClick={onClickHandler2}>취소</button>
-                    <button type="submit">결제하기</button>
+                <div className="btn-wrap">
+                    <button className="btn btn-gray" onClick={onClickHandler2}>취소</button>
+                    <button className="btn btn-red" type="submit">결제하기</button>
                 </div>
-
-                {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
-                {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
-                {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
+                
             </form>
+            {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
+            {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
+            {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
         </div>
     );
 };

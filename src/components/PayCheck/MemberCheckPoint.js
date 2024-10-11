@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { useMemberStore,orderStore} from "../../store";
+import ReactModal from "react-modal";
+ReactModal.setAppElement('#root');
 
 const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
     const [plusPointNumber, setPlusPointNumber] = useState(""); 
     // const [totalCount, setTotalCount] = useState(0);  //남아있는 포인트
     // const [lastPrice, setLastPrice] = useState(0); // 최최종 결제 금액
     const { totalPrice } = orderStore();
-    const [show2, setShow2] = useState(false);
+    const [show2, setShow2] = useState(true);
     
     const subtractPoints = useMemberStore(state => state.subtractPoints);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleButtonClick = (n) => {
         setPlusPointNumber((prev) => prev + n);
@@ -33,12 +35,12 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
             setShow(false);
             // setLastPrice(totalPrice-plusPointNumber);
             setShow2(false);
-            navigate(`/paycheck?poiint=${num}`); 
+            // navigate(`/paycheck?poiint=${num}`); 
         } else {
             alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
             setPlusPointNumber(""); 
         }
-    }, [plusPointNumber, num, navigate, subtractPoints]);
+    }, [plusPointNumber, num,  subtractPoints]);
 
     const onClickHandler3 = () => {
         setPlusPointNumber(""); 
@@ -47,7 +49,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
     const onClickHandlerr = () => {
         setDefa(0);
         setShow(false);
-        navigate(`/paycheck?poiint=${num}`);
+        // navigate(`/paycheck?poiint=${num}`);
         setShow2(false);
     }
 
@@ -55,7 +57,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
         setShow(false);
         setShow2(false);
         // console.log(poiint);
-        navigate(`/payCheck?poiint=${num}`); 
+        // navigate(`/payCheck?poiint=${num}`); 
         }
 
 
