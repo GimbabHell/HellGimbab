@@ -144,10 +144,7 @@ const PayCheckPage = () => {
                 </div>
                 </form>
 
-                {showModal && 
-                        modalContent
-        
-            }
+                {showModal && modalContent}
         </div>
     );
 };

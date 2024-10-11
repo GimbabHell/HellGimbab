@@ -35,7 +35,7 @@ const CardPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
                 contentLabel="카드페이"
                 style={{
                     content: {
