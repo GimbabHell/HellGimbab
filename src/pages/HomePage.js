@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { orderStore } from "../store";
 //import "./HomePage.css";
@@ -99,6 +99,7 @@ const HomePage = () => {
 
         <div className="home">
             <div className={`bg`} style={{ backgroundImage: `url(${satanUrl})` }}></div>
+            <Link to="/admin" className="btn-admin"></Link>
             <div className={`cont`}>
                 <h1 className="logo">Gimbab HELL</h1>
             <div className={`info`}>
