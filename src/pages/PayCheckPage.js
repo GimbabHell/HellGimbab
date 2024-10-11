@@ -9,7 +9,7 @@ import PayCheckStyle from "./PayCheck.css";
 import { FaCreditCard } from "react-icons/fa6";
 
 const PayCheckPage = () => {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(0);
     const [push, setPush] = useState("");
     const [defa, setDefa] = useState(0);
     // const [contents, setContents] = useState("");
@@ -29,7 +29,7 @@ const PayCheckPage = () => {
 
     const onClickHandler = () => {
         setSubCategoryId(1);
-        setShow((prev)=>!prev);
+        setShow(true);
         console.log(subCategoryId, show)
     };
 
