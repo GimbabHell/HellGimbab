@@ -16,6 +16,7 @@ const CardPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
+                alert("결제 완료되었습니다 !");
                 setShow2(false);
                 
             }, 2000); 
