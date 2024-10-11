@@ -6,13 +6,12 @@ const PointSave = ({lastPrice}) => {
     const [phoneNum, setPhoneNum] = useState(""); // 입력받은 폰 번호
     const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지 상태
     // const [ppoint, setPpoint] = useState(""); // 결제 금액에 따른 추가될 포인트
-    const [pointsToAdd, setPointToAdd] = useState(0);
     const {members} = useMemberStore();
     const addPoints = useMemberStore(state => state.addPoints);
-    // const getPoints = useMemberStore(state => state.getPoints);
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const nevi = useNavigate();
+    const [show2, setShow2] = useState(false);
 
     const handleButtonClick = (num) => {
         if (phoneNum.length < 11) {
@@ -72,8 +71,35 @@ const PointSave = ({lastPrice}) => {
         }
     };
 
-    return (
+    const closeModal =()=>{
+        setShow2(false);
+    };
+
+
+    return(
         <>
+            <ReactModal
+                isOpen={show2}        // Modal visibility
+                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                contentLabel="사용할 포인트 입력"
+                style={{
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        bottom: 'auto',
+                        marginRight: '-50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 784,
+                        borderRadius: 0,
+                        border: "none",
+                        padding: 0,
+                    },
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                    }
+                }}
+            >
             <h2>포인트 적립!</h2>
             <h3>적립하시려면 핸드폰 번호를 입력해주세요.</h3>
             <button onClick={()=>nevi("/last")}>x</button>
@@ -90,6 +116,8 @@ const PointSave = ({lastPrice}) => {
                 <button onClick={handleClear}>지우기</button> 
                 <button onClick={onClickHandler2}>확인</button>
             </div>
+
+            </ReactModal>
            
         </>
     );

@@ -6,6 +6,7 @@ const CardPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const nevi = useNavigate();
+    const [show2, setShow2] = useState(false);
     // const [show, setShow] = useState(false);
 
     
@@ -27,20 +28,44 @@ const CardPay = ({lastPrice}) => {
         nevi("/paycheck");
     }
 
-    
+    const closeModal =()=>{
+        setShow2(false);
+    };
 
-    return (
+
+    return(
         <>
+            <ReactModal
+                isOpen={show2}        // Modal visibility
+                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                contentLabel="카드페이"
+                style={{
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        bottom: 'auto',
+                        marginRight: '-50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 784,
+                        borderRadius: 0,
+                        border: "none",
+                        padding: 0,
+                    },
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                    }
+                }}
+            >
+
             <h2>카드 결제 안내</h2>
-            <button onClick={onClickHandler}>x</button>
+            <button onClick={()=>closeModal()}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
                 <>
                 <h3>결제가 완료되었습니다! 감사합니다.</h3>
                 <PointSave lastPrice={lastPrice}/>
-                
-                {/* <button onClick={onClickHandler}>적립하기</button>
-                <button onClick={onClickHandler2}>적립 건너뛰기</button> */}
+               
 
                 </>
             ) : (
@@ -56,7 +81,7 @@ const CardPay = ({lastPrice}) => {
                     </h5>
                 </>
             )}
-          
+            </ReactModal>
         </>
     );
 }

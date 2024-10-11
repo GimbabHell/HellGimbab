@@ -2,16 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { useMemberStore,orderStore} from "../../store";
 
-
-// import NaverPay from "./NaverPay";
-// import KakaoPay from "./KakaoPay";
-// import CardPay from "./CardPay";
-
 const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
     const [plusPointNumber, setPlusPointNumber] = useState(""); 
     // const [totalCount, setTotalCount] = useState(0);  //남아있는 포인트
     // const [lastPrice, setLastPrice] = useState(0); // 최최종 결제 금액
     const { totalPrice } = orderStore();
+    const [show2, setShow2] = useState(false);
     
     const subtractPoints = useMemberStore(state => state.subtractPoints);
     const navigate = useNavigate();
@@ -36,6 +32,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
             setDefa(plusPointNumber);
             setShow(false);
             // setLastPrice(totalPrice-plusPointNumber);
+            setShow2(false);
             navigate(`/paycheck?poiint=${num}`); 
         } else {
             alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
@@ -51,17 +48,48 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
         setDefa(0);
         setShow(false);
         navigate(`/paycheck?poiint=${num}`);
+        setShow2(false);
     }
 
     const handlePayment = () => {
         setShow(false);
+        setShow2(false);
         // console.log(poiint);
         navigate(`/payCheck?poiint=${num}`); 
         }
 
 
-    return (
-        <>
+    const closeModal =()=>{
+            setShow2(false);
+        };
+
+
+        return(
+            <>
+                <ReactModal
+                    isOpen={show2}        // Modal visibility
+                    onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                    contentLabel="사용할 포인트 입력"
+                    style={{
+                        content: {
+                            top: '50%',
+                            left: '50%',
+                            right: 'auto',
+                            bottom: 'auto',
+                            marginRight: '-50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: 784,
+                            borderRadius: 0,
+                            border: "none",
+                            padding: 0,
+                        },
+                        overlay: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                        }
+                    }}
+                >
+    
+        
             <h2>포인트 사용</h2>
             <h3>회원 번호: {num}</h3>
             <h3>결제 금액: {totalPrice}</h3>
@@ -92,8 +120,9 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
                     <button onClick={onClickHandler2}>사용하기</button>
                 </>
             )}
-        </>
-    );
-};
+             </ReactModal>
+            </>
+       )
+}
 
 export default MemberCheckPoint;
