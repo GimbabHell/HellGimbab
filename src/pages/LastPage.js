@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import LastStyle from "./LastPage.css";
-import { orderStore, useMemberStore } from "../store";
+import { checkDetail, orderStore, useMemberStore } from "../store";
 
 const LastPage = () => {
 
     const [satanUrl, setSatanUrl] = useState("");
     const [loading, setLoading] = useState(true); // 로딩 중이면 트루, 로딩이 끝났으면 펄스
 
-    const { setDate, resetReceiptNum, setReceiptNum, setOrderHistory, toGo, forHereReceiptNum, toGoReceiptNum } = orderStore();
-    const { phoneNumber } = useMemberStore();
+    const { setDate, resetReceiptNum, setReceiptNum, setOrderHistory, toGo, forHereReceiptNum, toGoReceiptNum, resetFinal } = orderStore();
+    const { phoneNumber, reset } = useMemberStore();
+    const { resetValues } = checkDetail();
 
     useEffect(()=>{
 
@@ -39,8 +40,13 @@ const LastPage = () => {
         // 주문 기록 배열에 저장
         setOrderHistory(phoneNumber);
 
-
     }, []);
+
+    const onClickBack=()=>{
+        resetFinal();
+        resetValues();
+        reset();
+    };
     
 
     return(
@@ -56,7 +62,7 @@ const LastPage = () => {
                 <p className="dot">.</p>
                 <p className="dot">.</p>
                 <h4>"우리 김밥지옥 먹어줘서 고맙다!"</h4>
-                <Link to="/" className="btn-back">
+                <Link to="/" className="btn-back" onClick={()=>onClickBack()}>
                     돌아가기
                 </Link>
             </div>

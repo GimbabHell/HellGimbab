@@ -26,7 +26,7 @@ export const orderStore = create((set, get) => ({
     totalObjNum: 0,         // 총 개수
     forHereReceiptNum: 0,            // 주문번호/// 결제완료시 배부
     toGoReceiptNum: 100,
-    date: [],
+    date: [],               // 결제시에 날짜, 시간이 담기는 배열
     order: [],              // 1회의 주문을 담아주는 배열//// 결제완료시 reset
     orderHistory: [],       // 결제완료된 모든 주문을 담아주는 기록 배열
     
@@ -142,8 +142,11 @@ export const orderStore = create((set, get) => ({
     reset: () => set({ menuName: '', price: 0, quantity: 1, details: '', detailsToShow: '', detailsPrice: 0, itemPrice: 0, unitPrice: 0 }),
 
     resetAll: () => set({ toGo : false, menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum:1, 
-        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [], selectedMenus: [] })
+        price: 0, detailsPrice: 0, itemPrice: 0, unitPrice: 0, totalPrice: 0, totalObjNum: 0, order: [], selectedMenus: [] }),
 
+
+    resetFinal: () => set({menuName: '', quantity: 1, categoryCode: 1, details: '', detailsToShow: '', orderNum: 1, price: 0, itemPrice: 0, unitPrice: 0, 
+        toGo: false, totalPrice: 0, date: [], order: [], selectedMenus: []})
 
 }));
 
@@ -255,7 +258,9 @@ export const useMemberStore = create((set, get) => ({
         // console.log(member);
         // console.log(member.point);
         return member ? member.point : null;; // 포인트 반환, 없으면 null
-    }
+    },
+
+    reset: () => set({ phoneNumber : '',   point : '' })
 
 }))
 
