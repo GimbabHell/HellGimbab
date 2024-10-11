@@ -4,13 +4,14 @@
 import { useNavigate } from "react-router-dom"
 import MenuStateStyle from './MenuState.css';
 import { checkDetail, orderStore } from "../../store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const MenuState = ({menus})=>{
 
-    const { order, selectedMenus, setSelectedMenus} = orderStore();
+    const { order, selectedMenus, setSelectedMenus, totalPrice } = orderStore();
     const { selectedValues } = checkDetail();
     const navigate = useNavigate();
+    const [list, setList] = useState();
     
     useEffect(()=>{
 
@@ -39,13 +40,14 @@ const MenuState = ({menus})=>{
     }
 
 
-    
 
     const menuList = menus.map((menu)=>{
         return(
             <li onClick={()=>onClickMenuSelector(menu)}
             className={selectedMenus.includes(menu.name) ? "active": null }
             >
+                {/* {console.log(selectedMenus)}
+                {console.log(order)} */}
                 <div className="imgBox">
                     <img src={menu.imgURL}/> 
                 </div>

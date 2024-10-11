@@ -85,6 +85,7 @@ a {
   color: #bd2030;
   font-size: 60px;
   text-align: center;
+  font-weight: 400;
 }
 .logo.white {
   color: #fff;
@@ -133,6 +134,7 @@ footer .btn-call {
   font-size: 36px;
   width: 240px;
   line-height: 100px;
+  font-weight: 400;
   cursor: pointer;
 }
 footer .btn-call svg {

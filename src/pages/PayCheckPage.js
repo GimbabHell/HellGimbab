@@ -32,7 +32,7 @@ const PayCheckPage = () => {
     const onClickHandler = () => {
         setSubCategoryId(1);
         setShow(true);
-        console.log(subCategoryId, show)
+        // console.log(subCategoryId, show)
     };
 
     const handleNotUsingPoints = () => {
@@ -74,7 +74,7 @@ const PayCheckPage = () => {
                     <div>
                         <div>
                             <input type="radio" name="point" id="yes" checked={subCategoryId === 1} onChange={onClickHandler}  required />
-                            {console.log(subCategoryId)}
+                            {/* {console.log(subCategoryId)} */}
                             <label htmlFor="yes" className="btn btn-black">
                                 사용
                             </label>
@@ -82,7 +82,7 @@ const PayCheckPage = () => {
                         <div>
                             <input type="radio" name="point" id="no" checked={subCategoryId === 2} onChange={handleNotUsingPoints} />
                             <label htmlFor="no" className="btn btn-gray">
-                            {console.log(subCategoryId)}
+                            {/* {console.log(subCategoryId)} */}
                                 사용안함
                             </label>
                         </div>
