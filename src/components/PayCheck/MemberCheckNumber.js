@@ -3,25 +3,26 @@ import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
 import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
+ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
-    const {members} = useMemberStore();
+    // const {members} = useMemberStore();
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const getPoints = useMemberStore(state => state.getPoints);
     const addPoints = useMemberStore(state => state.addPoints);
     const [showw, setShoww] = useState(false);
+    const [show2, setShow2] = useState(true);
     const nevi = useNavigate();
     
     const handleButtonClick = (digit) => {
         if (num.length < 11) {
             setNum((prev) => prev + digit);
             setErrorMessage(""); 
-        }
-    };
+        }};
 
     const handleClear = () => {
         setNum("");
@@ -41,10 +42,12 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
         
         if (memb) {
             setShoww(true);
+            setShow2(false);
             
         } else {
             add(num, 0);
             setShoww(true);
+            setShow2(false);
         }
 
         const p = getPoints(num);
@@ -52,9 +55,9 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
         
     };
 
-    const onClickHandler = () => {
-        nevi("/paycheck"); // x를 누르면 전에 page 로 간다.
-    }
+    // const onClickHandler = () => {
+    //     nevi("/paycheck"); // x를 누르면 전에 page 로 간다.
+    // }
         
     const formatPhoneNumber = (number) => {
         if (number.length === 11) {
@@ -69,15 +72,15 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
     };
 
     const closeModal =()=>{
-        setShoww(false);
+        setShow2(false);
     };
 
     return(
         <>
             <ReactModal
-                isOpen={showw}        // Modal visibility
+                isOpen={show2}        // Modal visibility
                 onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
-                contentLabel="주문리스트"
+                contentLabel="적립금 사용을 위한 회원번호 입력"
                 style={{
                     content: {
                         top: '50%',
@@ -101,7 +104,7 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
             <h2>핸드폰 번호 입력</h2>
             <h3>핸드폰 번호를 입력해주세요</h3>
             <h4>{formatPhoneNumber(num)}</h4> 
-            <h4 onClick={onClickHandler}>x</h4>
+            <h4 onClick={()=>closeModal()}>x</h4>
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
 
             <div>
@@ -112,10 +115,12 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
                 ))}
                 <button onClick={handleClear}>지우기</button>
                 <button onClick={handleConfirm}>확인</button>
-                {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
+                {console.log(showw)}
+                
             </div>
             </div>
             </ReactModal>
+            {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
 
             </>
         

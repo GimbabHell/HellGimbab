@@ -10,6 +10,7 @@ import MenuOrderStyle from "./MenuOrder.css";
 
 ReactModal.setAppElement('#root');
 
+
 const OrderCheck= ({show, setShow})=>{
 
     const navigate = useNavigate();
