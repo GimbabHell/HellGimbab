@@ -1,0 +1,43 @@
+.pointModal {
+    .top {
+        font-weight: 700;
+        text-align: center;
+        padding: 50px 0;
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            background: #ccc;
+            width: 480px;
+        }
+        h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        h4 {
+            font-size: 48px;
+            // height: 70px;
+            // line-height: 70px;
+        }
+    }
+    .numbers {
+        padding: 20px 60px 75px;
+        button {
+            font-weight: 700;
+            font-size: 48px;
+            font-family: "Noto Sans KR", sans-serif;
+            background: none;
+            padding: 25px 65px;
+        }
+        .btn-clear {
+            padding: 0;
+        }
+        .btn-confirm {
+            padding: 0;
+        }
+    }
+}

@@ -1,22 +1,22 @@
 import { useState } from "react";
 import MemberCheckPoint from "./MemberCheckPoint";
 import { useMemberStore } from "../../store";
-import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
+import MemberCheckNumberStyle from './MemberCheckNumber.css';
+import { FaXmark } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
     const [num, setNum] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
-    // const {members} = useMemberStore();
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const getPoints = useMemberStore(state => state.getPoints);
-    const addPoints = useMemberStore(state => state.addPoints);
+    
     const [showw, setShoww] = useState(false);
     const [show2, setShow2] = useState(true);
-    const nevi = useNavigate();
+    
     
     const handleButtonClick = (digit) => {
         if (num.length < 11) {
@@ -28,6 +28,10 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         setNum("");
         setErrorMessage(""); 
     };
+
+    const handleDelete = (num) => {
+        
+    }
 
     const handleConfirm = () => {
         const formattedNum = formatPhoneNumber(num);
@@ -55,9 +59,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         
     };
 
-    // const onClickHandler = () => {
-    //     nevi("/paycheck"); // x를 누르면 전에 page 로 간다.
-    // }
+   
         
     const formatPhoneNumber = (number) => {
         if (number.length === 11) {
@@ -72,7 +74,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
     };
 
     const closeModal =()=>{
-        setSubCategoryId(null);
+        setSubCategoryId(0);
         setShow2(false);
     };
 
@@ -90,7 +92,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
                         bottom: 'auto',
                         marginRight: '-50%',
                         transform: 'translate(-50%, -50%)',
-                        width: 784,
+                        width: 600,
                         borderRadius: 0,
                         border: "none",
                         padding: 0,
@@ -101,24 +103,29 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
                 }}
             >
 
-            <div className="menuOrderModal">
-            <h2>핸드폰 번호 입력</h2>
-            <h3>핸드폰 번호를 입력해주세요</h3>
-            <h4>{formatPhoneNumber(num)}</h4> 
-            <h4 onClick={()=>closeModal()}>x</h4>
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
-
-            <div>
-                {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((digit) => (
-                    <button key={digit} onClick={() => handleButtonClick(digit)}>
-                        {digit}
-                    </button>
-                ))}
-                <button onClick={handleClear}>지우기</button>
-                <button onClick={handleConfirm}>확인</button>
-                {console.log(showw)}
+            <div className="pointModal">
+                <div className="modalTop">
+                    <h2 className="title">휴대폰 번호 입력</h2>
+                    <button className="btn-close" onClick={()=>closeModal()}><FaXmark /></button> 
+                </div>
+                <div className="top">
+                    <h3>휴대폰 번호를 입력해주세요</h3>
+                    <h4>{formatPhoneNumber(num)}</h4> 
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
+                </div>
                 
-            </div>
+                <div className="numbers">
+                    {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((digit) => (
+                        <button key={digit} onClick={() => handleButtonClick(digit)}>
+                            {digit}
+                        </button>
+                    ))}
+                    
+                    <button onClick={handleClear} className="btn-clear">지우기</button>
+                    <button key="0" onClick={()=>handleButtonClick("0")}>0</button>
+                    <button onClick={handleConfirm} className="btn-confirm">확인</button>
+                    
+                </div>
             </div>
             </ReactModal>
             {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}

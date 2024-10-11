@@ -22,16 +22,19 @@ const PayCheckPage = () => {
     // const [testNum, setTestNum] = useState(0);
     const [modalContent, setModalContent] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [subCategoryId, setSubCategoryId] = useState(null);
+    const [subCategoryId, setSubCategoryId] = useState(0);
     // const [test, setTest] = useState(false);
     
     
 
     const onClickHandler = () => {
-        setShow(true);
+        setSubCategoryId(1);
+        setShow((prev)=>!prev);
+        console.log(subCategoryId, show)
     };
 
     const handleNotUsingPoints = () => {
+        setSubCategoryId(2);
         setShow(false);
     };
 
@@ -74,14 +77,16 @@ const PayCheckPage = () => {
                     <p className="txtBold">포인트 사용 여부 확인</p>
                     <div>
                         <div>
-                            <input type="radio" name="point" id="yes" checked={subCategoryId == 2} onChange={onClickHandler}  required />
+                            <input type="radio" name="point" id="yes" checked={subCategoryId === 1} onChange={onClickHandler}  required />
+                            {console.log(subCategoryId)}
                             <label htmlFor="yes" className="btn btn-black">
                                 사용
                             </label>
                         </div>
                         <div>
-                            <input type="radio" name="point" id="no" checked={subCategoryId == 3} onChange={handleNotUsingPoints} />
+                            <input type="radio" name="point" id="no" checked={subCategoryId === 2} onChange={handleNotUsingPoints} />
                             <label htmlFor="no" className="btn btn-gray">
+                            {console.log(subCategoryId)}
                                 사용안함
                             </label>
                         </div>
@@ -142,10 +147,7 @@ const PayCheckPage = () => {
                 </div>
                 </form>
 
-                {showModal && 
-                        modalContent
-        
-            }
+                {showModal && modalContent}
         </div>
     );
 };
