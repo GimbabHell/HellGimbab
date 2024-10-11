@@ -215,12 +215,6 @@ export const useMemberStore = create((set, get) => ({
         });
     },
 
-    // reset: (phoneNumber) => {
-    //     set(state => {
-            
-    //     })
-    // },
-
 
     // 회원 조회 
     // 원래는 return member || null; 이였음.... 

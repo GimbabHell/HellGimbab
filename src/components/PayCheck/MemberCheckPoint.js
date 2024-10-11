@@ -11,7 +11,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
     const { totalPrice } = orderStore();
     const [show2, setShow2] = useState(true);
     
-    const subtractPoints = useMemberStore(state => state.subtractPoints);
+    
     // const navigate = useNavigate();
 
     const handleButtonClick = (n) => {
@@ -25,7 +25,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
     const onClickHandler2 = useCallback(() => {
         console.log(num);
         
-         subtractPoints(num, plusPointNumber); 
+        //  subtractPoints(num, plusPointNumber); 
          // num: 회원번호, plusPointNumber: 사용하고픈 포인트
 
         if ( poiint >= plusPointNumber){
@@ -40,7 +40,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
             alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
             setPlusPointNumber(""); 
         }
-    }, [plusPointNumber, num, subtractPoints]);
+    }, [plusPointNumber, num]);
 
     const onClickHandler3 = () => {
         setPlusPointNumber(""); 
@@ -51,6 +51,7 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
         setShow(false);
         // navigate(`/paycheck?poiint=${num}`);
         setShow2(false);
+        
     }
 
     const handlePayment = () => {
