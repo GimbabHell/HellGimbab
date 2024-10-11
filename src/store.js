@@ -24,8 +24,17 @@ export const orderStore = create((set, get) => ({
     totalObjNum: 0,         // 총 개수
     order: [],              // 1회의 주문을 담아주는 배열//// 결제완료시 reset
     orderHistory: [],       // 결제완료된 모든 주문을 담아주는 기록 배열
-    receitNum:0,            // 주문번호/// 결제완료시 배부
+    ForHereReceiptNum: 0,            // 주문번호/// 결제완료시 배부
+    ToGoReceiptNum: 0,
+    date: [],
     selectedMenus: [],      // 장바구니에 담긴 메뉴들의 이름을 기록해주는 배열 
+
+    setDate: (year, month, date, day, hour, minute) => set({ date: {['year'] : year,
+                                                                    ['month'] : month,
+                                                                    ['date'] : date,
+                                                                    ['day'] : day,
+                                                                    ['hour'] : hour,
+                                                                    ['minute'] : minute }}),
 
     setSelectedMenus: (selecMenu) => {
         set({ selectedMenus: selecMenu});

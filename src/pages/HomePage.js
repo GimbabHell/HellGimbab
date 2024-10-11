@@ -27,6 +27,7 @@ const HomePage = () => {
     const onClickForHere = e => {
         if(e.target.innerText === "포장"){ setPlace(true); }
         else{ setPlace(false) }
+        
         navigate("/menu");
     };
 

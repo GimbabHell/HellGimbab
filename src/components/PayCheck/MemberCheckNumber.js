@@ -101,7 +101,7 @@ const MemberCheckNumber = ({setShow, setDefa}) => {
             <h2>핸드폰 번호 입력</h2>
             <h3>핸드폰 번호를 입력해주세요</h3>
             <h4>{formatPhoneNumber(num)}</h4> 
-            <h4 onClick={onClickHandler}>x</h4>
+            <h4 onClick={()=>closeModal()}>x</h4>
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} 
 
             <div>
