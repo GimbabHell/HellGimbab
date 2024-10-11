@@ -22,10 +22,8 @@ const KakaoPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
-                // setShowModal(true);
-                // alert("결제 완료되었습니다 ! 성공 ~!");
                 setShow2(false);
-                // setModalContent(<PointSave lastPrice={lastPrice}/>);
+                
             }, 2000); 
         }, 3000); 
 
@@ -66,15 +64,7 @@ const KakaoPay = ({lastPrice}) => {
             <h2>카카오 결제 안내</h2>
             <button onClick={()=>closeModal()}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
-            {paymentSuccess ? (
-                <>
-                
-                {/* {console.log(showModal,modalContent)} */}
-                <PointSave lastPrice={lastPrice}/>
-                
-        
-                </>
-            ) : (
+            {!paymentSuccess ? (
                 <>
                     <h3>결제금액: {lastPrice}</h3>
                     <h5>
@@ -86,8 +76,12 @@ const KakaoPay = ({lastPrice}) => {
                         </ul>
                     </h5>
                 </>
-            )}
+            ) : null}
             </ReactModal>
+
+
+            {/* 결제 완료 후 PointSave 컴포넌트를 표시 */}
+            {paymentSuccess && <PointSave lastPrice={lastPrice} />}
            
         </>
     );
