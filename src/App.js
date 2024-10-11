@@ -10,7 +10,7 @@ import Error from "./pages/Error";
 import "reset-css";
 import "./Style.css";
 import AdminPage from "./pages/AdminPage";
-
+///////////////////asdfasdfasdfasd
 function App() {
     return (
         <>
