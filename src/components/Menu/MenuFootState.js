@@ -30,7 +30,7 @@ const MenuFootState = ()=>{
                 <button className="btn btn-black" onClick={()=>clearAll()} >
                     <FaTrashCan /> <p>전체삭제</p>
                 </button>
-                <button className="btn btn-red" onClick={()=> setShow(true)} >
+                <button className="btn btn-red" onClick={()=> showModal()} >
                     <FaCreditCard />
                     <p>주문하기</p>
                 </button>
