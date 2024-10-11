@@ -20,12 +20,12 @@ export const orderStore = create((set, get) => ({
     detailsPrice: 0,       // details 선택으로 인한 추가금
     itemPrice: 0,          // price + detailsPrice
     unitPrice: 0,           // itemPrice * quantity
-    totalPrice: 0,
-    totalObjNum: 0,
-    order: [],
-    orderHistory: [],
-    receitNum:0,
-    selectedMenus: [],
+    totalPrice: 0,          // 총 가격
+    totalObjNum: 0,         // 총 개수
+    order: [],              // 1회의 주문을 담아주는 배열//// 결제완료시 reset
+    orderHistory: [],       // 결제완료된 모든 주문을 담아주는 기록 배열
+    receitNum:0,            // 주문번호/// 결제완료시 배부
+    selectedMenus: [],      // 장바구니에 담긴 메뉴들의 이름을 기록해주는 배열 
 
     setSelectedMenus: (selecMenu) => {
         set({ selectedMenus: selecMenu});

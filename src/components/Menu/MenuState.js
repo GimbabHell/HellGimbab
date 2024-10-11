@@ -3,12 +3,13 @@
 
 import { useNavigate } from "react-router-dom"
 import MenuStateStyle from './MenuState.css';
-import { orderStore } from "../../store";
-import { useEffect, useState } from "react";
+import { checkDetail, orderStore } from "../../store";
+import { useEffect } from "react";
 
 const MenuState = ({menus})=>{
 
     const { order, selectedMenus, setSelectedMenus} = orderStore();
+    const { selectedValues } = checkDetail();
     const navigate = useNavigate();
     
     useEffect(()=>{
@@ -23,23 +24,26 @@ const MenuState = ({menus})=>{
        
     },[order]);
 
-    // const onClickMenuSelector = (menu) =>{
-
-    //     if(menu.categorycode === 7){
-    //         console.log(menu);
-    //         navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu});
-    //     }
-
+    const onClickMenuSelector = (menu) =>{
         
-    // }
+        if(menu.categoryCode === 5 || menu.categoryCode === 6 || menu.categoryCode === 7 || menu.menuCode === 37){
+            const orderData = {
+                selectedValues,
+                menu,
+            };
+            navigate(`/menu/${menu.categoryCode}`, { state: orderData });
+            
+        }else{
+            navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu});
+        }
+    }
 
 
     
 
     const menuList = menus.map((menu)=>{
         return(
-            // <li onClick={()=>onClickMenuSelector(menu)}
-            <li onClick={()=>{navigate(`/detail?menuCode=${menu.menuCode}`, {state: menu})}}                 
+            <li onClick={()=>onClickMenuSelector(menu)}
             className={selectedMenus.includes(menu.name) ? "active": null }
             >
                 <div className="imgBox">

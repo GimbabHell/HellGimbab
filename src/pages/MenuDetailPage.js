@@ -107,11 +107,12 @@ const MenuDetailPage = () => {
         resetValues();
     };
 
+    const detailValues = Object.values(selectedValues);
+    const detailArr = detailValues.flat().join(", ");
+
     return (
-        
-        
         <div className="menuDetail">
-        {/* <div className={menuDetailStyle.menuDetail}> */}
+            {/* <div className={menuDetailStyle.menuDetail}> */}
             <div className="menuBox">
                 <div>
                     <img src={menu.imgURL} alt={menu.name} />
@@ -126,29 +127,7 @@ const MenuDetailPage = () => {
                 <div>
                     <div>
                         <p className="option">선택된 옵션 | </p>
-
-                        <p className="options">
-                            <span>
-                                {selectedValues.rice}
-                            </span>
-                            <span>
-                                {selectedValues.vegi}
-                                {/* {selectedValues.vegi.length>0?selectedValues.vegi.join(', '):""}  */}
-                            </span>
-                            <span>
-                                {selectedValues.sauce}
-                            </span>&nbsp;
-                            <span>
-                                {selectedValues.dipping}
-                            </span>
-                            <span>
-                                {selectedValues.topping}
-                            </span>
-                            <span>{selectedValues.noodle} </span>
-                            <span>{selectedValues.ramen} </span>
-                            <span>{selectedValues.drink} </span>
-                            {/* 데이터 추가 후에  더 있는거 추가하기 !! */}
-                        </p>
+                        <p className="options">{detailArr}</p>
                     </div>
                     <button onClick={onClickHandler} className="btn btn-red">
                         <FaArrowsRotate />
