@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
 ReactModal.setAppElement('#root');
 
-const CardPay = ({lastPrice}) => {
+const NaverPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const nevi = useNavigate();
@@ -86,4 +86,4 @@ const CardPay = ({lastPrice}) => {
     );
 }
 
-export default CardPay;
+export default NaverPay;

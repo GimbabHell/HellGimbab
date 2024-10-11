@@ -9,6 +9,8 @@ const CardPay = ({lastPrice}) => {
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const nevi = useNavigate();
     const [show2, setShow2] = useState(true);
+    const [modalContent, setModalContent] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     // const [show, setShow] = useState(false);
 
     
@@ -20,6 +22,10 @@ const CardPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
+                // setShowModal(true);
+                alert("결제 완료되었습니다 ! 성공 ~!");
+                setShow2(false);
+                // setModalContent(<PointSave lastPrice={lastPrice}/>);
             }, 10000); 
         }, 30000); 
 
@@ -36,7 +42,7 @@ const CardPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
                 contentLabel="카드페이"
                 style={{
                     content: {
@@ -62,10 +68,11 @@ const CardPay = ({lastPrice}) => {
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
             {paymentSuccess ? (
                 <>
-                <h3>결제가 완료되었습니다! 감사합니다.</h3>
+                
+                {/* {console.log(showModal,modalContent)} */}
                 <PointSave lastPrice={lastPrice}/>
-               
-
+                
+        
                 </>
             ) : (
                 <>
@@ -81,6 +88,7 @@ const CardPay = ({lastPrice}) => {
                 </>
             )}
             </ReactModal>
+           
         </>
     );
 }
