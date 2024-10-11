@@ -39,7 +39,7 @@ const LastPage = () => {
                 <p className="dot">.</p>
                 <h4>"우리 김밥지옥 먹어줘서 고맙다!"</h4>
                 <Link to="/" className="btn-back">
-                    돌아가기
+                    지옥의 입구로..
                 </Link>
             </div>
             <Footer/>
