@@ -91,7 +91,13 @@ const MenuDetailPage = () => {
     const onClickHandler = (e) => {
         e.preventDefault();
         resetValues();
-        document.querySelectorAll("input").forEach((item) => (item.checked = false));
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach((item) => {
+            item.checked = false;
+            if(item.type==="checkbox"){
+                item.classList.remove('active');
+            }
+        });
     };
 
     const onClickOrderHandler = (e) => {

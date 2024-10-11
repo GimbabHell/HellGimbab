@@ -152,7 +152,10 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-.menuDetail .menuState .optionList ul li input:checked + label {
+.menuDetail .menuState .optionList ul li input[type=radio]:checked + label {
+  border: 3px solid #bd2030;
+}
+.menuDetail .menuState .optionList ul li input.active + label {
   border: 3px solid #bd2030;
 }
 .menuDetail .menuState .optionList ul li label {
