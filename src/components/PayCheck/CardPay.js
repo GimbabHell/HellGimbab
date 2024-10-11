@@ -24,7 +24,7 @@ const CardPay = ({lastPrice}) => {
                 setPaymentSuccess(true);
                 // setShowModal(true);
                 alert("결제 완료되었습니다 ! 성공 ~!");
-                setShow2(false);
+                // setShow2(false);
                 // setModalContent(<PointSave lastPrice={lastPrice}/>);
             }, 2000); 
         }, 3000); 
