@@ -22,7 +22,7 @@ const Error = () => {
             <p className="scared-text">.</p>
             <p className="scared-text">.</p>
 
-            <Link to="/" className="come-back-home"><span className="scared-text">그럼.. 다시 돌아갈래..? (¬_¬ )</span></Link>
+            <Link to="/" className="come-back-home"><span className="scared-text-underline">그럼.. 다시 돌아갈래..? (¬_¬ )</span></Link>
         </div>
         
     )

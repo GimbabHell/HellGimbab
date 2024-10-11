@@ -8,22 +8,40 @@
 
     .title{
         margin-bottom: 20px;
-        font-size: 4rem;
+        font-size: 12rem;
         font-weight: bold;
     }
 
     .scared-video{
         max-width: 100%;
+        width: 60%;
         height: auto;
         margin-bottom: 20px;
     }
 
     .scared-text{
-        font-size: 1.2rem;
+        font-size: 4rem;
+    }
+
+    .scared-text-underline{
+        position: relative; /* 부모 요소에 상대 위치 설정 */
+        display: inline-block; /* 요소를 inline-block으로 설정하여 높이를 조정 */
+
+        &::after {
+            content: ''; // 가상 요소에 빈 내용을 추가, 괄호 밑에는 밑줄을 그을 수 없으니.. 빈 문자열에 밑줄을 그어서 원하는 곧에 붙여버리자!
+            position: absolute; // 부모 요소에 대해 절대 위치 설정
+            left: 0; // 왼쪽에 정렬
+            right: 0; // 오른쪽에 정렬
+            bottom: 0; // 아래쪽에 정렬
+            height: 0.2px; // 밑줄의 두께 설정
+            bottom: -4px; // 밑줄을 아래로 4px 이동 (필요에 따라 조정)
+            background-color: black; // 밑줄의 색상 설정
+        }
     }
 
     .dot1{
         margin-top: 20px;
+        font-size: 4rem;
     }
 
     .come-back-home {
@@ -39,10 +57,11 @@
         padding: 5px 0px; // 위아래, 좌우 여백
         font-size: 1.2rem; // 폰트 크기
         cursor: pointer; // 마우스 커서를 포인터로 변경
-        transition: background-color 0.3s ease, color 0.3s ease; // 배경색과 글자색 변화 시 애니메이션 효과
-    
+        //transition: background-color 0.3s ease, color 0.3s ease; // 배경색과 글자색 변화 시 애니메이션 효과
+        transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease; /* 배경색, 글자색, 글자 크기 변화 시 애니메이션 효과 */
         &:hover {
             background-color: #f0f0f0; // 호버 시 배경색을 살짝 어둡게
+            font-size: 6em;
         }
     
         &:active {
