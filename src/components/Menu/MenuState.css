@@ -8,8 +8,11 @@
   overflow-x: hidden;
 }
 .menuContainer .scrollContainer > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .menuContainer .scrollContainer > ul > li {
   width: 210px;
