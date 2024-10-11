@@ -15,15 +15,25 @@
         background: #000;
         z-index: -1;
     }
+    // .left, .right {
+    //     position: absolute; /* 겹치기 위해 절대 위치 지정 */
+    //     top: 0;
+    //   }
 
-    .fade-in {
+   
+    
+    .fade-out {
         opacity: 0;
-        transition: opacity 1s ease-in-out;
-
-        &.visible {
-            opacity: 1;
-        }
+        transition: opacity 1s ease-out;
     }
+    
+ 
+    
+    .visible {
+        display: block;
+    }
+    
+
 
     .bg {
         position: absolute;
@@ -54,10 +64,33 @@
             margin-bottom: 185px;
         }
         .info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: relative;
             padding: 0 162px;
+            height: 95px;
+            > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &:last-child {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 0 162px;
+                    .left,.right {
+                        opacity: 0;
+                        &.fade-in {
+                            opacity: 1;
+                            transition: opacity 1s ease-in;
+                        }
+                    }
+                }
+                >div {
+                    &.hidden {
+                        display: none;
+                    }
+                }
+            }
             p {
                 color: #ccc;
                 font-size: 24px;

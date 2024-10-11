@@ -12,6 +12,7 @@ const PayCheckPage = () => {
     const [show, setShow] = useState(false);
     const [push, setPush] = useState("");
     const [defa, setDefa] = useState(0);
+    const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
     // const { phoneNumber, getPoints } = useMemberStore();
@@ -19,10 +20,14 @@ const PayCheckPage = () => {
     // const num = search.get("poiint");
     // const [too, setToo] = useState("");
     // const [testNum, setTestNum] = useState(0);
+    const [modalContent, setModalContent] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+
+
 
     const [test, setTest] = useState(false);
-    const [test2, setTest2] = useState(false);
-    const [test3, setTest3] = useState(false);
+    
+    
 
     const onClickHandler = () => {
         setShow(true);
@@ -36,18 +41,23 @@ const PayCheckPage = () => {
         nevi("/menu");
     };
 
-    const onClickHandler3 = () => {
-        console.log(push);
-        if (push == 0) {
-            return setTest(true);
-        } else if (push == 1) {
-            return setTest2(true);
-        } else if (push == 2) {
-            return setTest3(true);
+    const onClickHandler3 = (event) => {
+        event.preventDefault();
+        
+        if (push === 0) {
+            setModalContent(<CardPay lastPrice={totalPrice - defa} />);
+            setShowModal(true);
+        } else if (push === 1) {
+            setModalContent(<KakaoPay lastPrice={totalPrice - defa} />);
+            setShowModal(true);
+        } else if (push === 2) {
+            setModalContent(<NaverPay lastPrice={totalPrice - defa} />);
+            setShowModal(true);
         } else {
-            return alert("결제수단을 다시 선택해주세요 !");
+            alert("결제수단을 다시 선택해주세요 !");
         }
     };
+
 
     // useEffect(() => {
     //     const nn = () => {
@@ -55,6 +65,9 @@ const PayCheckPage = () => {
     //     };
     //     setTestNum(nn);
     // });
+    // {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
+    //         {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
+    //         {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
 
     return (
         <div className="payCheckContainer">
@@ -127,14 +140,17 @@ const PayCheckPage = () => {
                 <div className="btn-wrap">
                     <button className="btn btn-gray" onClick={onClickHandler2}>취소</button>
                     <button className="btn btn-red" type="submit">결제하기</button>
+                    
                 </div>
-                
-            </form>
-            {test ? <CardPay lastPrice={totalPrice - defa} /> : null}
-            {test2 ? <KakaoPay lastPrice={totalPrice - defa} /> : null}
-            {test3 ? <NaverPay lastPrice={totalPrice - defa} /> : null}
+                </form>
+
+                {showModal && 
+                        modalContent
+        
+            }
         </div>
     );
 };
+
 
 export default PayCheckPage;

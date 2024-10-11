@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
-import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
 ReactModal.setAppElement('#root');
 
 const CardPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
-    const [paymentSuccess, setPaymentSuccess] = useState(false);
-    const nevi = useNavigate();
+    const [paymentSuccess, setPaymentSuccess] = useState(false);   
     const [show2, setShow2] = useState(true);
-    // const [show, setShow] = useState(false);
-
     
 
     useEffect(() => {
@@ -20,11 +16,14 @@ const CardPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
-            }, 10000); 
-        }, 30000); 
+                setShow2(false);
+                
+            }, 2000); 
+        }, 3000); 
 
         return () => clearTimeout(timer);
     }, [lastPrice]);
+
 
     
     const closeModal =()=>{
@@ -60,14 +59,7 @@ const CardPay = ({lastPrice}) => {
             <h2>카드 결제 안내</h2>
             <button onClick={()=>closeModal()}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
-            {paymentSuccess ? (
-                <>
-                <h3>결제가 완료되었습니다! 감사합니다.</h3>
-                <PointSave lastPrice={lastPrice}/>
-               
-
-                </>
-            ) : (
+            {!paymentSuccess ? (
                 <>
                     <h3>결제금액: {lastPrice}</h3>
                     <h5>
@@ -79,8 +71,13 @@ const CardPay = ({lastPrice}) => {
                         </ul>
                     </h5>
                 </>
-            )}
+            ) : null}
             </ReactModal>
+
+
+            {/* 결제 완료 후 PointSave 컴포넌트를 표시 */}
+            {paymentSuccess && <PointSave lastPrice={lastPrice} />}
+           
         </>
     );
 }

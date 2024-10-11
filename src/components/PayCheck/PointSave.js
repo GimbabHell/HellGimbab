@@ -13,7 +13,7 @@ const PointSave = ({lastPrice}) => {
     const add = useMemberStore(state => state.add);
     const findMember = useMemberStore(state => state.findMember);
     const nevi = useNavigate();
-    const [show2, setShow2] = useState(false);
+    const [show2, setShow2] = useState(true);
     
 
 
@@ -104,6 +104,8 @@ const PointSave = ({lastPrice}) => {
                     }
                 }}
             >
+            {alert("결제 완료되었습니다 ! 성공 ~!")}
+
             <h2>포인트 적립!</h2>
             <h3>적립하시려면 핸드폰 번호를 입력해주세요.</h3>
             <button onClick={()=>nevi("/last")}>x</button>

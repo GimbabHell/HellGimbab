@@ -12,6 +12,19 @@ import { FaTrashCan, FaCreditCard } from "react-icons/fa6";
 
 const MenuFootState = ()=>{
 
+    const messages =[
+        "뭐라도 담고 주문해주세요~",
+        "흠.. 뭐라도 담고 주문을 해야지? 실수지? 봐 줄게! 🤔",
+        "또..? 하나..",
+        "둘..",
+        "셋..",
+        "악마는 참지 않긔!!!!",
+        "...",
+        "악마가 당신에게 다가오고 있습니다."
+    ];
+    let messageId = 0;
+    
+
     const { clearAll, order } = orderStore();
     const [show, setShow] = useState(false);
 
@@ -19,7 +32,15 @@ const MenuFootState = ()=>{
         if(order.length !== 0){
             setShow(true)
         }else{
-            alert("뭐라도 담고 주문해주세요~");
+            if(messageId < messages.length){
+                alert(messages[messageId]);
+                messageId++;
+                if(messageId >= messages.length ){
+                messageId = 0;
+    }
+            }
+            
+            
         }
     };
 

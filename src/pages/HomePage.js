@@ -18,6 +18,7 @@ const HomePage = () => {
     const [satanUrl, setSatanUrl] = useState(``);
     const [loading, setLoading] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
+    const [fadeOut, setFadeOut] = useState(false);
 
     // const [aboutDeath, setAboutDeath] = useState("");
 
@@ -65,51 +66,66 @@ const HomePage = () => {
             }else{
                 console.error("이미지씨.. 어딨나요? ㅠㅠ");
             }
+            if(loading){
+                const timer = setTimeout
+            }
+            setLoading(false);
 
-             setTimeout(() => {
-                setIsVisible(true);
-                setLoading(false);
-            }, 3000);
-            console.log(isVisible);
+          
+        }
+        weatherAtLocationAndfetchImage();
 
+        }, []);
 
+    useEffect(() => {
+        
+        if (!loading) {
+            // 로딩이 끝나면 페이드 아웃 시작
+            setFadeOut(true);
+            const timer = setTimeout(() => {
+                setFadeOut(false); // 페이드 아웃 상태 해제
+                setIsVisible(true); // 새로운 정보가 보이도록 설정
+               
+            }, 1000); // 페이드 아웃 시간과 일치시킴
+            return ()=> clearTimeout(timer)
+        } else {
+            setFadeOut(false);
+            setIsVisible(false); // 로딩 중에는 정보 숨김
             
         }
-        weatherAtLocationAndfetchImage();      
-
-    }, []);
-    console.log(isVisible);
+    }, [loading]);
+    
+    // console.log(isVisible);
     return (
 
         <div className="home">
             <div className={`bg`} style={{ backgroundImage: `url(${satanUrl})` }}></div>
             <div className={`cont`}>
                 <h1 className="logo">Gimbab HELL</h1>
-                <div className={`info`}>
-                    {loading ?
-                    <>
-                        <div className="left">
-                            <img src={"../images/logo/weatherOfHell.png"}/> 
-                            <p>HELL</p>
-                        </div>
-                        <div className="right">
-                            <p>99999999℃ | THREE SUNS</p>
-                        </div>
-                    </>
-                        :
-                    <>
-                        <div className={`left fade-in ${isVisible ? 'visible' : ''}`}>
-                            <img src={iconURL}/> 
-                            <p>{cityName}</p>
-                        </div>
-                        <div className={`right fade-in ${isVisible ? 'visible' : ''}`}>
-                            <p>{`${temp}℃ | ${weather}`}</p>
-                        </div>
-                    </> 
-                    }
+            <div className={`info`}>
+
+                <div>
+                    <div className={`left ${isVisible? 'hidden' : ''}`}>
+                        <img src={"../images/logo/weatherOfHell.png"} alt="로고" />
+                        <p>HELL</p>
+                    </div>
+                    <div className={`right ${isVisible? 'hidden' : ''}`}>
+                        <p>99999999℃ | THREE SUNS</p>
+                    </div>
                 </div>
+                <div style={{visibility: isVisible? "visible":"hidden"}}>
+                    <div className={`left  ${fadeOut ? '' : 'fade-in'}`}>
+                        <img src={iconURL} alt="날씨 아이콘" />
+                        <p>{cityName}</p>
+                    </div>
+                    <div className={`right  ${fadeOut ? '' : 'fade-in'}`}>
+                        <p>{`${temp}℃ | ${weather}`}</p>
+                    </div>
+                </div>
+                
+            </div>
                 <div className={`imgBox`}>
-                    {loading || !satanUrl ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
+                    {loading ? <h2 className="altText">COMING.. DEVIL..!</h2> : <img className={`fade-in ${isVisible ? 'visible' : ''}`} src={satanUrl}/>}
                 </div>
                 <p className="txt">원하시는 옵션을<br/>선택해주세요</p>
             </div>

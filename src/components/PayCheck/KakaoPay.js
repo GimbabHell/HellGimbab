@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import PointSave from "./PointSave";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
 ReactModal.setAppElement('#root');
 
-const CardPay = ({lastPrice}) => {
+const KakaoPay = ({lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
-    // const nevi = useNavigate();
+    const nevi = useNavigate();
     const [show2, setShow2] = useState(true);
+    const [modalContent, setModalContent] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     // const [show, setShow] = useState(false);
 
+    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -19,6 +22,8 @@ const CardPay = ({lastPrice}) => {
             setTimeout(() => {
                 setLoading(false);
                 setPaymentSuccess(true);
+                setShow2(false);
+                
             }, 2000); 
         }, 3000); 
 
@@ -35,7 +40,7 @@ const CardPay = ({lastPrice}) => {
         <>
             <ReactModal
                 isOpen={show2}        // Modal visibility
-                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
                 contentLabel="카카오페이"
                 style={{
                     content: {
@@ -56,16 +61,10 @@ const CardPay = ({lastPrice}) => {
                 }}
             >
 
-            <h2>카카오페이 결제 안내</h2>
+            <h2>카카오 결제 안내</h2>
             <button onClick={()=>closeModal()}>x</button>
             {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
-            {paymentSuccess ? (
-                <>
-                <h3>결제가 완료되었습니다! 감사합니다.</h3>
-                <PointSave lastPrice={lastPrice}/>
-                
-                </>
-            ) : (
+            {!paymentSuccess ? (
                 <>
                     <h3>결제금액: {lastPrice}</h3>
                     <h5>
@@ -77,11 +76,15 @@ const CardPay = ({lastPrice}) => {
                         </ul>
                     </h5>
                 </>
-            )}
+            ) : null}
             </ReactModal>
-            
+
+
+            {/* 결제 완료 후 PointSave 컴포넌트를 표시 */}
+            {paymentSuccess && <PointSave lastPrice={lastPrice} />}
+           
         </>
     );
 }
 
-export default CardPay;
+export default KakaoPay;
