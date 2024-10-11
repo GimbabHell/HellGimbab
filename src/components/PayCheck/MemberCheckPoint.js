@@ -6,7 +6,7 @@ import MemberCheckPointStyle from './MemberCheckPoint.css';
 import { FaXmark, FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
-const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
+const MemberCheckPoint = ({num, poiint, setShow, setDefa, setSubCategoryId}) => {
     const [plusPointNumber, setPlusPointNumber] = useState(""); 
     const { totalPrice } = orderStore();
     const [show2, setShow2] = useState(true);
@@ -22,12 +22,35 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
         setPlusPointNumber("");
     };
 
-    const onClickHandler2 = useCallback(() => {
-        console.log(num);
+    // const onClickHandler2 = useCallback(() => {
         
-         subtractPoints(num, plusPointNumber); 
+    //      subtractPoints(num, plusPointNumber); 
          
+    //     if ( poiint >= plusPointNumber){
+         
+    //         alert("확인!");
+    //         setDefa(plusPointNumber);
+    //         setShow(false);
+    //         setShow2(false);
+         
+    //     } else {
+    //         alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
+    //         setPlusPointNumber(""); 
+    //     }
+    // }, [plusPointNumber, num]);
 
+    const onClickHandler3 = () => {
+        setPlusPointNumber(""); 
+    }
+
+    const onClickHandlerr = () => {
+        if(poiint === 0){
+        setDefa(0);
+        setShow(false);
+        setShow2(false);
+    } else{
+        subtractPoints(num, plusPointNumber); 
+         
         if ( poiint >= plusPointNumber){
          
             alert("확인!");
@@ -39,25 +62,13 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
             alert(`기존 포인트보다 작은 액수를 입력해주세요`); 
             setPlusPointNumber(""); 
         }
-    }, [plusPointNumber, num, subtractPoints]);
-
-    const onClickHandler3 = () => {
-        setPlusPointNumber(""); 
+    } 
     }
 
-    const onClickHandlerr = () => {
-        setDefa(0);
-        setShow(false);
-        setShow2(false);
-    }
-
-    const handlePayment = () => {
-        setShow(false);
-        setShow2(false);
-    }
-
-
+   
     const closeModal =()=>{
+        setSubCategoryId(0);
+        setShow(false);
         setShow2(false);
     };
 
@@ -113,16 +124,16 @@ const MemberCheckPoint = ({num, poiint, setShow, setDefa}) => {
                     {poiint === 0 ? (
                         <div>
                             <h4>고객님의 누적 포인트는 0원입니다. 사용하기 버튼을 누르시면 바로 결제로 넘어갑니다.</h4>
-                            <button onClick={onClickHandlerr}>사용하기</button>
+                           
                         </div>
                     ) : (
                         <>
                             <h3>사용 포인트: {plusPointNumber}</h3>
                             
-                            <button onClick={handlePayment}>취소</button>
-                            <button onClick={onClickHandler2}>사용하기</button>
                         </>
                     )}
+                     <button onClick={()=> closeModal()}>취소</button>
+                    <button onClick={onClickHandlerr}>사용하기</button>
                 </div>
              </ReactModal>
             </>

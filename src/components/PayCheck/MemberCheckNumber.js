@@ -140,7 +140,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
                 </div>
             </div>
             </ReactModal>
-            {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} /> : null}
+            {showw ? <MemberCheckPoint num={num} poiint={poiint} setShow={setShow} setDefa={setDefa} setSubCategoryId={setSubCategoryId} /> : null}
 
             </>
         
