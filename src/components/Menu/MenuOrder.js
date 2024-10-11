@@ -3,13 +3,13 @@
 
 import { useEffect, useState } from "react";
 import { getToppingDetails } from "../../api/MenuApi";
-import { orderStore } from "../../store";
+import { checkDetail, orderStore } from "../../store";
 import { FaCircleXmark, FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 
 const MenuOrder = ()=>{
 
     const {price, details, singleOrder, order, deleteSingleOrder, setItemPrice, reset, reduceQuantity, 
-        addQuantity, setDetailPrice, setUnitPrice, setTotalObjNum, setTotalPrice, totalObjNum, totalPrice} = orderStore();
+        addQuantity, setDetailPrice, setUnitPrice, setTotalObjNum, setTotalPrice, totalObjNum, totalPrice, menuName, addQuantityBySelect} = orderStore();
     const [orders, setOrders] = useState();
 
 
@@ -56,7 +56,17 @@ const MenuOrder = ()=>{
             setUnitPrice();
             
             // 장바구니 추가
-            singleOrder();
+            const list=[];
+            for(let i=0; i<order.length; i++){
+                list.push(order[i].menuName);
+            }
+
+            if(JSON.stringify(details)==='{}' && list.includes(menuName)){
+                addQuantityBySelect();
+            }else{singleOrder();}
+
+            // singleOrder();
+
             // zustand의 한개 메뉴 비우기
             reset();
         }
