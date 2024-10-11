@@ -113,6 +113,12 @@ const MenuDetailPage = () => {
         resetValues();
     };
 
+    const onClickDeleteHandler = (e) => {
+        e.preventDefault();
+        resetValues();
+        navi(-1);
+    }
+
     const detailValues = Object.values(selectedValues);
     const detailArr = detailValues.flat().join(", ");
 
@@ -149,7 +155,7 @@ const MenuDetailPage = () => {
                         })}
                     </div>
                     <div className="btn-wrap">
-                        <button onClick={() => navi(-1)} className="btn btn-small btn-gray">
+                        <button onClick={onClickDeleteHandler} className="btn btn-small btn-gray">
                             취소
                         </button>
                         <button type="submit" className="btn btn-small btn-red">
