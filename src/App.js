@@ -9,6 +9,7 @@ import MenuOutlet from "./components/Menu/MenuOutlet";
 import Error from "./pages/Error";
 import "reset-css";
 import "./Style.css";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
     return (
