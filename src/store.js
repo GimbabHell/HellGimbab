@@ -49,16 +49,16 @@ export const orderStore = create((set, get) => ({
     },
 
     setOrderHistory: (userNum) => {
-        const { order, orderHistory, toGo, totalPrice, totalObjNum, toGoReceiptNum, forHereReceiptNum } = get();
-        const newHistory = toGo === true? [...orderHistory, { userNum, toGo, toGoReceiptNum, totalPrice, totalObjNum, order }] :
-                                          [...orderHistory, { userNum, toGo, forHereReceiptNum, totalPrice, totalObjNum, order }];
+        const { order, orderHistory, toGo, totalPrice, totalObjNum, toGoReceiptNum, forHereReceiptNum, date } = get();
+        const newHistory = toGo === true? [...orderHistory, { userNum, date, toGo, toGoReceiptNum, totalPrice, totalObjNum, order }] :
+                                          [...orderHistory, { userNum, date, toGo, forHereReceiptNum, totalPrice, totalObjNum, order }];
         set({ orderHistory: newHistory });
     },
 
     resetReceiptNum: () => {
         const { orderHistory, date } = get();
         if(orderHistory.length !== 0) {
-            if(date.date !== orderHistory[orderHistory.length - 1].date){
+            if(date.date !== orderHistory[orderHistory.length - 1].date.date){
                 set({ forHereReceiptNum: 0, toGoReceiptNum: 100 })
             }
         }

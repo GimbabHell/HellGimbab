@@ -9,8 +9,8 @@ const LastPage = () => {
     const [satanUrl, setSatanUrl] = useState("");
     const [loading, setLoading] = useState(true); // 로딩 중이면 트루, 로딩이 끝났으면 펄스
 
-    const { setDate, resetReceiptNum, setReceiptNum, setOrderHistory, toGo, forHereReceiptNum, toGoReceiptNum, resetFinal } = orderStore();
-    const { phoneNumber, reset } = useMemberStore();
+    const { setDate, resetReceiptNum, setReceiptNum, setOrderHistory, toGo, forHereReceiptNum, toGoReceiptNum, resetFinal, orderHistory } = orderStore();
+    const { members, reset } = useMemberStore();
     const { resetValues } = checkDetail();
 
     useEffect(()=>{
@@ -38,7 +38,8 @@ const LastPage = () => {
         setReceiptNum();
 
         // 주문 기록 배열에 저장
-        setOrderHistory(phoneNumber);
+        setOrderHistory(members[members.length - 1].phoneNumber);
+        console.log(orderHistory);
 
     }, []);
 
