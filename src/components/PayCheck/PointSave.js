@@ -7,7 +7,7 @@ import { FaXmark,FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const PointSave = ({lastPrice}) => {
-    const [phoneNum, setPhoneNum] = useState(""); // 입력받은 폰 번호
+    const [phoneNum, setPhoneNum] = useState("010"); // 입력받은 폰 번호
     const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지 상태
     const {members} = useMemberStore();
     const addPoints = useMemberStore(state => state.addPoints);
