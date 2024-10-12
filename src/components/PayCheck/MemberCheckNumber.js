@@ -25,7 +25,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         }};
 
     const handleClear = () => {
-        setNum("");
+        setNum("010");
         setErrorMessage(""); 
     };
 
@@ -38,7 +38,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         
         if (!isValidPhoneNumber(formattedNum)) {
             setErrorMessage("전화번호는 010으로 시작하고 11자리여야 합니다.");
-            setNum("");
+            setNum("010");
             return; 
         }
 

@@ -5,50 +5,54 @@ import ReactModal from "react-modal";
 import { FaXmark } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
-const KakaoPay = ({lastPrice}) => {
+const KakaoPay = ({ lastPrice }) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
-    
+    const [CardNumber, setCardNumber] = useState("");
     const [show2, setShow2] = useState(true);
-
-    
 
     useEffect(() => {
         let timer;
         if (show2) {
             timer = setTimeout(() => {
                 setLoading(true);
-                
+
+                const cardNumberTimer = setTimeout(() => {
+                    const randomCardNumber = Math.floor(10000000000 + Math.random() * 90000000000).toString();
+                    setCardNumber(randomCardNumber);
+                }, 500);
+
                 const paymentTimer = setTimeout(() => {
                     setLoading(false);
                     setPaymentSuccess(true);
                     alert("결제 완료되었습니다 !");
-                }, 2000); 
+                }, 2000);
 
-                return () => clearTimeout(paymentTimer);
-            }, 3000); 
+                return () => {
+                    clearTimeout(cardNumberTimer);
+                    clearTimeout(paymentTimer);
+                };
+            }, 3000);
         }
 
         return () => clearTimeout(timer);
     }, [lastPrice, show2]);
-    
-    const closeModal = () => {
-       
-        setShow2(false);
-        resetPaymentStates(); // 결제 상태 초기화
-    };
 
+    const closeModal = () => {
+        setShow2(false);
+        resetPaymentStates(); // Reset payment states
+    };
 
     const resetPaymentStates = () => {
         setLoading(false);
         setPaymentSuccess(false);
+        setCardNumber(""); // Reset card number
     };
 
-
-    return(
+    return (
         <>
             <ReactModal
-                isOpen={show2}       
+                isOpen={show2}
                 contentLabel="카카오페이"
                 style={{
                     content: {
@@ -68,13 +72,12 @@ const KakaoPay = ({lastPrice}) => {
                     }
                 }}
             >
-
                 <div className="cardModal">
                     <div className="modalTop">
-                        <h2 className="title">카카오페이 결제 안내</h2>
-                        <button className="btn-close" onClick={closeModal}><FaXmark /></button> 
+                        <h2 className="title">카카오페이 결제</h2>
+                        <button className="btn-close" onClick={closeModal}><FaXmark /></button>
                     </div>
-                    <h2>결제가 완료될 때까지 <span>카드를 빼지 마세요!</span></h2>
+                    <h2><span>결제 QR 코드를 스캔 </span> 해주세요</h2>
                     {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
                     {!paymentSuccess ? (
                         <div className="cardModalContainer">
@@ -82,26 +85,16 @@ const KakaoPay = ({lastPrice}) => {
                                 <img src="../images/card.svg" alt="카드 결제 이미지" />
                             </div>
                             <div className="right">
-                                <h3> <span>결제금액</span> <span>{lastPrice}원</span></h3>
-                                <ul>
-                                    <li>다음 그림과 같이 카드 리더기에 카드를 꽂아주세요.</li>
-                                    <li>결제가 완료될 때까지 카드를 빼지 말고 기다려주세요.</li>
-                                    <li>결제가 완료되면 카드를 회수해주세요.</li>
-                                </ul>
-                                <p>
-                                    ※ 사용가능한 카드 안내 <br/>
-                                    <span>- 국내 결제 가능한 신용카드, 체크카드</span>
-                                </p>
+                                <h3><span>결제금액</span> <span>{lastPrice}원</span></h3>
+                                <h3>카드번호 {CardNumber}</h3>
                             </div>
                         </div>
                     ) : null}
                 </div>
             </ReactModal>
 
-
-            {/* 결제 완료 후 PointSave 컴포넌트를 표시 */}
+            {/* Show PointSave component after payment completion */}
             {paymentSuccess && <PointSave lastPrice={lastPrice} />}
-           
         </>
     );
 }

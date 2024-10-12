@@ -34,7 +34,7 @@ const PointSave = ({lastPrice}) => {
     };
 
     const handleClear = () => {
-        setPhoneNum("");
+        setPhoneNum("010");
         setErrorMessage("");
     };
     
