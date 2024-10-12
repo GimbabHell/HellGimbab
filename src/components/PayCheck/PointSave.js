@@ -9,7 +9,6 @@ ReactModal.setAppElement('#root');
 const PointSave = ({lastPrice}) => {
     const [phoneNum, setPhoneNum] = useState(""); // 입력받은 폰 번호
     const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지 상태
-    // const [ppoint, setPpoint] = useState(""); // 결제 금액에 따른 추가될 포인트
     const {members} = useMemberStore();
     const addPoints = useMemberStore(state => state.addPoints);
     const add = useMemberStore(state => state.add);
@@ -77,10 +76,6 @@ const PointSave = ({lastPrice}) => {
         }
     };
 
-    const closeModal =()=>{
-        setShow2(false);
-    };
-
     const handleDelete = () => {
         setPhoneNum((prev)=> prev.slice(0,-1));
     }
@@ -89,8 +84,7 @@ const PointSave = ({lastPrice}) => {
     return(
         <>
             <ReactModal
-                isOpen={show2}        // Modal visibility
-                onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                isOpen={show2}       
                 contentLabel="사용할 포인트 입력"
                 style={{
                     content: {

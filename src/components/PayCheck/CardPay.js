@@ -5,40 +5,45 @@ import CardPayStyle from './CardPay.css';
 import { FaXmark } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
-const CardPay = ({lastPrice}) => {
+const CardPay = ({ lastPrice}) => {
     const [loading, setLoading] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);   
     const [show2, setShow2] = useState(true);
     
-
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(true);
-            
-            setTimeout(() => {
-                setLoading(false);
-                setPaymentSuccess(true);
-                alert("결제 완료되었습니다 !");
-                setShow2(false);
+        let timer;
+        if (show2) {
+            timer = setTimeout(() => {
+                setLoading(true);
                 
-            }, 2000); 
-        }, 3000); 
+                const paymentTimer = setTimeout(() => {
+                    setLoading(false);
+                    setPaymentSuccess(true);
+                    alert("결제 완료되었습니다 !");
+                }, 2000); 
+
+                return () => clearTimeout(paymentTimer);
+            }, 3000); 
+        }
 
         return () => clearTimeout(timer);
-    }, [lastPrice]);
+    }, [lastPrice, show2]);
 
-
-    
-    const closeModal =()=>{
+    const closeModal = () => {
+       
         setShow2(false);
+        resetPaymentStates(); // 결제 상태 초기화
     };
 
+    const resetPaymentStates = () => {
+        setLoading(false);
+        setPaymentSuccess(false);
+    };
 
-    return(
+    return (
         <>
             <ReactModal
-                isOpen={show2}        // Modal visibility
-                // onRequestClose={closeModal}  // Close when clicking outside or pressing ESC
+                isOpen={show2}
                 contentLabel="카드페이"
                 style={{
                     content: {
@@ -54,15 +59,14 @@ const CardPay = ({lastPrice}) => {
                         padding: 0,
                     },
                     overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)'
                     }
                 }}
             >
-
                 <div className="cardModal">
                     <div className="modalTop">
                         <h2 className="title">카드 결제 안내</h2>
-                        <button className="btn-close" onClick={()=>closeModal()}><FaXmark /></button> 
+                        <button className="btn-close" onClick={closeModal}><FaXmark /></button> 
                     </div>
                     <h2>결제가 완료될 때까지 <span>카드를 빼지 마세요!</span></h2>
                     {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
@@ -79,7 +83,7 @@ const CardPay = ({lastPrice}) => {
                                     <li>결제가 완료되면 카드를 회수해주세요.</li>
                                 </ul>
                                 <p>
-                                    ※ 사용가능한 카드 안내 <br/>
+                                    ※ 사용가능한 카드 안내 <br />
                                     <span>- 국내 결제 가능한 신용카드, 체크카드</span>
                                 </p>
                             </div>
@@ -88,10 +92,8 @@ const CardPay = ({lastPrice}) => {
                 </div>
             </ReactModal>
 
-
-            {/* 결제 완료 후 PointSave 컴포넌트를 표시 */}
+            {/* 결제 완료 후 PointSave 컴포넌트를 표시, paymentSuccess가 true일 때만 표시 */}
             {paymentSuccess && <PointSave lastPrice={lastPrice} />}
-           
         </>
     );
 }

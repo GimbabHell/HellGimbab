@@ -15,7 +15,7 @@ const PayCheckPage = () => {
     // const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
-    const { phoneNumber}= useMemberStore();
+    const { plusPointNumber, phoneNumber }= useMemberStore();
     // const { phoneNumber, getPoints } = useMemberStore();
     // const [search] = useSearchParams();
     // const num = search.get("poiint");
@@ -24,6 +24,7 @@ const PayCheckPage = () => {
     const [modalContent, setModalContent] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [subCategoryId, setSubCategoryId] = useState(0);
+    const [checknum, setChecknum] = useState("");
     const subtractPoints = useMemberStore(state => state.subtractPoints);
     // const [test, setTest] = useState(false);
     
@@ -46,11 +47,11 @@ const PayCheckPage = () => {
 
     const onClickHandler3 = (event) => {
 
-        // subtractPoints(phoneNumber, plusPointNumber); 
+        subtractPoints(phoneNumber, plusPointNumber); 
         event.preventDefault();
         
         if (push === 0) {
-            setModalContent(<CardPay lastPrice={totalPrice - defa} />);
+            setModalContent(<CardPay lastPrice={totalPrice - defa}  />);
             setShowModal(true);
         } else if (push === 1) {
             setModalContent(<KakaoPay lastPrice={totalPrice - defa} />);
@@ -64,8 +65,8 @@ const PayCheckPage = () => {
     };
 
 
-    
 
+    
     return (
         <div className="payCheckContainer">
             <form onSubmit={onClickHandler3}>
@@ -95,14 +96,14 @@ const PayCheckPage = () => {
                     <p className="txtBold">결제 수단 선택</p>
                     <div>
                         <div>
-                            <input type="radio" name="pay" id="card" onChange={() => setPush(0)} required></input>
+                            <input type="radio" name="pay" id="card"  onChange={() => setPush(0)} required></input>
                             <label htmlFor="card">
                                 <FaCreditCard /> 
                                 <p>카드결제</p>
                             </label>
                         </div>
                         <div>
-                            <input type="radio" name="pay" id="kakao" onChange={() => setPush(1)}></input>
+                            <input type="radio" name="pay" id="kakao"  onChange={() => setPush(1)}></input>
                             <label htmlFor="kakao"> 
                                 <img src="../images/kakaoLogo.svg" alt="kakao" /> 
                                 <p>카카오Pay</p> 
