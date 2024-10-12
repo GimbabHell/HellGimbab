@@ -15,24 +15,26 @@ const NaverPay = ({ lastPrice }) => {
         let timer;
         if (show2) {
             timer = setTimeout(() => {
-                setLoading(true);
-
+              
                 const cardNumberTimer = setTimeout(() => {
                     const randomCardNumber = Math.floor(10000000000 + Math.random() * 90000000000).toString();
                     setCardNumber(randomCardNumber);
-                }, 500);
 
-                const paymentTimer = setTimeout(() => {
-                    setLoading(false);
-                    setPaymentSuccess(true);
-                    alert("결제 완료되었습니다 !");
-                }, 2000);
+                  
+                    setTimeout(() => {
+                        setLoading(true);
 
-                return () => {
-                    clearTimeout(cardNumberTimer);
-                    clearTimeout(paymentTimer);
-                };
-            }, 3000);
+                        
+                        setTimeout(() => {
+                            setLoading(false);
+                            setPaymentSuccess(true);
+                            alert("결제 완료되었습니다 !");
+                        }, 2000);
+                    }, 1000);
+                }, 1000);
+
+                return () => clearTimeout(cardNumberTimer);
+            }, 2000);
         }
 
         return () => clearTimeout(timer);
@@ -93,7 +95,6 @@ const NaverPay = ({ lastPrice }) => {
                 </div>
             </ReactModal>
 
-           
             {paymentSuccess && <PointSave lastPrice={lastPrice} />}
         </>
     );

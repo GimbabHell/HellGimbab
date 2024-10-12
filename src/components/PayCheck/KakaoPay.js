@@ -15,24 +15,26 @@ const KakaoPay = ({ lastPrice }) => {
         let timer;
         if (show2) {
             timer = setTimeout(() => {
-                setLoading(true);
-
+               
                 const cardNumberTimer = setTimeout(() => {
                     const randomCardNumber = Math.floor(10000000000 + Math.random() * 90000000000).toString();
                     setCardNumber(randomCardNumber);
-                }, 500);
 
-                const paymentTimer = setTimeout(() => {
-                    setLoading(false);
-                    setPaymentSuccess(true);
-                    alert("결제 완료되었습니다 !");
-                }, 2000);
+                   
+                    setTimeout(() => {
+                        setLoading(true);
 
-                return () => {
-                    clearTimeout(cardNumberTimer);
-                    clearTimeout(paymentTimer);
-                };
-            }, 3000);
+                        
+                        setTimeout(() => {
+                            setLoading(false);
+                            setPaymentSuccess(true);
+                            alert("결제 완료되었습니다 !");
+                        }, 2000);
+                    }, 1000);
+                }, 1000);
+
+                return () => clearTimeout(cardNumberTimer);
+            }, 2000);
         }
 
         return () => clearTimeout(timer);
@@ -40,7 +42,7 @@ const KakaoPay = ({ lastPrice }) => {
 
     const closeModal = () => {
         setShow2(false);
-        resetPaymentStates();
+        resetPaymentStates(); 
     };
 
     const resetPaymentStates = () => {
@@ -68,7 +70,7 @@ const KakaoPay = ({ lastPrice }) => {
                         padding: 0,
                     },
                     overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)' 
                     }
                 }}
             >
@@ -93,7 +95,6 @@ const KakaoPay = ({ lastPrice }) => {
                 </div>
             </ReactModal>
 
-          
             {paymentSuccess && <PointSave lastPrice={lastPrice} />}
         </>
     );
