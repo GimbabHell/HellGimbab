@@ -7,7 +7,7 @@ import { FaXmark, FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
-    const [num, setNum] = useState("");
+    const [num, setNum] = useState("010");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
     const add = useMemberStore(state => state.add);
@@ -25,7 +25,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         }};
 
     const handleClear = () => {
-        setNum("");
+        setNum("010");
         setErrorMessage(""); 
     };
 
@@ -38,7 +38,7 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         
         if (!isValidPhoneNumber(formattedNum)) {
             setErrorMessage("전화번호는 010으로 시작하고 11자리여야 합니다.");
-            setNum("");
+            setNum("010");
             return; 
         }
 
@@ -59,7 +59,6 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         
     };
 
-   
         
     const formatPhoneNumber = (number) => {
         if (number.length === 11) {
