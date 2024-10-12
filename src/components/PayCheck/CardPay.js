@@ -65,7 +65,7 @@ const CardPay = ({ lastPrice}) => {
             >
                 <div className="cardModal">
                     <div className="modalTop">
-                        <h2 className="title">카드 결제 안내</h2>
+                        <h2 className="title">카드 결제</h2>
                         <button className="btn-close" onClick={closeModal}><FaXmark /></button> 
                     </div>
                     <h2>결제가 완료될 때까지 <span>카드를 빼지 마세요!</span></h2>

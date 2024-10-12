@@ -34,7 +34,7 @@ const PointSave = ({lastPrice}) => {
     };
 
     const handleClear = () => {
-        setPhoneNum("");
+        setPhoneNum("010");
         setErrorMessage("");
     };
     
@@ -100,7 +100,7 @@ const PointSave = ({lastPrice}) => {
                         padding: 0,
                     },
                     overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)' 
                     }
                 }}
             >
