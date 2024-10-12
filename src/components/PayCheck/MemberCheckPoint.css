@@ -9,24 +9,16 @@
 }
 .pointUseModal .modalContainer {
   padding: 0 60px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin-top: 60px;
 }
 .pointUseModal .modalContainer .left {
   width: 315px;
 }
 .pointUseModal .modalContainer .left p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin-bottom: 30px;
 }
 .pointUseModal .modalContainer .left p span {
@@ -45,14 +37,9 @@
   margin-top: 25px;
 }
 .pointUseModal .modalContainer .right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   width: 360px;
 }
 .pointUseModal .modalContainer .right button {
@@ -91,12 +78,11 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: calc(100% - 120px);
   height: 1px;
   background: #ccc;
 }
 .pointUseModal .btn-wrap {
   margin-top: 80px;
-}
+}/*# sourceMappingURL=MemberCheckPoint.css.map */

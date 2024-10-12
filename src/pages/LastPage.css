@@ -73,6 +73,5 @@
   height: 1px;
   background: #fff;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
+  transform: translateX(-50%);
+}/*# sourceMappingURL=LastPage.css.map */

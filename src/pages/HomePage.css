@@ -15,7 +15,6 @@
 }
 .home .fade-out {
   opacity: 0;
-  -webkit-transition: opacity 1s ease-out;
   transition: opacity 1s ease-out;
 }
 .home .visible {
@@ -61,15 +60,9 @@
   height: 95px;
 }
 .home .cont .info > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 .home .cont .info > div:last-child {
   position: absolute;
@@ -83,7 +76,6 @@
 }
 .home .cont .info > div:last-child .left.fade-in, .home .cont .info > div:last-child .right.fade-in {
   opacity: 1;
-  -webkit-transition: opacity 1s ease-in;
   transition: opacity 1s ease-in;
 }
 .home .cont .info > div > div.hidden {
@@ -95,12 +87,8 @@
   font-weight: 800;
 }
 .home .cont .info .left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .home .cont .info .left img {
   width: 95px;
@@ -145,4 +133,4 @@
 }
 .home .btn-wrap button:last-of-type {
   background: #D62839;
-}
+}/*# sourceMappingURL=HomePage.css.map */

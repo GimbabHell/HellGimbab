@@ -28,7 +28,7 @@ const NaverPay = ({ lastPrice }) => {
                         setTimeout(() => {
                             setLoading(false);
                             setPaymentSuccess(true);
-                            alert("결제 완료되었습니다 !");
+                            alert("결제가 완료되었습니다 !");
                         }, 1000);
                     }, 1000);
                 }, 1000);
@@ -74,7 +74,7 @@ const NaverPay = ({ lastPrice }) => {
                     }
                 }}
             >
-                <div className="cardModal">
+                <div className="payModal">
                     <div className="modalTop">
                         <h2 className="title">네이버페이 결제</h2>
                         <button className="btn-close" onClick={closeModal}><FaXmark /></button>
@@ -82,13 +82,13 @@ const NaverPay = ({ lastPrice }) => {
                     <h2><span>결제 QR 코드를 스캔 </span> 해주세요</h2>
                     {loading && <h3>결제 중입니다... 잠시만 기다려 주세요.</h3>}
                     {!paymentSuccess ? (
-                        <div className="cardModalContainer">
-                            <div className="left">
-                                <img src="../images/card.svg" alt="카드 결제 이미지" />
+                        <div className="payModalContainer">
+                            <div className="imgBox">
+                                <img src="../images/scan.svg" alt="페이 스캔 이미지" />
                             </div>
-                            <div className="right">
+                            <div className="txt">
                                 <h3><span>결제금액</span> <span>{lastPrice}원</span></h3>
-                                <h3>카드번호 {CardNumber}</h3>
+                                <h3><span>카드번호</span> <span>{CardNumber}</span></h3>
                             </div>
                         </div>
                     ) : null}

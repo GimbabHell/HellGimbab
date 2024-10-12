@@ -1,22 +1,12 @@
 .menuDetail .menuBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 12px 60px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .menuDetail .menuBox > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .menuDetail .menuBox > div img {
   width: 172px;
@@ -47,23 +37,16 @@
   min-height: 80px;
   border-top: 1px solid #ccc;
   padding: 15px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   position: relative;
 }
 .menuDetail .optionBox > div > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: calc(100% - 150px);
 }
 .menuDetail .optionBox > div > div .option {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
 }
 .menuDetail .optionBox > div > div .options {
   padding: 0 7px;
@@ -78,8 +61,7 @@
   position: absolute;
   right: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .menuDetail .optionBox > div .btn svg {
   font-size: 22px;
@@ -99,15 +81,9 @@
   margin-top: 0;
 }
 .menuDetail .menuState .optionList > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 .menuDetail .menuState .optionList > div .subCategoryName {
   font-size: 24px;
@@ -127,8 +103,6 @@
   display: block;
 }
 .menuDetail .menuState .optionList ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   overflow-x: auto;
 }
@@ -136,8 +110,7 @@
   width: 210px;
   height: 245px;
   margin-right: 20px;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
   text-align: center;
   position: relative;
 }
@@ -149,8 +122,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .menuDetail .menuState .optionList ul li input[type=radio]:checked + label {
   border: 3px solid #bd2030;
@@ -168,15 +140,9 @@
 }
 .menuDetail .menuState .optionList ul li label > div {
   height: 154px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
   position: relative;
 }
@@ -206,4 +172,4 @@
 }
 .menuDetail .menuState .btn-wrap {
   margin-top: 60px;
-}
+}/*# sourceMappingURL=MenuDetailPage.css.map */

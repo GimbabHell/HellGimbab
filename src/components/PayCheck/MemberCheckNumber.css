@@ -9,8 +9,7 @@
   content: "";
   bottom: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   height: 1px;
   background: #ccc;
   width: 480px;
@@ -27,8 +26,7 @@
   position: absolute;
   right: 60px;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   background: none;
   font-size: 36px;
   vertical-align: middle;
@@ -50,4 +48,4 @@
 .pointModal .numbers .btn-confirm {
   padding: 25px 45px;
   font-size: 36px;
-}
+}/*# sourceMappingURL=MemberCheckNumber.css.map */

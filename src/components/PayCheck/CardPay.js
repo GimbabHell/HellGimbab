@@ -19,7 +19,7 @@ const CardPay = ({ lastPrice}) => {
                 const paymentTimer = setTimeout(() => {
                     setLoading(false);
                     setPaymentSuccess(true);
-                    alert("결제 완료되었습니다 !");
+                    alert("결제가 완료되었습니다 !");
                 }, 2000); 
 
                 return () => clearTimeout(paymentTimer);

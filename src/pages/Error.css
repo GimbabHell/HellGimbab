@@ -1,18 +1,9 @@
 @charset "UTF-8";
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   text-align: center;
 }
@@ -49,15 +40,9 @@
   font-size: 4rem;
 }
 .container .come-back-home {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   color: #333;
   border: none;
@@ -67,7 +52,6 @@
   padding: 5px 0px;
   font-size: 1.2rem;
   cursor: pointer;
-  -webkit-transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease;
   transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease; /* 배경색, 글자색, 글자 크기 변화 시 애니메이션 효과 */
 }
 .container .come-back-home:hover {
@@ -76,4 +60,4 @@
 }
 .container .come-back-home:active {
   background-color: #e0e0e0;
-}
+}/*# sourceMappingURL=Error.css.map */

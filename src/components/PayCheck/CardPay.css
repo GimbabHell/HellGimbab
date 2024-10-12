@@ -19,12 +19,8 @@
 .cardModal .cardModalContainer {
   margin-top: 50px;
   padding: 0 60px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .cardModal .cardModalContainer .left {
   width: 330px;
@@ -37,15 +33,9 @@
   position: relative;
 }
 .cardModal .cardModalContainer .right h3 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 23px 0;
   font-size: 24px;
   font-weight: 700;
@@ -76,4 +66,4 @@
 }
 .cardModal .cardModalContainer .right p span {
   font-weight: 400;
-}
+}/*# sourceMappingURL=CardPay.css.map */
