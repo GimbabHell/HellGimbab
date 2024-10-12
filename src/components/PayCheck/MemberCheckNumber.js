@@ -7,7 +7,7 @@ import { FaXmark, FaDeleteLeft } from "react-icons/fa6";
 ReactModal.setAppElement('#root');
 
 const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
-    const [num, setNum] = useState("");
+    const [num, setNum] = useState("010");
     const [errorMessage, setErrorMessage] = useState("");
     const [poiint, setPoiint] = useState("");
     const add = useMemberStore(state => state.add);
@@ -59,7 +59,6 @@ const MemberCheckNumber = ({setShow, setDefa, setSubCategoryId}) => {
         
     };
 
-   
         
     const formatPhoneNumber = (number) => {
         if (number.length === 11) {
