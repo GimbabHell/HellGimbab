@@ -209,10 +209,9 @@ export const useMemberStore = create((set, get) => ({
 
     phoneNumber : '', // 회원 전화번호
     point : '', // 회원 포인트
-    minusPoint : '', // 사용자가 사용할 포인트
+    plusPointNumber : '', // 사용자가 사용할 포인트
     members : [],
-
-
+    
     // 회원 추가 
     add: (phoneNumber, point) => {
         set(state => {
@@ -246,7 +245,7 @@ export const useMemberStore = create((set, get) => ({
     // 포인트 차감
     subtractPoints: (phoneNumber, pointsToSubtract) => {
         set(state => {
-            set({ minusPoint : pointsToSubtract});
+            // set({ minusPoint : pointsToSubtract});
              // minusPoint 에 사용할 포인트 값 저장/ 사용 후 home 버튼 눌렀을 때 다시 더해주기 !
             const members = state.members.map(member => {
                 if (member.phoneNumber === phoneNumber) {
@@ -258,6 +257,12 @@ export const useMemberStore = create((set, get) => ({
             return { members };
         });
     },
+
+    plusPointNum: (value) => {
+        set({plusPointNumber: value
+
+        })
+    } ,
 
 
     // 회원 조회 
@@ -278,7 +283,7 @@ export const useMemberStore = create((set, get) => ({
         return member ? member.point : null;; // 포인트 반환, 없으면 null
     },
 
-    reset: () => set({ phoneNumber : '',   point : '', minusPoint : '' })
+    reset: () => set({ phoneNumber : '',   point : '', plusPointNumber : '' })
 
 }))
 
