@@ -37,6 +37,7 @@ const PayCheckPage = () => {
     };
 
     const handleNotUsingPoints = () => {
+        setDefa(0);
         setSubCategoryId(2);
         setShow(false);
     };
