@@ -1,0 +1,42 @@
+@import '../../Common';
+.payModal {
+    padding-bottom: 90px;
+    > h2 {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+        padding-top: 50px;
+        span {
+            color: $point;
+        }
+    }
+    > h3 {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 20px;
+    }
+    .payModalContainer {
+        margin-top: 50px;
+        padding: $padding;
+        .imgBox {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+        .txt {
+            width: 100%;
+            margin-top: 20px;
+            h3 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 23px 0;
+                font-size: 24px;
+                font-weight: 700;
+                border-bottom: 1px solid #ccc;
+            }
+          
+        }
+    }
+}

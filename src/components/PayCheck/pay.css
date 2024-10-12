@@ -1,0 +1,46 @@
+.payModal {
+  padding-bottom: 90px;
+}
+.payModal > h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 50px;
+}
+.payModal > h2 span {
+  color: #bd2030;
+}
+.payModal > h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+.payModal .payModalContainer {
+  margin-top: 50px;
+  padding: 0 60px;
+}
+.payModal .payModalContainer .imgBox {
+  width: 100%;
+}
+.payModal .payModalContainer .imgBox img {
+  width: 100%;
+}
+.payModal .payModalContainer .txt {
+  width: 100%;
+  margin-top: 20px;
+}
+.payModal .payModalContainer .txt h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 23px 0;
+  font-size: 24px;
+  font-weight: 700;
+  border-bottom: 1px solid #ccc;
+}

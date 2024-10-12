@@ -8,11 +8,8 @@
   overflow-x: hidden;
 }
 .menuContainer .scrollContainer > ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .menuContainer .scrollContainer > ul > li {
   width: 210px;
@@ -62,4 +59,4 @@
 }
 .menuContainer .scrollContainer > ul > li.active {
   border: 3px solid #bd2030;
-}
+}/*# sourceMappingURL=MenuState.css.map */

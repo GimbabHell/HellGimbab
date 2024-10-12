@@ -10,16 +10,10 @@
 }
 .payCheckContainer .pointUse {
   padding: 120px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .payCheckContainer .pointUse > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .payCheckContainer .pointUse > div > div {
@@ -34,15 +28,9 @@
   border: 3px solid #bd2030;
 }
 .payCheckContainer .pointUse > div label {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   width: 150px;
   height: 60px;
   font-family: "Noto Sans KR", sans-serif;
@@ -60,12 +48,8 @@
   margin-bottom: 65px;
 }
 .payCheckContainer .payMethod > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .payCheckContainer .payMethod > div > div {
   width: 234px;
@@ -81,19 +65,10 @@
   border: 3px solid #bd2030;
 }
 .payCheckContainer .payMethod > div > div label {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 228px;
   border-radius: 20px;
@@ -124,24 +99,16 @@
   padding: 60px 20px;
 }
 .payCheckContainer .payPricePoint h3 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .payCheckContainer .payPricePoint h3 + h3 {
   margin-top: 32px;
 }
 .payCheckContainer .totalPrice {
   padding: 60px 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   font-size: 32px;
 }
 .payCheckContainer .totalPrice span:last-of-type {

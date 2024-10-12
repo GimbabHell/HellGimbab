@@ -1,6 +1,4 @@
 .menuFootState {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .menuFootState .menuOrder {
@@ -18,15 +16,9 @@
   margin-bottom: 14px;
 }
 .menuFootState .menuOrder ul li > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 .menuFootState .menuOrder ul li .num {
   margin: 0 35px 0 25px;
@@ -64,15 +56,9 @@
   margin-bottom: 0;
 }
 .menuFootState .menuOrder .orderBottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 20px 0;
   border-top: 1px solid #ccc;
 }
@@ -94,10 +80,7 @@
   width: 200px;
 }
 .menuFootState .menu-btn-wrap .btn {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
 }
 .menuFootState .menu-btn-wrap .btn-black {
@@ -108,4 +91,4 @@
 }
 .menuFootState .menu-btn-wrap .btn p {
   margin-top: 8px;
-}
+}/*# sourceMappingURL=MenuFootState.css.map */
