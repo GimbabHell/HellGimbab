@@ -40,13 +40,13 @@ const NaverPay = ({ lastPrice }) => {
 
     const closeModal = () => {
         setShow2(false);
-        resetPaymentStates(); // Reset payment states
+        resetPaymentStates(); 
     };
 
     const resetPaymentStates = () => {
         setLoading(false);
         setPaymentSuccess(false);
-        setCardNumber(""); // Reset card number
+        setCardNumber(""); 
     };
 
     return (

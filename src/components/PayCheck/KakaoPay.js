@@ -40,13 +40,13 @@ const KakaoPay = ({ lastPrice }) => {
 
     const closeModal = () => {
         setShow2(false);
-        resetPaymentStates(); // Reset payment states
+        resetPaymentStates();
     };
 
     const resetPaymentStates = () => {
         setLoading(false);
         setPaymentSuccess(false);
-        setCardNumber(""); // Reset card number
+        setCardNumber(""); 
     };
 
     return (
@@ -68,7 +68,7 @@ const KakaoPay = ({ lastPrice }) => {
                         padding: 0,
                     },
                     overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  // Background overlay
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)'  
                     }
                 }}
             >
@@ -93,7 +93,7 @@ const KakaoPay = ({ lastPrice }) => {
                 </div>
             </ReactModal>
 
-            {/* Show PointSave component after payment completion */}
+          
             {paymentSuccess && <PointSave lastPrice={lastPrice} />}
         </>
     );
