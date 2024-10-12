@@ -29,12 +29,12 @@ const NaverPay = ({ lastPrice }) => {
                             setLoading(false);
                             setPaymentSuccess(true);
                             alert("결제 완료되었습니다 !");
-                        }, 2000);
+                        }, 1000);
                     }, 1000);
                 }, 1000);
 
                 return () => clearTimeout(cardNumberTimer);
-            }, 2000);
+            }, 1000);
         }
 
         return () => clearTimeout(timer);

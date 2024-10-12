@@ -38,7 +38,8 @@ const LastPage = () => {
         setReceiptNum();
 
         // 주문 기록 배열에 저장
-        setOrderHistory(members[members.length - 1].phoneNumber);
+        const userNum = members.length === 0 ? '' :  members[members.length - 1].phoneNumber
+        setOrderHistory(userNum);
         console.log(orderHistory);
 
     }, []);
