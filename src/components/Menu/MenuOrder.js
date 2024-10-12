@@ -56,6 +56,7 @@ const MenuOrder = ()=>{
             setUnitPrice();
             
             // 장바구니 추가
+            // 이미 옵션선택이 없고 이미 장바구니에 담겨있는 메뉴는 수량 추가
             const list=[];
             for(let i=0; i<order.length; i++){
                 list.push(order[i].menuName);
@@ -65,7 +66,6 @@ const MenuOrder = ()=>{
                 addQuantityBySelect();
             }else{singleOrder();}
 
-            // singleOrder();
 
             // zustand의 한개 메뉴 비우기
             reset();

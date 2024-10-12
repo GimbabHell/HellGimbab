@@ -26,8 +26,10 @@ const HomePage = () => {
     const { setPlace } = orderStore();
 
     const onClickForHere = e => {
-        if(e.target.innerText === "포장"){ setPlace(true); }
+        const text = e.target.innerText;
+        if(text.includes("To go")){ setPlace(true); }
         else{ setPlace(false) }
+        
         navigate("/menu");
     };
 
