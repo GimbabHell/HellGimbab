@@ -72,6 +72,7 @@ const LastPage = () => {
                     }
                 </p>
                 <h2>결제가 완료되었습니다.</h2>
+                {console.log(members)}
                 <h3>영수증 하단 주문 번호를 확인해 주세요.</h3>
                 <p className="dot">.</p>
                 <p className="dot">.</p>
