@@ -8,13 +8,13 @@ const TopHeader = () => {
     const today = new Date();
     const { resetAll } = orderStore();
     const { resetValues } = checkDetail();
-    const {phoneNumber, minusPoint, addPoints} = useMemberStore();
+    // const {phoneNumber, minusPoint, addPoints} = useMemberStore();
 
     const clickHomeHandler =()=>{
         resetAll();
         resetValues();
-        addPoints(phoneNumber, minusPoint);
-        // 이미 사용한 포인트를 다시 더해줌
+        // addPoints(phoneNumber, minusPoint);
+        // // 이미 사용한 포인트를 다시 더해줌
     }
 
     return (
