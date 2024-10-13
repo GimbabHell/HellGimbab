@@ -47,7 +47,7 @@ const LastPage = () => {
     const onClickBack=()=>{
         resetFinal();
         resetValues();
-        reset();
+        // reset();
     };
     
 

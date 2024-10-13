@@ -15,7 +15,9 @@ const PayCheckPage = () => {
     // const [contents, setContents] = useState("");
     const nevi = useNavigate();
     const { totalPrice } = orderStore();
-    const { plusPointNumber, phoneNumber }= useMemberStore();
+    const { plusPoint, phoneNumber,subtractPoints}= useMemberStore();
+
+    const [isRequired, setIsRequired] = useState(true);
     // const { phoneNumber, getPoints } = useMemberStore();
     // const [search] = useSearchParams();
     // const num = search.get("poiint");
@@ -25,8 +27,8 @@ const PayCheckPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [subCategoryId, setSubCategoryId] = useState(0);
     const [checknum, setChecknum] = useState("");
-    const subtractPoints = useMemberStore(state => state.subtractPoints);
-    // const [test, setTest] = useState(false);
+    // const subtractPoints = useMemberStore(state => state.subtractPoints);
+    // // const [test, setTest] = useState(false);
     
     
 
@@ -48,7 +50,9 @@ const PayCheckPage = () => {
 
     const onClickHandler3 = (event) => {
 
-        subtractPoints(phoneNumber, plusPointNumber); 
+        console.log(phoneNumber)
+        subtractPoints(phoneNumber, plusPoint);
+        console.log(phoneNumber, plusPoint);
         event.preventDefault();
         
         if (push === 0) {
@@ -61,10 +65,9 @@ const PayCheckPage = () => {
             setModalContent(<NaverPay lastPrice={totalPrice - defa} />);
             setShowModal(true);
         } else {
-            alert("결제수단을 다시 선택해주세요 !");
+          nevi("/last");
         }
     };
-
 
 
     
@@ -91,13 +94,13 @@ const PayCheckPage = () => {
                     </div>
                 </div>
                
-                {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} setSubCategoryId={setSubCategoryId} /> : null}
+                {show ? <MemberCheckNumber setShow={setShow} setDefa={setDefa} setSubCategoryId={setSubCategoryId} setIsRequired={setIsRequired}/> : null}
 
                 <div className="payMethod borderBottom">
                     <p className="txtBold">결제 수단 선택</p>
                     <div>
                         <div>
-                            <input type="radio" name="pay" id="card"  onChange={() => setPush(0)} required></input>
+                            <input type="radio" name="pay" id="card"  onChange={() => setPush(0)} required={isRequired}></input>
                             <label htmlFor="card">
                                 <FaCreditCard /> 
                                 <p>카드결제</p>

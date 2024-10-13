@@ -6,19 +6,17 @@ import { FaXmark, FaDeleteLeft } from "react-icons/fa6";
 
 ReactModal.setAppElement('#root');
 
-const MemberCheckPoint = ({ num, poiint, setShow, setDefa, setSubCategoryId }) => {
+const MemberCheckPoint = ({ num, poiint, setShow, setDefa, setSubCategoryId ,setIsRequired}) => {
     const [plusPointNumber, setPlusPointNumber] = useState("0"); 
     const { totalPrice } = orderStore();
-    const {plusPointNum} = useMemberStore();
+    const {plusPointNum, plusPhoneNum} = useMemberStore();
     const [show2, setShow2] = useState(true);
-    
-    
-    const subtractPoints = useMemberStore(state => state.subtractPoints);
+    // const p = totalPrice - plusPointNumber;
+
     
     const handleButtonClick = (n) => {
         if (poiint === 0) return;
 
-        // If the current value is "0", replace it with the new number
         setPlusPointNumber((prev) => (prev === "0" ? n : prev + n));
     };
 
@@ -36,20 +34,26 @@ const MemberCheckPoint = ({ num, poiint, setShow, setDefa, setSubCategoryId }) =
             setShow2(false);
 
         } else {
-
-
             const pointsToUse = parseInt(plusPointNumber, 10);
+
             if (totalPrice < pointsToUse){
-                alert(`기존 포인트가 결제 금액보다 큽니다. 전체 포인트를 사용할 수 없습니다 ! \n 원하는 금액을 직접 입력해주세요`);
+                alert(`기존 포인트가 결제 금액보다 큽니다! \n 원하는 금액을 직접 입력해주세요`);
                 setPlusPointNumber("0"); 
-            } else if (poiint >= pointsToUse) {
+            }
+           else if(totalPrice - plusPointNumber === 0){
+                alert(`결제하실 금액이 0원입니다 ! \n 결제하기 버튼을 누르시면 결제가 완료됩니다 !`)
+                setIsRequired(false); 
+                setShow2(false);
+                
+
+            }else if(poiint >= pointsToUse) {
                 alert("확인!");
-                plusPointNum(plusPointNumber);
+                plusPhoneNum(num);
+                plusPointNum(pointsToUse);
                 setDefa(pointsToUse);
                 setShow(false);
                 setShow2(false);
             }
-            
             else {
                 alert(`기존 포인트보다 작은 액수를 입력해주세요`);
                 setPlusPointNumber("0"); 
@@ -60,14 +64,12 @@ const MemberCheckPoint = ({ num, poiint, setShow, setDefa, setSubCategoryId }) =
     const onClickHandlerll = () => {
         
         // const pointsToUse = parseInt(plusPointNumber, 10);
-        setPlusPointNumber(poiint.toString());
-        
-        // if (poiint > plusPointNumber) {
-        //     setPlusPointNumber(poiint.toString());
-        // } else {
-        //     alert(`기존 포인트가 결제 금액보다 큽니다. 전체 포인트를 사용할 수 없습니다 ! \n 원하는 금액을 직접 입력해주세요`);
-        //     setPlusPointNumber("0"); 
-        // }
+        if(totalPrice < poiint){
+            setPlusPointNumber(totalPrice.toString())
+        }else {
+            setPlusPointNumber(poiint.toString())
+        }
+       
     };
 
     const handleDelete = () => {
