@@ -41,7 +41,9 @@ const MemberCheckPoint = ({ num, poiint, setShow, setDefa, setSubCategoryId ,set
                 setPlusPointNumber("0"); 
             }
            else if(totalPrice - plusPointNumber === 0){
-                alert(`결제하실 금액이 0원입니다 ! \n 결제하기 버튼을 누르시면 결제가 완료됩니다 !`)
+                alert(`결제하실 금액이 0원입니다 ! \n 결제하기 버튼을 누르시면 결제가 완료됩니다 !`);
+                plusPhoneNum(num);
+                plusPointNum(pointsToUse);
                 setIsRequired(false); 
                 setShow2(false);
                 
