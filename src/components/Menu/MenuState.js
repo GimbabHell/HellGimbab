@@ -41,9 +41,9 @@ const MenuState = ({menus})=>{
 
 
 
-    const menuList = menus.map((menu)=>{
+    const menuList = menus.map((menu, index)=>{
         return(
-            <li onClick={()=>onClickMenuSelector(menu)}
+            <li key={index} onClick={()=>onClickMenuSelector(menu)}
             className={selectedMenus.includes(menu.name) ? "active": null }
             >
                 {/* {console.log(selectedMenus)}
