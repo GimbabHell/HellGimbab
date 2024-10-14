@@ -22,10 +22,10 @@ const MenuNavBar =()=>{
 
     },[categoryCode]);
 
-    const categoryList = categories.map((cate)=>{
+    const categoryList = categories.map((cate, index)=>{
         return(
-            <li>
-            <NavLink to={`/menu/${cate.categoryCode}`}>{cate.name}</NavLink>
+            <li key={index}>
+                <NavLink to={`/menu/${cate.categoryCode}`}>{cate.name}</NavLink>
             </li>
     )});
 
