@@ -44,11 +44,21 @@ const MenuFootState = ()=>{
         }
     };
 
+    const onClickAsk = () =>{
+        if(order.length === 0){
+            alert("삭제할 상품이 없습니다. \n주문하실 상품을 선택해 주세요~")
+        }else{
+            if(window.confirm("REALLY 전체 삭제 하시겠습니까?")){
+                clearAll()
+            }
+        }
+    };
+
     return(
         <div className="menuFootState">
             <MenuOrder />
             <div className="menu-btn-wrap">
-                <button className="btn btn-black" onClick={()=>clearAll()} >
+                <button className="btn btn-black" onClick={()=> onClickAsk()} >
                     <FaTrashCan /> <p>전체삭제</p>
                 </button>
                 <button className="btn btn-red" onClick={()=> showModal()} >
